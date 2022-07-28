@@ -414,13 +414,10 @@
             </main>
         </div>
         
-        <!-- footer of the pagse -->
+    <?php
+        include_once dirname(__DIR__)."/views/include/corporation.php";
+    ?>
 
-
-        <footer class="footer footer-v1"  include-html="<?php echo dirname(__DIR__)?>/views/include/footer_control.html">
-
-        </footer>
-        <!--/footer of the page -->
     </div>
     <!-- open/close -->
     <a href="#" class="section-scroll" id="scroll-to-top">

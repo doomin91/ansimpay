@@ -8,10 +8,10 @@
                         </div>
                         <ul class="side-nav main-menu">
                             <li class="dropdown has-submenu" data-animation="fadeIn">
-                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="about.html" data-title="Home"> 소개 </a>
+                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="/" data-title="Home"> 소개 </a>
                                 <ul id="gnb_tab_1" class="dropdown-menu no-border-radius sub_menu submenu-nav" data-active-number="1">
                                     <li data-num="0">
-                                        <a class="nav-link" href="about.html">안심페이란</a>
+                                        <a class="nav-link" href="/notice">안심페이란</a>
                                     </li>
                                     <li data-num="1">
                                         <a class="nav-link" href="about_1.html">키오스크</a>  
@@ -100,10 +100,10 @@
                                 <ul class="nav navbar-nav pc_main_gnb main-menu">
 
                                     <li id="about"  class="dropdown has-submenu" data-animation="fadeIn">
-                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="about.html"> 소개 </a>
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/"> 소개 </a>
                                         <ul id="" class="dropdown-menu no-border-radius submenu-nav" data-active-number="1">
                                             <li data-num="0">
-                                                <a class="nav-link" href="about.html">안심페이란</a>
+                                                <a class="nav-link" href="/notice">안심페이란</a>
                                             </li>
                                             <li data-num="1">
                                                 <a class="nav-link" href="about_1.html">키오스크</a>  
