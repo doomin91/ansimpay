@@ -1,0 +1,6 @@
+
+.icon-longdistance:before { content: '\e800'; } /* '' */
+.icon-normal_payment:before { content: '\e802'; } /* '' */
+.icon-nfc_qr_payment:before { content: '\e803'; } /* '' */
+.icon-blog_svg:before { content: '\e804'; } /* '' */
+.icon-kiosk_payment:before { content: '\e805'; } /* '' */

@@ -1,0 +1,23 @@
+{
+	"name": "fancybox",
+	"main": [
+		"source/jquery.fancybox.css",
+		"source/jquery.fancybox.js",
+		"source/blank.gif",
+		"source/fancybox_loading.gif",
+		"source/fancybox_loading@2x.gif",
+		"source/fancybox_overlay.webp",
+		"source/fancybox_sprite.webp",
+		"source/fancybox_sprite@2x.webp",
+		"source/jquery.fancybox.pack.js"
+	],
+	"ignore": [
+    	"**/.*",
+    	"fancybox.jquery.json",
+    	"demo"
+	],
+	"dependencies": {
+		"jquery": ">=1.10",
+		"jquery-mousewheel": "~3.1.3"
+	}
+}
