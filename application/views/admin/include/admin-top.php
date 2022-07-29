@@ -44,10 +44,8 @@
 	</li>
 
 	<li class="navigation" id="navigation">
-	  <a href="#" class="sidebar-toggle" data-toggle="#navigation">Navigation <i class="fa fa-angle-up"></i></a>
-
 	  <ul class="menu">
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 파트너사 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -65,7 +63,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 키오스크 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -83,7 +81,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 상장 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -96,7 +94,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 뉴스 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -109,7 +107,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 서비스 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -122,7 +120,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 사용 업종 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -135,7 +133,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 사용 가맹점 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
@@ -148,7 +146,7 @@
 			</ul>
 		</li>
 
-		<li class="dropdown open">
+		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 제휴문의 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
