@@ -8,39 +8,39 @@
                         </div>
                         <ul class="side-nav main-menu">
                             <li class="dropdown has-submenu" data-animation="fadeIn">
-                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="/" data-title="Home"> 소개 </a>
+                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="/notice/ansimpay" data-title="Home"> 소개 </a>
                                 <ul id="gnb_tab_1" class="dropdown-menu no-border-radius sub_menu submenu-nav" data-active-number="1">
                                     <li data-num="0">
-                                        <a class="nav-link" href="/notice">안심페이란</a>
+                                        <a class="nav-link" href="/notice/ansimpay">안심페이란</a>
                                     </li>
                                     <li data-num="1">
-                                        <a class="nav-link" href="about_1.html">키오스크</a>  
+                                        <a class="nav-link" href="/notice/kiosk">키오스크</a>  
                                     </li>
                                     <li data-num="2">
-                                        <a class="nav-link" href="about_2.html" role="tab">NEWS</a>  
+                                        <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                     </li>
                                     <li data-num="2">
-                                        <a class="nav-link" href="about_3.html">상장</a>  
+                                        <a class="nav-link" href="/notice/award">상장</a>  
                                     </li>
                                 </ul>                           
                             </li>
                             <li class="dropdown has-submenu" data-animation="fadeIn">
-                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="service.html" data-title="Home"> 서비스 </a>
+                                <a class="dropdown-toggle font_style" data-toggle="dropdown" href="/service/away" data-title="Home"> 서비스 </a>
                                 <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="service.html">원거리 결제</a>
+                                        <a class="" href="/service/away">원거리 결제</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="service_1.html">NFC, QR코드 결제</a>
+                                        <a class="" href="/service/nfc">NFC, QR코드 결제</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="service_2.html">모바일 결제</a>
+                                        <a class="" href="/service/mobile">모바일 결제</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="service_3.html">키오스크 결제</a>
+                                        <a class="" href="/service/kiosk">키오스크 결제</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="service_4.html">주차관리 결제 시스템</a>
+                                        <a class="" href="/service/parking">주차관리 결제 시스템</a>
                                     </li>
                                 </ul>
                             </li>
@@ -48,10 +48,10 @@
                                 <a class="dropdown-toggle font_style" data-toggle="dropdown" href="index.html" data-title="Home"> 사용 가맹점 </a>
                                 <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="franchisee.html">사용 업종</a>
+                                        <a class="" href="/reference/sector">사용 업종</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="franchisee_1.html">사용 가맹점</a>
+                                        <a class="" href="/reference/franchisee">사용 가맹점</a>
                                     </li>
                                 </ul>
                             </li>
@@ -59,13 +59,13 @@
                                 <a class="dropdown-toggle font_style" data-toggle="dropdown" href="index.html" data-title="Home"> 고객 서비스 </a>
                                 <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="customer_service.html">제휴 문의</a>
+                                        <a class="" href="/customer/question">제휴 문의</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="customer_service_1.html">자료실</a>
+                                        <a class="" href="/customer/library">자료실</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="customer_service_2.html">FAQ</a>
+                                        <a class="" href="/customer/faq">FAQ</a>
                                     </li>
                                     <li class="dropdown dropdown-right dropdown-parent">
                                         <a class="" href="https://www.costerpartner.com/">파트너 센터</a>
@@ -91,73 +91,73 @@
                     </nav>
                     <div class="bottom-header container-fluid mega-menus" id="mega-menus">
                         <nav class="navbar navbar-toggleable-md no-border-radius no-margin mega-menu-multiple" id="navbar-inner-container">
-                            <a class="navbar-brand mr-auto m-sm-auto" href="index.html">
-                                <img src="assets/img/logo/safe_pay_font_ver.webp" alt="safepay" style="width:80%;">
-                                <img src="assets/img/logo/safe_pay_font_black_ver.webp" alt="safepay">
+                            <a class="navbar-brand mr-auto m-sm-auto" href="/">
+                                <img src="/assets/img/logo/safe_pay_font_ver.webp" alt="safepay" style="width:80%;">
+                                <img src="/assets/img/logo/safe_pay_font_black_ver.webp" alt="safepay">
                             </a>
                             <div class="collapse navbar-collapse flex-row-reverse" id="mega-menu">
 
                                 <ul class="nav navbar-nav pc_main_gnb main-menu">
 
                                     <li id="about"  class="dropdown has-submenu" data-animation="fadeIn">
-                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/"> 소개 </a>
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/notice/ansimpay"> 소개 </a>
                                         <ul id="" class="dropdown-menu no-border-radius submenu-nav" data-active-number="1">
                                             <li data-num="0">
-                                                <a class="nav-link" href="/notice">안심페이란</a>
+                                                <a class="nav-link" href="/notice/ansimpay">안심페이란</a>
                                             </li>
                                             <li data-num="1">
-                                                <a class="nav-link" href="about_1.html">키오스크</a>  
+                                                <a class="nav-link" href="/notice/kiosk">키오스크</a>  
                                             </li>
                                             <li data-num="2">
-                                                <a class="nav-link" href="about_2.html" role="tab">NEWS</a>  
+                                                <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                             </li>
                                             <li data-num="2">
-                                                <a class="nav-link" href="about_3.html">상장</a>  
+                                                <a class="nav-link" href="/notice/awards">상장</a>  
                                             </li>
                                         </ul>
                                     </li>
                                     <li id="service"  class="dropdown has-submenu" data-animation="fadeIn">
-                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="service.html" data-title="Home"> 서비스 </a>
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/service/away" data-title="Home"> 서비스 </a>
                                         <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="service.html">원거리 결제</a>
+                                                <a class="" href="/service/away">원거리 결제</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="service_1.html">NFC, QR코드 결제</a>
+                                                <a class="" href="/service/nfc">NFC, QR코드 결제</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="service_2.html">모바일 결제</a>
+                                                <a class="" href="/service/mobile">모바일 결제</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="service_3.html">키오스크 결제</a>
+                                                <a class="" href="/service/kiosk">키오스크 결제</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="service_4.html">주차관리 결제 시스템</a>
+                                                <a class="" href="/service/parking">주차관리 결제 시스템</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li id="franchisee" class="dropdown has-submenu" data-animation="fadeIn">
                                         <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="franchisee.html" data-title="Home"> 사용 가맹점 </a>
                                         <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="franchisee.html">사용 업종</a>
-                                            </li>
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="franchisee_1.html">사용 가맹점</a>
+                                        <li class="dropdown dropdown-right dropdown-parent">
+                                        <a class="" href="/reference/sector">사용 업종</a>
+                                        </li>
+                                        <li class="dropdown dropdown-right dropdown-parent">
+                                        <a class="" href="/reference/franchisee">사용 가맹점</a>
                                             </li>
                                         </ul>
                                     </li>
                                     <li id="customer_service" class="dropdown has-submenu" data-animation="fadeIn">
-                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="customer_service.html"> 고객 서비스 </a>
+                                        <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/customer/question"> 고객 서비스 </a>
                                         <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="customer_service.html">제휴 문의</a>
+                                                <a class="" href="/customer/question">제휴 문의</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="customer_service_1.html">자료실</a>
+                                                <a class="" href="/customer/library">자료실</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="customer_service_2.html">FAQ</a>
+                                                <a class="" href="/customer/faq">FAQ</a>
                                             </li>
                                             <li class="dropdown dropdown-right dropdown-parent">
                                                 <a class="" href="https://www.costerpartner.com/">파트너 센터</a>

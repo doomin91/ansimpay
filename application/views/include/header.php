@@ -31,28 +31,28 @@
     <meta name="type" content="website">
     <!-- Font Icons -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/fonts/fontello/fontello-embedded.css">
+    <link rel="stylesheet" href="/assets/css/fonts/fontello/fontello-embedded.css">
     <!-- Vendors -->
-    <link media="all" rel="stylesheet" href="assets/vendors/owl-carousel/dist/assets/owl.carousel.min.css">
-    <link media="all" rel="stylesheet" href="assets/vendors/owl-carousel/dist/assets/owl.theme.default.min.css">
-    <link media="all" rel="stylesheet" href="assets/vendors/animate/animate.css">
-    <link media="all" rel="stylesheet" href="assets/vendors/rateyo/jquery.rateyo.css">
-<!--    <link media="all" rel="stylesheet" href="assets/vendors/bootstrap-datepicker/css/bootstrap-datepicker.css">-->
-    <link media="all" rel="stylesheet" href="assets/vendors/fancyBox/source/jquery.fancybox.css">
-    <link media="all" rel="stylesheet" href="assets/vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.css">
+    <link media="all" rel="stylesheet" href="/assets/vendors/owl-carousel/dist//assets/owl.carousel.min.css">
+    <link media="all" rel="stylesheet" href="/assets/vendors/owl-carousel/dist//assets/owl.theme.default.min.css">
+    <link media="all" rel="stylesheet" href="/assets/vendors/animate/animate.css">
+    <link media="all" rel="stylesheet" href="/assets/vendors/rateyo/jquery.rateyo.css">
+<!--    <link media="all" rel="stylesheet" href="/assets/vendors/bootstrap-datepicker/css/bootstrap-datepicker.css">-->
+    <link media="all" rel="stylesheet" href="/assets/vendors/fancyBox/source/jquery.fancybox.css">
+    <link media="all" rel="stylesheet" href="/assets/vendors/fancyBox/source/helpers/jquery.fancybox-thumbs.css">
     <!-- Bootstrap 4 -->
-    <link media="all" rel="stylesheet" href="assets/css/bootstrap.css">
+    <link media="all" rel="stylesheet" href="/assets/css/bootstrap.css">
     <!-- Rev Slider -->
-    <link rel="stylesheet" type="text/css" href="assets/vendors/rev-slider/revolution/css/settings.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/rev-slider/revolution/css/layers.css">
-    <link rel="stylesheet" type="text/css" href="assets/vendors/rev-slider/revolution/css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/rev-slider/revolution/css/settings.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/rev-slider/revolution/css/layers.css">
+    <link rel="stylesheet" type="text/css" href="/assets/vendors/rev-slider/revolution/css/navigation.css">
     <!-- Theme CSS -->
-    <link media="all" rel="stylesheet" href="assets/css/main.css">
+    <link media="all" rel="stylesheet" href="/assets/css/main.css">
     <!-- Custom CSS -->
-    <link media="all" rel="stylesheet" href="assets/css/custom.css">
+    <link media="all" rel="stylesheet" href="/assets/css/custom.css">
     <!-- mbile  -->
-
+    <link rel="stylesheet" href="/assets/datatable/datatables.css" type="text/css"/>
     <!-- include HTML js -->
-    <script src="assets/js/includeHTML.js"></script>
+    <script src="/assets/js/includeHTML.js"></script>
     
 </head>

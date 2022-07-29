@@ -74,22 +74,22 @@ $('.selectpicker').selectpicker({
 
 <div class="row logo-block">
 	<div class="logo-container">
-		<a href="https://snapappointments.com" target="_blank"><img src="assets/img/logos/snapappointments.webp" alt="SnapAppointments"></a>
+		<a href="https://snapappointments.com" target="_blank"><img src="/assets/img/logos/snapappointments.webp" alt="SnapAppointments"></a>
 	</div>
 	<div class="logo-container">
-		<a href="https://www.thermofisher.com" target="_blank"><img src="assets/img/logos/thermofisher.webp" alt="Thermo Fisher Scientific Inc."></a>
+		<a href="https://www.thermofisher.com" target="_blank"><img src="/assets/img/logos/thermofisher.webp" alt="Thermo Fisher Scientific Inc."></a>
 	</div>
 	<div class="logo-container">
-		<a href="https://www.membermeister.com" target="_blank"><img src="assets/img/logos/membermeister.webp" alt="membermeister"></a>
+		<a href="https://www.membermeister.com" target="_blank"><img src="/assets/img/logos/membermeister.webp" alt="membermeister"></a>
 	</div>
 	<div class="logo-container">
-		<a href="https://solveforall.com" target="_blank"><img src="assets/img/logos/solveforall.webp" alt="Solve for All"></a>
+		<a href="https://solveforall.com" target="_blank"><img src="/assets/img/logos/solveforall.webp" alt="Solve for All"></a>
 	</div>
 	<div class="logo-container">
-		<a href="http://www.123itworks.co.uk" target="_blank"><img src="assets/img/logos/estimateit.webp" alt="EstiMATEit"></a>
+		<a href="http://www.123itworks.co.uk" target="_blank"><img src="/assets/img/logos/estimateit.webp" alt="EstiMATEit"></a>
 	</div>
 	<div class="logo-container">
-		<a href="https://convertizer.com" target="_blank"><img src="assets/img/logos/convertizer.webp" alt="Convertizer"></a>
+		<a href="https://convertizer.com" target="_blank"><img src="/assets/img/logos/convertizer.webp" alt="Convertizer"></a>
 	</div>
 </div>
 

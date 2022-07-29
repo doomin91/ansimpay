@@ -1,5 +1,5 @@
-<?php 
-    include_once dirname(__DIR__)."/views/include/header.php";
+<?php
+        include_once dirname(__DIR__)."/views/include/header.php";
 ?>
 
 <body class="white-overlay" >
@@ -27,7 +27,7 @@
                             <ul>
                                 <li class="slider-color-schema-dark" data-index="rs-2" data-transition="fade" data-slotamount="7" data-easein="default" data-easeout="default" data-masterspeed="1000" data-rotate="0" data-saveperformance="off" data-title="Slide" data-description="">
                                     <!-- main image for revolution slider -->
-                                    <img src="assets/img/bg/main_banner.webp" alt="안심페이 가맹점 화면" data-bgposition="center bottom" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="140" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
+                                    <img src="/assets/img/bg/main_banner.webp" alt="안심페이 가맹점 화면" data-bgposition="center bottom" data-kenburns="on" data-duration="30000" data-ease="Linear.easeNone" data-scalestart="100" data-scaleend="140" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" data-bgparallax="10" class="rev-slidebg" data-bgfit="cover" data-no-retina>
                                     <div class="tp-caption tp-shape tp-shapewrapper" id="slide-1699-layer-10" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full"
                                     data-height="full" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="on" data-responsive="off" data-frames='[{"from":"y:0;sX:1;sY:1;opacity:0;","speed":2500,"to":"o:1;","delay":500,"ease":"Power4.easeOut"},{"delay":"wait","speed":300,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]"
                                     data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="background-color:rgba(0, 0, 0, 0.57);"> </div>
@@ -42,12 +42,12 @@
                                     </div>
                                     <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-1" data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['320','60','240','220']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_out="x:inherit;y:inherit;" data-start="1250" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]' data-responsive_offset="on" data-paddingtop="[0,0,0,0]" data-paddingright="[25,25,25,25]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[25,25,25,25]">
                                         <a class="btn btn-primary has-radius-small" href="https://play.google.com/store/apps/details?id=kr.co.coster.securepay" target="_blank">
-                                            <img src="assets/img/btn/google_logo_btn_white_ver.webp" class="down_link_btn">
+                                            <img src="/assets/img/btn/google_logo_btn_white_ver.webp" class="down_link_btn">
                                         </a>
                                     </div>
                                     <div class="tp-caption rev-btn  rs-parallaxlevel-10" id="slide-163-layer-2" data-x="['left','left','left','left']" data-hoffset="['320','250','300','220']" data-y="['middle','middle','middle','middle']" data-voffset="['320','60','240','220']" data-width="none" data-height="none" data-whitespace="nowrap" data-transform_idle="o:1;" data-transform_hover="o:1;rX:0;rY:0;rZ:0;z:0;s:300;e:Power3.easeOut;" data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:2000;e:Power4.easeInOut;" data-transform_out="y:[175%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;" data-mask_out="x:inherit;y:inherit;" data-start="1250" data-splitin="none" data-splitout="none" data-actions='[{"event":"click","action":"jumptoslide","slide":"rs-164","delay":""}]' data-responsive_offset="on" data-paddingtop="[0,0,0,0]" data-paddingright="[25,25,25,25]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[25,25,25,25]">
                                         <a class="btn btn-primary has-radius-small" href="https://apps.apple.com/kr/app/id1483167325" target="_blank">
-                                            <img src="assets/img/btn/app_logo_btn_white_ver.webp" class="down_link_btn">
+                                            <img src="/assets/img/btn/app_logo_btn_white_ver.webp" class="down_link_btn">
                                         </a>
                                     </div>
                                 </li>
@@ -164,7 +164,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="http://www.it-b.co.kr/news/articleView.html?idxno=50743" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_7_02.png" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_7_02.png" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-07-02">07.02</time>
                                             </div>
@@ -200,7 +200,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="https://www.edaily.co.kr/news/read?newsId=03227526629110256&mediaCodeNo=257&OutLnkChk=Y" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_7.png" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_7.png" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-07-01">07.01</time>
                                             </div>
@@ -236,7 +236,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=929940" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_6_22.png" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_6_22.png" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-06-22">06.22</time>
                                             </div>
@@ -272,7 +272,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="http://www.e2news.com/news/articleView.html?idxno=233385" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_3.webp" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_3.webp" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-06-09">06.09</time>
                                             </div>
@@ -308,7 +308,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=928761" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_6_4.png" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_6_4.png" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-06-04">06.04</time>
                                             </div>
@@ -344,7 +344,7 @@
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
                                                 <a href="http://www.kdpress.co.kr/news/articleView.html?idxno=103317" target="_blank">
-                                                    <img src="assets/img/main_news/main_news_2021_6_1.png" alt="images">
+                                                    <img src="/assets/img/main_news/main_news_2021_6_1.png" alt="images">
                                                 </a>
                                                 <time class="post-date" datetime="2021-06-01">06.01</time>
                                             </div>
@@ -391,19 +391,19 @@
                             <div class="logo-container">
                                 <div class="owl-carousel logo-slide" id="waituk-owl-slide-4">
                                     <div class="slide-item">
-                                        <img src="assets/img/partnter/partner_1.webp" alt="images description">
+                                        <img src="/assets/img/partnter/partner_1.webp" alt="images description">
                                     </div>
                                     <div class="slide-item">
-                                        <img src="assets/img/partnter/partner_2.webp" alt="images description">
+                                        <img src="/assets/img/partnter/partner_2.webp" alt="images description">
                                     </div>
                                     <div class="slide-item">
-                                        <img src="assets/img/partnter/partner_3.webp" alt="images description">
+                                        <img src="/assets/img/partnter/partner_3.webp" alt="images description">
                                     </div>
                                     <div class="slide-item">
-                                        <img src="assets/img/partnter/partner_4.webp" alt="images description">
+                                        <img src="/assets/img/partnter/partner_4.webp" alt="images description">
                                     </div>
                                     <div class="slide-item">
-                                        <img src="assets/img/partnter/partner_5.webp" alt="images description">
+                                        <img src="/assets/img/partnter/partner_5.webp" alt="images description">
                                     </div>
                                 </div>
                             </div>
@@ -427,5 +427,5 @@
 </body>
 
 <?php
-    include_once dirname(__DIR__)."/views/include/footer.php";
+        include_once dirname(__DIR__)."/views/include/footer.php";
 ?>

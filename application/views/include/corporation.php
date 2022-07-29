@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-2">
                     <div class="footer-logo m_text_center">
-                        <img src="assets/img/logo/safe_pay_font_ver.webp" alt="image-description" class="m_img">
+                        <img src="/assets/img/logo/safe_pay_font_ver.webp" alt="image-description" class="m_img">
                     </div>
                 </div>
                 <div class="col-md-7 m_text_center pc_text_left">

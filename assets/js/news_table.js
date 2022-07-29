@@ -22,7 +22,7 @@ $(document).ready(function () {
         searching: false,
         info: false,
         ajax: {
-            'url':'news_data.json', 
+            'url':'./news_data.json', 
             'type': 'get',
             'dataSrc':''
         },
