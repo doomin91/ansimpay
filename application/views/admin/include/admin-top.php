@@ -45,18 +45,36 @@
 
 	<li class="navigation" id="navigation">
 	  <ul class="menu">
+	  	<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<i class="fa fa-circle-o" aria-hidden="true"></i> 게시글 관리 <b class="fa fa-plus dropdown-plus"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="/admin/recentlyList">
+						<i class="fa fa-caret-right"></i> 최근 소식
+					</a>
+				</li>
+				<li>
+					<a href="/admin/newsList">
+						<i class="fa fa-caret-right"></i> 뉴스
+					</a>
+				</li>
+			</ul>
+		</li>
+
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 파트너사 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 소개글 변경
+					<a href="/admin/partnerCategoryList">
+						<i class="fa fa-caret-right"></i> 카테고리 추가/변경
 					</a>
 				</li>
 				<li>
-					<a href="/admin/user">
+					<a href="/admin/partnerList">
 						<i class="fa fa-caret-right"></i> 파트너사 추가/변경
 					</a>
 				</li>
@@ -89,19 +107,6 @@
 				<li>
 					<a href="/admin/user">
 						<i class="fa fa-caret-right"></i> 상장 추가/변경
-					</a>
-				</li>
-			</ul>
-		</li>
-
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> 뉴스 관리 <b class="fa fa-plus dropdown-plus"></b>
-			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 뉴스 추가/변경
 					</a>
 				</li>
 			</ul>
@@ -162,6 +167,11 @@
 	</li>
 	<li class="navigation">
 		<ul class="menu">
+		<li>
+				<a href="/admin/logout">
+					<i class="fa fa-power-off"></i> 관리자 관리
+				</a>
+			</li>
 			<li>
 				<a href="/admin/logout">
 					<i class="fa fa-power-off"></i> 로그아웃

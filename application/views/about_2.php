@@ -55,7 +55,7 @@
                                                 <th>date</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="newsBody">
                                             <tr>
                                                 <td></td>
                                                 <td></td>
@@ -92,5 +92,54 @@
     ?>
          
     <script>
-        $("#myTable").dataTable()
+	    loadData();
+        function loadData(){
+			$.ajax({
+				url: 		 "/admin/getNewsList",
+				dataType:	 "json",
+				success: function(data){
+                    let str = "";
+                    let pagenum = data.length;
+                    data.forEach(function(element){
+                        str += `<tr>
+                                    <td>${pagenum}</td>
+                                    <td><a href="${element.NL_LINK}" target="_blank" style="font-size:16px; color:black;">${element.NL_SUBJECT}</a></td>
+                                    <td>${element.NL_REG_DATE}</td>
+                                </tr>`;
+                        pagenum -= 1;
+                    })
+                    $("#newsBody").html(str);
+                    loadDataTable();
+				},
+				error: function(e){
+					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
+				}
+			})
+		}
+
+        function loadDataTable(){
+            $("#myTable").dataTable({
+                        lengthChange: false,
+                        searching: false,
+                        info: false,
+                        responsive: true,
+                        orderMulti: true,
+                        order : [[0, 'desc']],
+                        language: {
+                                "emptyTable": "데이터가 없어요.",
+                                "lengthMenu": "페이지당 _MENU_ 개씩 보기",
+                                "info": "현재 _START_ - _END_ / _TOTAL_건",
+                                "infoEmpty": "데이터 없음",
+                                "infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
+                                "search": "에서 검색: ",
+                                "zeroRecords": "일치하는 데이터가 없어요.",
+                                "loadingRecords": "로딩중...",
+                                "processing":     "잠시만 기다려 주세요...",
+                                "paginate": {
+                                    "next": ">>",
+                                    "previous": "<<"
+                                }
+                        }
+                    })
+            }
     </script>
