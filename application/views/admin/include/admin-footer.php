@@ -1,80 +1,3 @@
-    <section class="videocontent" id="video"></section>
-
-    <script>
-
-// (function(){var url='//www.sprymedia.co.uk/VisualEvent/VisualEvent_Loader.js';if(typeof VisualEvent!='undefined'){if(VisualEvent.instance!==null){VisualEvent.close();}else{new VisualEvent();}}else{var n=document.createElement('script');n.setAttribute('language','JavaScript');n.setAttribute('src',url+'?rand='+new Date().getTime());document.body.appendChild(n);}})();
-
-        // $('li.dropdown.open.hovered').on("click", function(e) {
-        //     console.log("TEST222");
-
-            
-        //     // $(this).data('closable', true);
-        //     console.log($(e.target).closest("li"));
-        //     var menu = $(e.target).closest("li");
-
-        //     if ($(menu).hasClass('open')) {
-        //         $(menu).removeClass('open');
-        //     }else{
-        //         $(menu).addClass('open');
-        //     }
-
-        //     e.stopPropagation();
-        //     // if ($('#sidebar').hasClass('collapsed')) {
-        //     // // Avoid having the menu to close when clicking
-        //     // e.stopPropagation();
-        //     // }
-
-        //     // // resize scrollbar
-        //     // $("#sidebar").getNiceScroll().resize();
-
-        //     // },
-        //     // "hide.bs.dropdown": function() {
-        //     // return $(this).data('closable');
-        //     // // resize scrollbar
-        //     // $("#sidebar").getNiceScroll().resize();
-        //     // }
-        // });
-        $('li.dropdown').on("click", function(e) {
-            console.log("TEST");
-
-            
-            // $(this).data('closable', true);
-            
-            console.log($(e.target).closest("li"));
-            var menu = $(e.target).closest("li");
-
-            if ($(menu).hasClass('open')) {
-                if($(menu).hasClass('hovered')){
-                    console.log("hoverd");
-                    
-                }
-                $(menu).removeClass('open');
-                
-            }else{
-                $(menu).addClass('open');
-            }
-
-            e.stopPropagation();
-            e.stopImmediatePropagation()
-            
-            // if ($('#sidebar').hasClass('collapsed')) {
-            // // Avoid having the menu to close when clicking
-            // e.stopPropagation();
-            // }
-
-            // // resize scrollbar
-            // $("#sidebar").getNiceScroll().resize();
-
-            // },
-            // "hide.bs.dropdown": function() {
-            // return $(this).data('closable');
-            // // resize scrollbar
-            // $("#sidebar").getNiceScroll().resize();
-            // }
-        });
-        
-    </script>
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -104,8 +27,7 @@
     <script src="/assets/static/admin/js/vendor/summernote/summernote.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-
-    <script src="/assets/static/admin/js/minimal.js"></script>
+    <!-- <script src="/assets/static/admin/js/minimal.js"></script> -->
 
 
     

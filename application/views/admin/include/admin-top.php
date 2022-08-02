@@ -45,9 +45,27 @@
 
 	<li class="navigation" id="navigation">
 	  <ul class="menu">
+		<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+					<i class="fa fa-circle-o" aria-hidden="true"></i> 기본 설정 <b class="fa fa-plus dropdown-plus"></b>
+				</a>
+				<ul class="dropdown-menu">
+					<li>
+						<a href="/admin/siteInfo">
+							<i class="fa fa-caret-right"></i> 사이트 정보
+						</a>
+					</li>
+					<li>
+						<a href="/admin/newsList">
+							<i class="fa fa-caret-right"></i> 관리자 설정
+						</a>
+					</li>
+				</ul>
+			</li>
+
 	  	<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> 게시글 관리 <b class="fa fa-plus dropdown-plus"></b>
+				<i class="fa fa-circle-o" aria-hidden="true"></i> 게시판 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
@@ -167,13 +185,8 @@
 	</li>
 	<li class="navigation">
 		<ul class="menu">
-		<li>
-				<a href="/admin/logout">
-					<i class="fa fa-power-off"></i> 관리자 관리
-				</a>
-			</li>
 			<li>
-				<a href="/admin/logout">
+				<a href="/login/logout">
 					<i class="fa fa-power-off"></i> 로그아웃
 				</a>
 			</li>

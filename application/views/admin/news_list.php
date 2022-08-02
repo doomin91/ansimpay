@@ -41,7 +41,7 @@
                 	<!-- tile body -->
                 	<div class="tile-body">
                 		<table class="table table-custom datatable userTable">
-							<form method="get" role="form"> 
+							<form method="get" role="form" id="searchForm"> 
 									<colgroup>
 										<col width="15%"/>
 										<col width="35%"/>
@@ -53,10 +53,10 @@
 											<th>등록일자</th>
 											<td colspan="3">
 												<div class="col-md-5">
-													<input name="regDateStart" type="text" class="wid100p datepicker" value="<?php echo $startDate?>">
+													<input name="regDateStart" type="text" class="wid100p datepicker" value="<?php echo $regDateStart?>">
 												</div>
 												<div class="col-md-5">
-													<input name="regDateEnd" type="text" class="wid100p datepicker" value="<?php echo $endDate?>">
+													<input name="regDateEnd" type="text" class="wid100p datepicker" value="<?php echo $regDateEnd?>">
 												</div>
 											</td>
 										</tr>
@@ -64,10 +64,11 @@
 											<th>단어검색</th>
 											<td colspan="3">
 												<div class="col-md-2">
-													<select name="search_field" class="wid100p">
+													<select name="searchField" class="wid100p">
 														<option value="all">전체</option>
-														<option value="SUBJECT">제목</option>
-														<option value="link">URL</option>
+														<option value="USER_NAME" <?php echo $searchField == "USER_NAME" ? 'selected': ""?>>글쓴이</option>
+														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
+														<option value="LINK" <?php echo $searchField == "LINK" ? 'selected': ""?>>URL</option>
 													</select>
 												</div>
 												<div class="col-md-8">
@@ -78,7 +79,8 @@
 										<tr>
 											<td colspan="4" class="text-right">
 												<div class="col-md-12">
-													<button class="btn btn-primary">검색하기</button>
+													<button type="button" onclick="formReset()" class="btn btn-default">초기화</button>
+													<button class="btn btn-blue">검색</button>
 												</div>
 											</td>
 										</tr>
@@ -89,60 +91,6 @@
 					</section>
 				</div>
 			</div>
-				
-
-
-					<!-- row -->
-					<div class="row">
-
-								
-					<!-- col 12 -->
-					<div class="col-md-12">
-					
-					
-					<!-- tile -->
-					<section class="tile ">
-
-						<!-- tile header -->
-						<div class="tile-header ">
-						<h1><strong>Basic</strong> Datatable </h1>
-						<span class="note">including: <span class="italic">multi-column sorting and row select</span></span>
-						<div class="controls">
-							<a href="#" class="minimize"><i class="fa fa-chevron-down"></i></a>
-							<a href="#" class="refresh"><i class="fa fa-refresh"></i></a>
-							<a href="#" class="remove"><i class="fa fa-times"></i></a>
-						</div>
-						</div>
-						<!-- /tile header -->
-
-						<!-- tile body -->
-						<div class="tile-body color transparent-black ">
-						
-						<div class="table-responsive">
-							<table  class="table table-datatable table-custom" id="basicDataTable">
-							<thead>
-								<tr>
-								<th class="sort-alpha">#</th>
-								<th class="sort-alpha">제목</th>
-								<th class="sort-amount">URL</th>
-								<th class="sort-numeric">등록일</th>
-								<th>기능</th>
-								</tr>
-							</thead>
-							<tbody id="newsBody">
-							</tbody>
-							</table>
-						</div>
-
-						</div>
-						<!-- /tile body -->
-
-					</section>
-					<!-- /tile -->
-				</div>
-			</div>
-
-
 
 			<div class="row">
 				<!-- col 12 -->
@@ -162,11 +110,55 @@
 											<th class="sort">제목</th>
 											<th class="sort">URL</th>
 											<th class="sort">등록일</th>
+											<th class="sort">글쓴이</th>
+											<th class="sort">공개여부</th>
 											<th class="sort">기능</th>
 										</tr>
 									</thead>
-
+									<tbody id="newsBody">
+										<?php 
+										if($listCount > 0):
+										foreach($lists as $lt):?>
+										<tr>
+											<td><?php echo $pagenum?></td>
+											<td><?php echo $lt->NL_SUBJECT?></td>
+											<td><?php echo $lt->NL_LINK?></td>
+											<td><?php echo $lt->NL_REG_DATE?></td>
+											<td><?php echo $lt->NL_REG_USERSEQ?></td>
+											<td><?php echo $lt->NL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
+											<td>
+											<button type="button" class="btn btn-xs btn-default">수정</button>
+											<button type="button" class="btn btn-xs btn-danger">삭제</button>
+											</td>
+										</tr>
+										<?php 
+										$pagenum -= 1;	
+										endforeach;
+										else:
+											echo "<tr><td colspan=8 style=\"text-align:center;padding:50px;\">게시글이 없습니다.</td></tr>";
+										endif;
+										?>
+									</tbody>
 								</table>
+
+								<div class="row">
+									<div class="col-md-4 sm-center">
+												<div class="dataTables_info">
+												<?php if ($listCount > 0) :
+													$end = ($start+$limit)-1;
+													if ($end > $listCount) $end = $listCount;
+													if ($start == 0) $start = 1;
+												?>
+													전체 <?php echo $listCount; ?>개 중 <?php echo $listCount-$start; ?> - <?php echo $listCount-$end == 0 ? "1" : $listCount-$end ?>
+												<?php endif; ?>
+												</div>
+											</div>
+											<div class="col-md-4 text-center sm-center">
+												<div class="dataTables_paginate paging_bootstrap paging_custombootstrap">
+													<?php echo $pagination; ?>
+												</div>
+									</div>
+								</div>
 							</div>
                 		</div>
                 <!-- /tile body -->
@@ -199,10 +191,17 @@
 							<input type="hidden" name="newsSeq">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">
-							<label for="subject">URL</label>
+							<label for="link">URL</label>
 							<input type="text" class="form-control" id="link" name="link">
-							<label for="subject">등록일</label>
+							<label for="display">공개여부</label>
+							<select class="form-control" id="disaply" name="display">
+								<option value="Y" checked>공개</option>
+								<option value="N">비공개</option>
+							</select>
+							<div id="regDateForm">
+							<label for="regDate">등록일</label>
 							<input name="regDate" type="text" class="form-control wid100p datepicker" value="">
+							</div>
 						</div>
 					</form>
 				</div>
@@ -236,35 +235,12 @@
 	    });
 		$(".datepicker").datepicker();
 	
-		loadData();
-        function loadData(){
-			$.ajax({
-				url: 		 "/admin/getNewsList",
-				dataType:	 "json",
-				success: function(data){
-                    let str = "";
-                    let pagenum = data.length;
-                    data.forEach(function(element){
-                        str += `<tr>
-                                    <td>${pagenum}</td>
-                                    <td>${element.NL_SUBJECT}</td>
-									<td><a href="${element.NL_LINK}" target="_blank";">${element.NL_LINK}</a></td>
-                                    <td>${element.NL_REG_DATE}</td>
-									<td>
-										<button type="button" class="btn btn-xs btn-default">수정</button>
-										<button type="button" class="btn btn-xs btn-danger">삭제</button>
-										<button type="button" class="btn btn-xs btn-slategray">비공개</button>
-									</td>
-                                </tr>`;
-                        pagenum -= 1;
-                    })
-                    $("#newsBody").html(str);
-					loadBasicData();
-				},
-				error: function(e){
-					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
-				}
-			})
+		function formReset(){
+			alert(1);
+			$("#searchForm")[0].reset();
+			$('form').each(function() {
+				this.reset();
+			});
 		}
 
 		function saveNews(){
@@ -279,84 +255,6 @@
 
 		}
 
-		function loadBasicData(){
-			// Add custom class to pagination div
-			$.fn.dataTableExt.oStdClasses.sPaging = 'dataTables_paginate paging_bootstrap paging_custom';
-
-			$('div.dataTables_filter input').addClass('form-control');
-			$('div.dataTables_length select').addClass('form-control');
-
-			/*************************************************/
-			/**************** BASIC DATATABLE ****************/
-			/*************************************************/
-
-			/* Define two custom functions (asc and desc) for string sorting */
-			jQuery.fn.dataTableExt.oSort['string-case-asc']  = function(x,y) {
-				return ((x < y) ? -1 : ((x > y) ?  1 : 0));
-			};
-			
-			jQuery.fn.dataTableExt.oSort['string-case-desc'] = function(x,y) {
-				return ((x < y) ?  1 : ((x > y) ? -1 : 0));
-			};
-
-			/* Add a click handler to the rows - this could be used as a callback */
-			$("#basicDataTable tbody tr").click( function( e ) {
-				if ( $(this).hasClass('row_selected') ) {
-				$(this).removeClass('row_selected');
-				}
-				else {
-				oTable01.$('tr.row_selected').removeClass('row_selected');
-				$(this).addClass('row_selected');
-				}
-
-				// FadeIn/Out delete rows button
-				if ($('#basicDataTable tr.row_selected').length > 0) {
-				$('#deleteRow').stop().fadeIn(300);
-				} else {
-				$('#deleteRow').stop().fadeOut(300);
-				}
-			});
-
-			/* Build the DataTable with third column using our custom sort functions */
-			var oTable01 = $('#basicDataTable').dataTable({
-				"sDom":
-				"R<'row'<'col-md-6'l><'col-md-6'f>r>"+
-				"t"+
-				"<'row'<'col-md-4 sm-center'i><'col-md-4'><'col-md-4 text-right sm-center'p>>",
-				"oLanguage": {
-				"sSearch": ""
-				},
-				"aaSorting": [ [0,'asc'], [1,'asc'] ],
-				"aoColumns": [
-				null,
-				null,
-				{ "sType": 'string-case' },
-				null,
-				null
-				],
-				"fnInitComplete": function(oSettings, json) { 
-				$('.dataTables_filter input').attr("placeholder", "Search");
-				}
-			});
-
-			// Append delete button to table
-			var deleteRowLink = '<a href="#" id="deleteRow" class="btn btn-red btn-xs delete-row">Delete selected row</a>'
-			$('#basicDataTable_wrapper').append(deleteRowLink);
-
-			/* Add a click handler for the delete row */
-			$('#deleteRow').click( function() {
-				var anSelected = fnGetSelected(oTable01);
-				if (anSelected.length !== 0 ) {
-				oTable01.fnDeleteRow(anSelected[0]);
-				$('#deleteRow').stop().fadeOut(300);
-				}
-			});
-
-			/* Get the rows which are currently selected */
-			function fnGetSelected(oTable01Local){
-				return oTable01Local.$('tr.row_selected');
-			};
-		}
 	</script>
 
 </body>

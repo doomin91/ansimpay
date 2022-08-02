@@ -8,7 +8,6 @@ class Customclass{
     {
         $this->CI =& get_instance();
         $this->CI->load->library('session');
-
         $this->CI->load->library("pagination");
     }
 
@@ -94,5 +93,11 @@ class Customclass{
         $this->CI->pagination->initialize($config);
         
         return $this->CI->pagination->create_links();
+    }
+
+    public function adminSessionCheck(){
+        if ($this->CI->session->userdata("USER_SEQ") == ""){
+            header("location: /admin");
+        }
     }
 }

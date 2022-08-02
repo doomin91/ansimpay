@@ -6,18 +6,88 @@ class admin extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("AdminModel");
+		$this->load->model("NewsModel");
+
+		$this->load->library("session");
+		$this->load->library('CustomClass');
+
+		if($_SERVER['REQUEST_URI'] != "/admin"){
+			$this->customclass->adminSessionCheck();
+		}
 	}
 	
 	public function index(){
-		$this->load->view('admin/login');
+		if($this->session->userdata("USER_SEQ") != ""){
+			header("location: /admin/newsList");
+		} else {
+			$this->load->view('admin/login');
+		}
 	}
 
-	public function login(){
-		$this->load->view('admin/login');
+	public function siteInfo(){
+		$data['info'] = $this->AdminModel->getSiteInfo();
+		$this->load->view('admin/site-info', $data);
 	}
 
-	public function logout(){
-		$this->load->view('admin/login');
+	public function setInfo(){
+		$site_name = $this->input->post("site_name");
+		$site_url = $this->input->post("site_url");
+		$site_admin_email = $this->input->post("site_admin_email");
+		$site_admin_tel = $this->input->post("site_admin_tel");
+		$site_admin_hp = $this->input->post("site_admin_hp");
+		$ftp_ip = $this->input->post("ftp_ip");
+		$ftp_id = $this->input->post("ftp_id");
+		$ftp_pw = $this->input->post("ftp_pw");
+		$comp_num = $this->input->post("comp_num");
+		$comp_name = $this->input->post("comp_name");
+		$comp_ceo_name = $this->input->post("comp_ceo_name");
+		$comp_zip = $this->input->post("comp_zip");
+		$comp_addr = $this->input->post("comp_addr");
+		$comp_cate1 = $this->input->post("comp_cate1");
+		$comp_cate2 = $this->input->post("comp_cate2");
+		$comp_tel  = $this->input->post("comp_tel");
+		$comp_fax = $this->input->post("comp_fax");
+
+		$comp_working_time = $this->input->post("comp_working_time");
+		$comp_cto_name = $this->input->post("comp_cto_name");
+		$comp_sales_code = $this->input->post("comp_sales_code");
+		$url_instagram = $this->input->post("url_instagram");
+		$url_blog = $this->input->post("url_blog");
+		$url_youtube = $this->input->post("url_youtube");
+
+		$updateArr = array(
+						"SITE_NAME" => $site_name,
+						"SITE_URL" => $site_url,
+						"SITE_ADMIN_EMAIL" => $site_admin_email,
+						"SITE_ADMIN_TEL" => $site_admin_tel,
+						"SITE_ADMIN_HP" => $site_admin_hp,
+						"FTP_IP" => $ftp_ip,
+						"FTP_ID" => $ftp_id,
+						"FTP_PW" => $ftp_pw,
+						"COMP_NUM" => $comp_num,
+						"COMP_NAME" => $comp_name,
+						"COMP_CEO_NAME" => $comp_ceo_name,
+						"COMP_CTO_NAME" => $comp_cto_name,
+						"COMP_ADDR" => $comp_addr,
+						"COMP_SALES_CODE" => $comp_sales_code,
+						"COMP_ZIP_CODE" => $comp_zip,
+						"COMP_CATE1" => $comp_cate1,
+						"COMP_CATE2" => $comp_cate2,
+						"COMP_TEL" => $comp_tel,
+						"COMP_FAX" => $comp_fax,
+						"COMP_WORKING_TIME" => $comp_working_time,
+						"URL_INSTAGRAM" => $url_instagram,
+						"URL_NAVERBLOG" => $url_blog,
+						"URL_YOUTUBE" => $url_youtube,
+		);
+		//print_r($updateArr);
+		$result = $this->AdminModel->setSiteInfo($updateArr);
+		//echo $this->db->last_query();
+		if($result){
+			echo json_encode(array("code"=>"200", "msg" => "사이트 정보 수정되었습니다."));
+		} else {
+			echo json_encode(array("code"=>"202", "msg" => "사이트 정보 수정 중 문제가 생겼습니다."));
+		}
 	}
 
 	/**
@@ -38,9 +108,47 @@ class admin extends CI_Controller {
 		$searchField = $this->input->get("searchField");
 		$searchString = $this->input->get("searchString");
 
-		$data["startDate"] = $regDateStart;
-		$data["endDate"] = $regDateEnd;
-		$data["searchString"] = $searchString;
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->NewsModel->getNewsList($wheresql);
+		$listCount = $this->NewsModel->getNewsList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/newsList".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
 		$this->load->view('admin/news_list', $data);
 	}
 
