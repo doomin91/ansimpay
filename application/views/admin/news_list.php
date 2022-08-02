@@ -236,11 +236,7 @@
 		$(".datepicker").datepicker();
 	
 		function formReset(){
-			alert(1);
-			$("#searchForm")[0].reset();
-			$('form').each(function() {
-				this.reset();
-			});
+			location.href="/admin/newsList"
 		}
 
 		function saveNews(){
