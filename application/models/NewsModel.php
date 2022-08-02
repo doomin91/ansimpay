@@ -35,6 +35,7 @@ class NewsModel extends CI_Model{
             $this->db->group_end();
         }
         $this->db->where("NL_DEL_YN", "N");
+        $this->db->join("tbl_user_list", "tbl_user_list.USER_SEQ = NL_REG_USER", "LEFT");
         $this->db->order_by("NL_REG_DATE", "DESC");
         if($getCount){
             return $this->db->get("tbl_news_list")->num_rows();
@@ -44,13 +45,30 @@ class NewsModel extends CI_Model{
         }
     }
 
-    public function getSiteInfo(){
-        $this->db->where("tbl_site_info.SITE_SEQ", "1");
-		return $this->db->get("tbl_site_info")->row();
+    public function insertNews($data){
+        return $this->db->insert("tbl_news_list", $data);
     }
 
-    public function setSiteInfo($updateArr){
-		$this->db->where("tbl_site_info.SITE_SEQ", "1");
-		return $this->db->update("tbl_site_info", $updateArr);
-	}
+    public function updateNews($newsSeq, $data){
+        $this->db->where("NL_SEQ", $newsSeq);
+        return $this->db->update("tbl_news_list", $data);
+    }
+
+    public function deleteNews($newsSeq){
+        $this->db->where("NL_SEQ", $newsSeq);
+        return $this->db->update("tbl_news_list", array("NL_DEL_YN" => "Y"));
+    }
+
+    /** 
+     * Frontend 
+     */
+
+    public function getNewsListFront(){
+        $this->db->where("NL_DEL_YN", "N");
+        $this->db->where("NL_DISPLAY_YN", "Y");
+        $this->db->order_by("NL_REG_DATE", "DESC");
+        return $this->db->get("tbl_news_list")->result();
+    }
+
+    
 }

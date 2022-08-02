@@ -95,7 +95,7 @@
 	    loadData();
         function loadData(){
 			$.ajax({
-				url: 		 "/admin/getNewsList",
+				url: 		 "/notice/getNewsList",
 				dataType:	 "json",
 				success: function(data){
                     let str = "";

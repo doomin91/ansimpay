@@ -95,7 +95,53 @@ class admin extends CI_Controller {
 	 */
 
 	public function recentlyList(){
-		$this->load->view("admin/recently_list");
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->NewsModel->getNewsList($wheresql);
+		$listCount = $this->NewsModel->getNewsList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/newsList".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/recently_list', $data);
 	}
 
 	/**
@@ -161,34 +207,57 @@ class admin extends CI_Controller {
 		}
 	}
 
-	public function insNews(){
+	public function inputNews(){
 		try {
-			$subject 	= $this->input->post("subject");
-			$link 		= $this->input->post("link");
-			$data = array(
-				"NL_SUBJECT" 	=> $subject,
-				"NL_LINK" 		=> $link
-			);
-			$result 	= $this->AdminModel->insNews($data);
-			echo json_encode($result);
-		} catch(Exception $e) {
-			echo json_encode($e);
-		}
-	}
+			$mode			= $this->input->post("mode");
+			$newsSeq		= $this->input->post("newsSeq");
+			$subject 		= $this->input->post("subject");
+			$link 			= $this->input->post("link");
+			$display		= $this->input->post("display");
+			$displayDate	= $this->input->post("displayDate");
 
-	public function uptNews(){
-		try {
-			$nlSeq 		= $this->input->post("nlSeq");
-			$subject 	= $this->input->post("subject");
-			$link 		= $this->input->post("link");
-			$regData	= $this->input->post("regDate");
-			$data = array(
-				"NL_SUBJECT" 	=> $subject,
-				"NL_LINK" 		=> $link,
-				"NL_REG_DATA"	=> $regData
-			);
-			$result 	= $this->AdminModel->uptNews($nlSeq, $data);
-			echo json_encode($result);
+			if($mode == "createMode"){
+				$data = array(
+					"NL_SUBJECT" 	=> $subject,
+					"NL_LINK" 		=> $link,
+					"NL_DISPLAY_YN" => $display,
+					"NL_DISPLAY_DATE" => $displayDate,
+					"NL_REG_USER"	=> $this->session->userdata("USER_SEQ")
+				);
+				$result 	= $this->NewsModel->insertNews($data);
+				if($result){
+					$returnMsg = array(
+						"code" => 200,
+						"msg" => "등록완료"
+					);
+				} else {
+					$returnMsg = array(
+						"code" => 201,
+						"msg" => "등록에 실패했습니다."
+					);
+				}
+			} else {
+				$data = array(
+					"NL_SUBJECT" 	=> $subject,
+					"NL_LINK" 		=> $link,
+					"NL_DISPLAY_YN" => $display,
+					"NL_DISPLAY_DATE" => $displayDate
+				);
+				$result 	= $this->NewsModel->updateNews($newsSeq, $data);
+				if($result){
+					$returnMsg = array(
+						"code" => 200,
+						"msg" => "업데이트 완료"
+					);
+				} else {
+					$returnMsg = array(
+						"code" => 201,
+						"msg" => "수정에 실패했습니다."
+					);
+				}
+			}
+
+			echo json_encode($returnMsg);
 		} catch(Exception $e) {
 			echo json_encode($e);
 		}
@@ -196,9 +265,20 @@ class admin extends CI_Controller {
 
 	public function delNews(){
 		try {
-			$nlSeq	 	= $this->input->post("nlSeq");
-			$result 	= $this->AdminModel->delNews($nlSeq);
-			echo json_encode($result);
+			$newsSeq	 	= $this->input->get("newsSeq");
+			$result 		= $this->NewsModel->deleteNews($newsSeq);
+			if($result){
+				$returnMsg = array(
+					"code" => 200,
+					"msg" => "삭제 완료"
+				);
+			} else {
+				$returnMsg = array(
+					"code" => 201,
+					"msg" => "게시글 삭제 실패했습니다."
+				);
+			}
+			echo json_encode($returnMsg);
 		} catch(Exception $e) {
 			echo json_encode($e);
 		}

@@ -66,7 +66,7 @@
 												<div class="col-md-2">
 													<select name="searchField" class="wid100p">
 														<option value="all">전체</option>
-														<option value="USER_NAME" <?php echo $searchField == "USER_NAME" ? 'selected': ""?>>글쓴이</option>
+														<option value="USER_NAME" <?php echo $searchField == "USER_NAME" ? 'selected': ""?>>작성자</option>
 														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
 														<option value="LINK" <?php echo $searchField == "LINK" ? 'selected': ""?>>URL</option>
 													</select>
@@ -100,7 +100,8 @@
 						<!-- tile body -->
 						<div class="tile-body">
 							<div style="float:right">
-								<a href="#newsModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a>
+								<button type="button" class="btn btn-success btn-sm" onclick="showCreateModal()">게시글 등록</button>
+								<!-- <a href="#newsModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a> -->
 							</div>
 							<div class="table-responsive">
 								<table class="table table-datatable table-custom01 userTable">
@@ -109,13 +110,14 @@
 											<th class="sort-numeric">#</th>
 											<th class="sort">제목</th>
 											<th class="sort">URL</th>
+											<th class="sort">표시일자</th>
 											<th class="sort">등록일</th>
-											<th class="sort">글쓴이</th>
+											<th class="sort">작성자</th>
 											<th class="sort">공개여부</th>
 											<th class="sort">기능</th>
 										</tr>
 									</thead>
-									<tbody id="newsBody">
+									<tbody>
 										<?php 
 										if($listCount > 0):
 										foreach($lists as $lt):?>
@@ -123,12 +125,13 @@
 											<td><?php echo $pagenum?></td>
 											<td><?php echo $lt->NL_SUBJECT?></td>
 											<td><?php echo $lt->NL_LINK?></td>
+											<td><?php echo $lt->NL_DISPLAY_DATE?></td>
 											<td><?php echo $lt->NL_REG_DATE?></td>
-											<td><?php echo $lt->NL_REG_USERSEQ?></td>
+											<td><?php echo $lt->USER_NAME?></td>
 											<td><?php echo $lt->NL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
-											<button type="button" class="btn btn-xs btn-default">수정</button>
-											<button type="button" class="btn btn-xs btn-danger">삭제</button>
+											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteNews(<?php echo $lt->NL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -179,16 +182,17 @@
 
 	<!-- Modal Area -->
 	<div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="modalNewsLabel" aria-hidden="true">
+		<form id="newsForm">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<h3 class="modal-title" id="modalNewsLabel">뉴스 추가</h3>
+					<h3 class="modal-title" id="modalNewsLabel"></h3>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="cateForm">
 						<div class="form-group">
 							<input type="hidden" name="newsSeq">
+							<input type="hidden" name="mode">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">
 							<label for="link">URL</label>
@@ -199,18 +203,19 @@
 								<option value="N">비공개</option>
 							</select>
 							<div id="regDateForm">
-							<label for="regDate">등록일</label>
-							<input name="regDate" type="text" class="form-control wid100p datepicker" value="">
+							<label for="displayDate">표시일자</label>
+							<input name="displayDate" id="displayDate" type="text" class="form-control wid100p datepicker" value="">
 							</div>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button onclick="saveNews()" class="btn btn-success">저장하기</button>
+					<button type="button" onclick="inputNews()" class="btn btn-success">저장하기</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
+		</form>
 	</div><!-- /.modal -->
 
 	<!-- Modal Area End -->
@@ -239,16 +244,86 @@
 			location.href="/admin/newsList"
 		}
 
-		function saveNews(){
+		function showCreateModal(){
+			// 폼을 먼저 리셋 한다.
+			$("#newsForm")[0].reset();
+			// 수정 시에도 동일한 Modal을 사용하므로 플래그 값을 준다.
+			$("input[name=mode]").val("createMode");
+
+			// DatePicker 기본 값 설정
+			$("#displayDate").datepicker("setDate", new Date());
 			
+			// LABEL 게시글 등록으로 변경
+			$("#modalNewsLabel").html("게시글 등록")
+			// newsModal 표시
+			$("#newsModal").modal("show");
 		}
 
-		function modifyNews(){
+		function showModifyModal(item){
+			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
+			let data = JSON.parse(item);
+			// 받아온 값을 Input에 담아준다.
+			$("input[name=newsSeq]").val(data.NL_SEQ);
+			$("input[name=subject]").val(data.NL_SUBJECT);
+			$("input[name=link]").val(data.NL_LINK);
+			$("input[name=disaply]").val(data.NL_DISPLAY_YN);
+			$("input[name=displayDate]").val(data.NL_DISPLAY_DATE);
+			// DatePicker 기본 값 설정
+			$("#displayDate").datepicker("setDate", data.NL_DISPLAY_DATE);
 
+			$("input[name=mode]").val("modifyMode");
+			// LABEL 게시글 수정으로 변경
+			$("#modalNewsLabel").html("게시글 수정");
+			// newsModal 표시
+			$("#newsModal").modal("show");
 		}
 
-		function deleteNews(){
+		function inputNews(){
+			const formData = new FormData($("#newsForm")[0]);
+			$.ajax({
+				url		: "/admin/inputNews",
+				type	: "post",
+				data	: formData,
+				dataType: "json",
+				contentType: false,
+				processData: false,
+				success : function (data){
+					const code = data["code"];
+					const msg = data["msg"];
+					if(code == 200){
+						alert(msg);
+						location.reload();
+					} else {
+						alert(msg);
+					}
+				},
+				error 	: function (e){
+					console.log(e.responseText);
+				}
+			})
+		}
 
+		function deleteNews(newsSeq){
+			if(confirm("해당 게시글을 삭제하시겠습니까?")){
+				$.ajax({
+					url		: "/admin/delNews?newsSeq=" + newsSeq,
+					type	: "get",
+					dataType: "json",
+					success : function (data){
+						const code = data["code"];
+						const msg = data["msg"];
+						if(code == 200){
+							alert(msg);
+							location.reload();
+						} else {
+							alert(msg);
+						}
+					},
+					error 	: function (e){
+						console.log(e.responseText);
+					}
+				})
+			}
 		}
 
 	</script>

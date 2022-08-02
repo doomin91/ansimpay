@@ -5,7 +5,7 @@ class notice extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		// $this->load->model("MainModel");
+		$this->load->model("NewsModel");
 	}
 	
 	public function index(){
@@ -31,6 +31,16 @@ class notice extends CI_Controller {
 	 */
 	public function news(){
 		$this->load->view('about_2');
+	}
+
+
+	public function getNewsList(){
+		try {
+			$result = $this->NewsModel->getNewsListFront();
+			echo json_encode($result);
+		} catch(Exception $e) {
+			echo json_encode($e);
+		}
 	}
 	/**
 	 * @Function Name : awards

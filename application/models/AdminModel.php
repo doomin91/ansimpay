@@ -48,19 +48,4 @@ class AdminModel extends CI_Model{
 
     }
 
-    public function getNewsList(){
-        $this->db->where("NL_DEL_YN", "N");
-        $this->db->order_by("NL_REG_DATE", "DESC");
-        return $this->db->get("tbl_news_list")->result();
-    }
-
-    public function getSiteInfo(){
-        $this->db->where("tbl_site_info.SITE_SEQ", "1");
-		return $this->db->get("tbl_site_info")->row();
-    }
-
-    public function setSiteInfo($updateArr){
-		$this->db->where("tbl_site_info.SITE_SEQ", "1");
-		return $this->db->update("tbl_site_info", $updateArr);
-	}
 }
