@@ -27,7 +27,8 @@
     <script src="/assets/static/admin/js/vendor/summernote/summernote.js"></script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
-    <!-- <script src="/assets/static/admin/js/minimal.js"></script> -->
+    <script src="/assets/static/admin/js/minimal.js"></script>
+    <script src="/assets/ckeditor/ckeditor.js"></script>
 
 
     

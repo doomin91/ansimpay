@@ -20,11 +20,11 @@
 
 		<!-- page header -->
 			<div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>뉴스 추가/변경</b> <span></span></h2>
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>최근소식 추가/변경</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>파트너사 관리</li>
-					<li class="active">뉴스 추가/변경</li>
+					<li>게시판 관리</li>
+					<li class="active">최근소식 추가/변경</li>
 				</ol>
 			</div>
 
@@ -66,7 +66,7 @@
 												<div class="col-md-2">
 													<select name="searchField" class="wid100p">
 														<option value="all">전체</option>
-														<option value="USER_NAME" <?php echo $searchField == "USER_NAME" ? 'selected': ""?>>작성자</option>
+														<option value="ADMIN_NAME" <?php echo $searchField == "ADMIN_NAME" ? 'selected': ""?>>작성자</option>
 														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
 														<option value="LINK" <?php echo $searchField == "LINK" ? 'selected': ""?>>URL</option>
 													</select>
@@ -108,8 +108,10 @@
 									<thead>
 										<tr>
 											<th class="sort-numeric">#</th>
+											<th class="sort">미리보기</th>
 											<th class="sort">제목</th>
 											<th class="sort">URL</th>
+											<th class="sort">표시일자</th>
 											<th class="sort">등록일</th>
 											<th class="sort">작성자</th>
 											<th class="sort">공개여부</th>
@@ -122,14 +124,16 @@
 										foreach($lists as $lt):?>
 										<tr>
 											<td><?php echo $pagenum?></td>
-											<td><?php echo $lt->NL_SUBJECT?></td>
-											<td><?php echo $lt->NL_LINK?></td>
-											<td><?php echo $lt->NL_REG_DATE?></td>
-											<td><?php echo $lt->USER_NAME?></td>
-											<td><?php echo $lt->NL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
+											<td><?php echo $lt->RL_IMAGE_URL?></td>
+											<td><?php echo $lt->RL_SUBJECT?></td>
+											<td><?php echo $lt->RL_LINK?></td>
+											<td><?php echo $lt->RL_DISPLAY_DATE?></td>
+											<td><?php echo $lt->RL_REG_DATE?></td>
+											<td><?php echo $lt->ADMIN_NAME?></td>
+											<td><?php echo $lt->RL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
-											<button type="button" class="btn btn-xs btn-danger" onclick="deleteNews(<?php echo $lt->NL_SEQ?>)">삭제</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteNews(<?php echo $lt->RL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -180,7 +184,7 @@
 
 	<!-- Modal Area -->
 	<div class="modal fade" id="newsModal" tabindex="-1" role="dialog" aria-labelledby="modalNewsLabel" aria-hidden="true">
-		<form id="newsForm">
+		<form id="recentlyForm">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -189,8 +193,10 @@
 				<div class="modal-body">
 					<form role="form" id="cateForm">
 						<div class="form-group">
-							<input type="hidden" name="newsSeq">
+							<input type="hidden" name="rlSeq">
 							<input type="hidden" name="mode">
+							<label for="subject">이미지</label>
+							<input type="file" class="form-control" name="file">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">
 							<label for="link">URL</label>
@@ -239,12 +245,12 @@
 		$(".datepicker").datepicker();
 	
 		function formReset(){
-			location.href="/admin/newsList"
+			location.href="/admin/recentlyList"
 		}
 
 		function showCreateModal(){
 			// 폼을 먼저 리셋 한다.
-			$("#newsForm")[0].reset();
+			$("#recentlyForm")[0].reset();
 			// 수정 시에도 동일한 Modal을 사용하므로 플래그 값을 준다.
 			$("input[name=mode]").val("createMode");
 
@@ -261,13 +267,13 @@
 			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
 			let data = JSON.parse(item);
 			// 받아온 값을 Input에 담아준다.
-			$("input[name=newsSeq]").val(data.NL_SEQ);
-			$("input[name=subject]").val(data.NL_SUBJECT);
-			$("input[name=link]").val(data.NL_LINK);
-			$("input[name=disaply]").val(data.NL_DISPLAY_YN);
-			$("input[name=displayDate]").val(data.NL_DISPLAY_DATE);
+			$("input[name=rlSeq]").val(data.RL_SEQ);
+			$("input[name=subject]").val(data.RL_SUBJECT);
+			$("input[name=link]").val(data.RL_LINK);
+			$("input[name=disaply]").val(data.RL_DISPLAY_YN);
+			$("input[name=displayDate]").val(data.RL_DISPLAY_DATE);
 			// DatePicker 기본 값 설정
-			$("#displayDate").datepicker("setDate", data.NL_DISPLAY_DATE);
+			$("#displayDate").datepicker("setDate", data.RL_DISPLAY_DATE);
 
 			$("input[name=mode]").val("modifyMode");
 			// LABEL 게시글 수정으로 변경
@@ -277,9 +283,9 @@
 		}
 
 		function inputNews(){
-			const formData = new FormData($("#newsForm")[0]);
+			const formData = new FormData($("#recentlyForm")[0]);
 			$.ajax({
-				url		: "/admin/inputNews",
+				url		: "/admin/inputRecentlyNews",
 				type	: "post",
 				data	: formData,
 				dataType: "json",
@@ -301,10 +307,10 @@
 			})
 		}
 
-		function deleteNews(newsSeq){
+		function deleteNews(rlSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/admin/delNews?newsSeq=" + newsSeq,
+					url		: "/admin/delRecentlyNews?rlSeq=" + rlSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){

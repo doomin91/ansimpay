@@ -1,7 +1,6 @@
 <?php
   include_once dirname(__DIR__)."/admin/include/admin-header.php";
 ?>
-<script src="/assets/ckeditor/ckeditor.js"></script>
 <body class="bg-1">
 
 	<!-- Preloader -->
@@ -270,6 +269,7 @@
 
 		$(document).on("click", "#saveInfo", function(){
 			var formData = $("#contentsForm").serialize();
+			alert
 			$.ajax({
 				url:"/admin/setInfo",
 				type:"post",

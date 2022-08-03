@@ -23,7 +23,7 @@
 			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>뉴스 추가/변경</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>파트너사 관리</li>
+					<li>게시판 관리</li>
 					<li class="active">뉴스 추가/변경</li>
 				</ol>
 			</div>
@@ -66,7 +66,7 @@
 												<div class="col-md-2">
 													<select name="searchField" class="wid100p">
 														<option value="all">전체</option>
-														<option value="USER_NAME" <?php echo $searchField == "USER_NAME" ? 'selected': ""?>>작성자</option>
+														<option value="ADMIN_NAME" <?php echo $searchField == "ADMIN_NAME" ? 'selected': ""?>>작성자</option>
 														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
 														<option value="LINK" <?php echo $searchField == "LINK" ? 'selected': ""?>>URL</option>
 													</select>
@@ -127,7 +127,7 @@
 											<td><?php echo $lt->NL_LINK?></td>
 											<td><?php echo $lt->NL_DISPLAY_DATE?></td>
 											<td><?php echo $lt->NL_REG_DATE?></td>
-											<td><?php echo $lt->USER_NAME?></td>
+											<td><?php echo $lt->ADMIN_NAME?></td>
 											<td><?php echo $lt->NL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>

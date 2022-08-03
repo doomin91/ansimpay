@@ -65,7 +65,7 @@ function login(){
 				success: function(data){
           console.log(data);
           if(data['code'] == 200){
-            location.href="/admin/newsList"
+            location.href="/admin/siteInfo"
           }else{
             alert(data['msg']);
           }

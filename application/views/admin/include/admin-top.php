@@ -56,7 +56,7 @@
 						</a>
 					</li>
 					<li>
-						<a href="/admin/newsList">
+						<a href="/admin/managers">
 							<i class="fa fa-caret-right"></i> 관리자 설정
 						</a>
 					</li>

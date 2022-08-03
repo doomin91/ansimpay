@@ -96,7 +96,7 @@ class Customclass{
     }
 
     public function adminSessionCheck(){
-        if ($this->CI->session->userdata("USER_SEQ") == ""){
+        if ($this->CI->session->userdata("ADMIN_ID") == ""){
             header("location: /admin");
         }
     }
