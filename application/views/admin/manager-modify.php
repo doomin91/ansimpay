@@ -156,7 +156,7 @@
 			}
 
 			$.ajax({
-				url:"/admin/managerModifyProc",
+				url:"/adm/manager/managerModifyProc",
 				type:"post",
 				data:{
 					"admin_seq" : admin_seq,

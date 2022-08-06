@@ -6,17 +6,29 @@ class notice extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("NewsModel");
+		$this->load->model("SiteModel");
+		$this->load->library('CustomClass');
 	}
 	
+	
 	public function index(){
-		$this->load->view('main');
+		$data['recentlyNews'] = $this->NewsModel->getRecentlyNewsForFront();
+		$this->load->view('main', $data);
+		$this->viewCorporation();
 	}
+
+	public function viewCorporation(){
+		$data["SITE"] = $this->SiteModel->getSiteInfo();
+		$data["FAMILY"] = $this->SiteModel->getFamilyList();
+		$this->load->view('include/corporation', $data);
+    }
 	/**
 	 * @Function Name : notice
 	 * @Description : 소개 - 안심페이란
-	 */
+	 */	
 	public function ansimpay(){
 		$this->load->view('about');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : kiosk
@@ -24,6 +36,7 @@ class notice extends CI_Controller {
 	 */
 	public function kiosk(){
 		$this->load->view('about_1');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : news
@@ -31,6 +44,7 @@ class notice extends CI_Controller {
 	 */
 	public function news(){
 		$this->load->view('about_2');
+		$this->viewCorporation();
 	}
 
 
@@ -48,5 +62,6 @@ class notice extends CI_Controller {
 	 */
 	public function awards(){
 		$this->load->view('about_3');
+		$this->viewCorporation();
 	}
 }

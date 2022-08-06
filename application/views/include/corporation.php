@@ -10,13 +10,13 @@
                 <div class="col-md-7 m_text_center pc_text_left">
                     <div class="footer-nav inline-nav" style="padding-top:20px;">
                         <ul>
-                            <li><a href="java::void(0)">월 - 금 9:00 - 18:00</a></li>
-                            <li><a href="mailto:coster@coster.co.kr">coster@coster.co.kr</a></li>
-                            <li><a href="tel:1566-5016">1566-5016</a></li>
+                            <li><a href="java::void(0)"><?php echo $SITE->COMP_WORKING_TIME;?></a></li>
+                            <li><a href="mailto:coster@coster.co.kr"><?php echo $SITE->COMP_EMAIL?></a></li>
+                            <li><a href="tel:1566-5016"><?php echo $SITE->COMP_TEL;?></a></li>
                         </ul>
                         <ul>
-                            <li><a href="java::void(0)">(본사) 서울특별시 영등포구 국제금융로 106. 3층 308,309호</a></li>
-                            <li><a href="java::void(0)">(지점)경기 안양시 동안구 벌말로 66 하이필드지식산업센터 A동 1001호</a></li>
+                            <li><a href="java::void(0)">(본사) <?php echo $SITE->COMP_ADDR?></a></li>
+                            <li><a href="java::void(0)">(지점) 경기 안양시 동안구 벌말로 66 하이필드지식산업센터 A동 1001호</a></li>
                         </ul>
                     </div>
                 </div>
@@ -25,32 +25,26 @@
                         <option>
                             <a>family site</a>
                         </option>
-                        <option value="http://www.coster.kr/">
-                            코스터
+                        <?php foreach ($FAMILY as $val):?>
+                        <option value="<?php echo $val->FSI_URL?>">
+                            <?php echo $val->FSI_NAME?>
                             <!--<a href="http://www.coster.kr/">(주)코스터</a>-->
                         </option>
-                        <option value="https://www.costerpartner.com/">
-                            안심페이 파트너센터
-    <!--                        <a  href="https://www.costerpartner.com/">안심페이 파트너센터</a>-->
-                        </option>
-                        <option value="http://coster.co.kr/">
-                            코스터 몰
-    <!--                        <a  href="http://coster.co.kr/">코스터 몰</a>-->
-                        </option>
+                        <?php endforeach;?>
                     </select>                        
                     <ul class="social-network with-text mt-2">
                         <li>
-                            <a href="https://www.instagram.com/coster_safepay_1/?hl=ko"  target="_blank">
+                            <a href="<?php echo $SITE->URL_INSTAGRAM?>"  target="_blank">
                                 <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.youtube.com/channel/UCxMz9TGBN5vW_FE2kRfUQPg?view_as=subscriber"  target="_blank">
+                            <a href="<?php echo $SITE->URL_YOUTUBE?>"  target="_blank">
                                 <i class="fa fa-youtube-play" aria-hidden="true"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://blog.naver.com/coster002"  target="_blank">
+                            <a href="<?php echo $SITE->URL_NAVERBLOG?>"  target="_blank">
                                 <i class="icon-blog_svg" style="font-size:22px;"></i>
                             </a>
                         </li>
@@ -63,9 +57,9 @@
         <div class="container footer_container">
             <div class="col-md-12 p_m_0 dis_flex">
                 <div class="col-md-6 p_m_0 dis_flex m_text_center pc_text_left">
-                    <p>대표이사 : 장인석&nbsp;&nbsp;&nbsp;</p>
-                    <p>개인정보 보호책임자 : 장인석&nbsp;&nbsp;&nbsp;</p>
-                    <p>통신판매업신고번호 : 제 2019-서울강서-2081 호</p>
+                    <p>대표이사 : <?php echo $SITE->COMP_CEO_NAME?>&nbsp;&nbsp;&nbsp;</p>
+                    <p>개인정보 보호책임자 : <?php echo $SITE->COMP_CTO_NAME?>&nbsp;&nbsp;&nbsp;</p>
+                    <p>통신판매업신고번호 : <?php echo $SITE->COMP_SALES_CODE?></p>
                 </div>
                 <div class="col-md-6 footer-nav inline-nav text-right">
                     <ul>
@@ -76,8 +70,8 @@
                 </div>
             </div>
             <div class="col-md-12">
-                <div class="col-md-12">
-                    <p class="text-left">&copy;2020 coster. All rights reserved.</p>
+                <div class="col-md-12">        
+                    <p class="text-left">&copy;<?php echo date("Y")?> coster. All rights reserved.</p>
                 </div>
             </div>                    
         </div>

@@ -2,13 +2,24 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class service extends CI_Controller {
-
+	public function __construct(){
+		parent::__construct();
+		$this->load->model("SiteModel");
+		// $this->load->model("MainModel");
+	}
+	
+	public function viewCorporation(){
+		$data["SITE"] = $this->SiteModel->getSiteInfo();
+		$data["FAMILY"] = $this->SiteModel->getFamilyList();
+		$this->load->view('include/corporation', $data);
+    }
 	/**
 	 * @Function Name : awayService
 	 * @Description : 원거리 결제
 	 */
 	public function away(){
 		$this->load->view('service');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : nfcService
@@ -16,6 +27,7 @@ class service extends CI_Controller {
 	 */
 	public function nfc(){
 		$this->load->view('service_1');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : mobileService
@@ -23,6 +35,7 @@ class service extends CI_Controller {
 	 */
 	public function mobile(){
 		$this->load->view('service_2');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : kioskService
@@ -30,6 +43,7 @@ class service extends CI_Controller {
 	 */
 	public function kiosk(){
 		$this->load->view('service_3');
+		$this->viewCorporation();
 	}
 	/**
 	 * @Function Name : parkingManager
@@ -37,5 +51,6 @@ class service extends CI_Controller {
 	 */
 	public function parking(){
 		$this->load->view('service_4');
+		$this->viewCorporation();
 	}
 }

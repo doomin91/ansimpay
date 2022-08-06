@@ -16,4 +16,8 @@ class SiteModel extends CI_Model{
 		$this->db->where("tbl_site_info.SITE_SEQ", "1");
 		return $this->db->update("tbl_site_info", $updateArr);
 	}
+
+    public function getFamilyList(){
+        return $this->db->get("tbl_family_site_info")->result();
+    }
 }

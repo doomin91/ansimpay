@@ -87,7 +87,7 @@
   
 
   function clearMenus(e) {
-    console.log(e);
+    // console.log(e);
     // e.stopImmediatePropagation()
     $(backdrop).remove()
     $(toggle).each(function () {

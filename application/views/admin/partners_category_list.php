@@ -41,7 +41,7 @@
 						<!-- tile body -->
 						<div class="tile-body">
 							<div style="float:right">
-								<a href="#cateRegModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">카테고리 추가</a>
+								<a onclick="showCreateModal()" role="button" class="btn btn-success btn-sm" data-toggle="modal">카테고리 추가</a>
 							</div>
 							<div class="table-responsive">
 								<table class="table table-datatable table-custom01 userTable">
@@ -77,16 +77,17 @@
 	<!-- Wrap all page content end -->
 
 	<!-- Modal Area -->
-	<div class="modal fade" id="cateRegModal" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel" aria-hidden="true">
+	<div class="modal fade" id="cateModal" tabindex="-1" role="dialog" aria-labelledby="cateLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<h3 class="modal-title" id="modalConfirmLabel">카테고리 추가</h3>
+					<h3 class="modal-title" id="cateLabel">카테고리 추가</h3>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="cateForm">
 						<div class="form-group">
+							<input type="hidden" name="mode">
 							<input type="hidden" name="cateSeq">
 							<label for="cateName">카테고리명</label>
 							<input type="text" class="form-control" id="cateName" name="cateName">
@@ -95,7 +96,8 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button onclick="saveCategory()" class="btn btn-success">저장하기</button>
+					<button onclick="inputCategory()" id="saveButton" class="btn btn-success">저장하기</button>
+
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -107,28 +109,44 @@
 	?>
 
 	<script>
-		loadData();
+		loadData(); 
 		function loadData(){
 			$.ajax({
-				url: 		 "/admin/getPartnerCate",
+				url: 		 "/adm/PartnersCategory/getPartnerCate",
 				dataType:	 "json",
 				contentType: false,
 				processData: false,
 				success: function(data){
 					let str = ""
-					data.forEach(function(element){
+					let length = data.length;
+					data.forEach(function(element, index){
 						str += `
-							<tr>
-								<td>${element.PC_SEQ}</td>
+								<tr>
+								<td>${element.PC_ORDER_NUMBER}</td>
 								<td>${element.PC_CATEGORY_NAME}</td>
 								<td>${element.PC_REG_DATE}</td>
-								<td>▲ ▼</td>
+								`
+						jsonData = JSON.stringify(element)
+						str += `<td>`
+						if(index == 0){
+							str += `<button onclick="moveUp(${element.PC_ORDER_NUMBER})" class="btn btn-xs btn-default" disabled>▲올리기</button>`
+						} else {
+							str += `<button onclick="moveUp(${element.PC_ORDER_NUMBER})" class="btn btn-xs btn-default">▲올리기</button>`
+						}
+								
+						if(index == length - 1){
+							str += `<button onclick="moveDown(${element.PC_ORDER_NUMBER})" class="btn btn-xs btn-default" disabled>▼내리기</button>`
+						} else {
+							str += `<button onclick="moveDown(${element.PC_ORDER_NUMBER})" class="btn btn-xs btn-default">▼내리기</button>`
+						}
+						str += `</td>`
+						str += `
 								<td>
-									<button onclick="updateCategoryModal(${element.PC_SEQ})" class="btn btn-xs btn-default">수정</button>
+									<button onclick="showModifyModal(${escape(JSON.stringify(element))})" class="btn btn-xs btn-default">수정</button>
 									<button onclick="deleteCategory(${element.PC_SEQ})" class="btn btn-xs btn-danger">삭제</button>
 								</td>
-							</tr>
-						`
+								</tr>
+								`
 					})
 					$("#boardItems").html(str);
 				},
@@ -138,39 +156,82 @@
 			})
 		}
 
-		function saveCategory(){
-			const formData = new FormData($("#cateForm")[0]);
+		function escape(htmlStr) {
+			return htmlStr.replace(/&/g, "&amp;")
+				.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/"/g, "&quot;")
+				.replace(/'/g, "&#39;");        
+
+		}
+
+		function showCreateModal(){
+			$("#cateForm")[0].reset();
+			$("#saveButton").html("저장");
+			$("input[name=mode]").val("createMode");
+
+			$("#cateLabel").html("카테고리 추가");
+			$("#cateModal").modal("show");
+		}
+
+		function showModifyModal(data){
+			$("#saveButton").html("수정");
+			$("input[name=mode]").val("modifyMode");
+
+			$("input[name=cateSeq]").val(data.PC_SEQ);
+			$("input[name=cateName]").val(data.PC_CATEGORY_NAME);
+
+			$("#cateLabel").html("카테고리 수정");
+			$("#cateModal").modal("show");
+		}
+
+		function moveUp(orderNumber) {
 			$.ajax({
-				url: 		 "/admin/insPartnerCate",
-				type: 		 "post",
-				data: 		 formData,
-				dataType:	 "json",
-				contentType: false,
-				processData: false,
+				url: "/adm/PartnersCategory/moveUp?orderNumber="+orderNumber,
+				dataType: "text",
+				type: "get",
 				success: function(data){
-					loadData();
+					loadData()
 				},
-				error: function(e){
+				error: function(e) {
 					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
 				}
 			})
 		}
 
-		function updateCategoryModal(pcSeq){
-
+		function moveDown(orderNumber) {
+			$.ajax({
+				url: "/adm/PartnersCategory/moveDown?orderNumber="+orderNumber,
+				dataType: "json",
+				type: "get",
+				success: function(data){
+					loadData()
+				},
+				error: function(e) {
+					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
+				}
+			})
 		}
 
-		function updateCategory(){
+		function inputCategory(){
 			const formData = new FormData($("#cateForm")[0]);
 			$.ajax({
-				url: 		 "/admin/uptPartnerCate",
+				url: 		 "/adm/PartnersCategory/inputPartnerCate",
 				type: 		 "post",
 				data: 		 formData,
 				dataType:	 "json",
 				contentType: false,
 				processData: false,
 				success: function(data){
-					loadData();
+					const code = data["code"];
+					const msg = data["msg"];
+
+					if(code == 200){
+						$("#cateModal").modal("hide");
+						loadData();
+					} else {
+						alert(msg);
+					}
 				},
 				error: function(e){
 					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
@@ -181,14 +242,13 @@
 		function deleteCategory(pcSeq){
 			if(confirm("삭제하시겠습니까?")){
 				$.ajax({
-					url: 		 "/admin/delPartnerCate",
+					url: 		 "/adm/PartnersCategory/delPartnerCate",
 					type: 		 "post",
 					data: 		 {
 						"pcSeq": pcSeq
 					},
 					dataType:	 "json",
 					success: function(data){
-						alert(data);
 						loadData();
 					},
 					error: function(e){

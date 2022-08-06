@@ -281,7 +281,7 @@
 		function inputNews(){
 			const formData = new FormData($("#newsForm")[0]);
 			$.ajax({
-				url		: "/admin/inputNews",
+				url		: "/adm/news/inputNews",
 				type	: "post",
 				data	: formData,
 				dataType: "json",
@@ -306,7 +306,7 @@
 		function deleteNews(newsSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/admin/delNews?newsSeq=" + newsSeq,
+					url		: "/adm/news/delNews?newsSeq=" + newsSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){

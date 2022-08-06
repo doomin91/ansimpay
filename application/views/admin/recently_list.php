@@ -108,7 +108,7 @@
 									<thead>
 										<tr>
 											<th class="sort-numeric">#</th>
-											<th class="sort">미리보기</th>
+											<th class="sort">이미지 미리보기</th>
 											<th class="sort">제목</th>
 											<th class="sort">URL</th>
 											<th class="sort">표시일자</th>
@@ -124,7 +124,7 @@
 										foreach($lists as $lt):?>
 										<tr>
 											<td><?php echo $pagenum?></td>
-											<td><?php echo $lt->RL_IMAGE_URL?></td>
+											<td><img src="<?php echo $lt->RL_IMAGE_URL?>" style="width:350px; height:230px"></td>
 											<td><?php echo $lt->RL_SUBJECT?></td>
 											<td><?php echo $lt->RL_LINK?></td>
 											<td><?php echo $lt->RL_DISPLAY_DATE?></td>
@@ -133,7 +133,7 @@
 											<td><?php echo $lt->RL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
-											<button type="button" class="btn btn-xs btn-danger" onclick="deleteNews(<?php echo $lt->RL_SEQ?>)">삭제</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteRecentlyNews(<?php echo $lt->RL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -215,7 +215,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button type="button" onclick="inputNews()" class="btn btn-success">저장하기</button>
+					<button type="button" onclick="inputRecentlyNews()" class="btn btn-success">저장하기</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -267,6 +267,7 @@
 			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
 			let data = JSON.parse(item);
 			// 받아온 값을 Input에 담아준다.
+			$("input[name=imageUrl]").val(1);
 			$("input[name=rlSeq]").val(data.RL_SEQ);
 			$("input[name=subject]").val(data.RL_SUBJECT);
 			$("input[name=link]").val(data.RL_LINK);
@@ -282,7 +283,19 @@
 			$("#newsModal").modal("show");
 		}
 
-		function inputNews(){
+		function inputRecentlyNews(){
+			if($("input[name=subject]").val() == "") {
+				alert("제목을 입력해주세요."); 
+				$("input[name=subject]").focus();
+				return false;
+			}
+
+			if($("input[name=link]").val() == "") {
+				alert("URL을 입력해주세요."); 
+				$("input[name=link]").focus();
+				return false;
+			}
+
 			const formData = new FormData($("#recentlyForm")[0]);
 			$.ajax({
 				url		: "/admin/inputRecentlyNews",
@@ -302,12 +315,12 @@
 					}
 				},
 				error 	: function (e){
-					console.log(e.responseText);
+					alert(e.responseText);
 				}
 			})
 		}
 
-		function deleteNews(rlSeq){
+		function deleteRecentlyNews(rlSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
 					url		: "/admin/delRecentlyNews?rlSeq=" + rlSeq,

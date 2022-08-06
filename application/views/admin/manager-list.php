@@ -154,7 +154,7 @@
 
 			if (confirm("관리자를 삭제하시겠습니까?")){
 				$.ajax({
-	                url:"/admin/managerDeleteProc",
+	                url:"/adm/manager/managerDeleteProc",
 	                type:"post",
 	                data:{
 	                    "admin_seq" : admin_seq,

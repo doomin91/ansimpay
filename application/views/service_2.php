@@ -75,9 +75,7 @@
             </main>
         </div>
         
-        <?php
-        include_once dirname(__DIR__)."/views/include/corporation.php";
-    ?>
+        
 
     </div>
      <!-- search form wrapper -->

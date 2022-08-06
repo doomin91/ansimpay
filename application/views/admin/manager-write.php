@@ -149,7 +149,7 @@
             }
 
             $.ajax({
-                url:"/admin/managerWriteProc",
+                url:"/adm/manager/managerWriteProc",
                 type:"post",
                 data:{
                     "admin_id" : admin_id,

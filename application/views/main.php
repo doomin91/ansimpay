@@ -83,7 +83,7 @@
                                                 <p>SMS문자를 발송 URL을 통해 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="service.html">자세히 보기</a>
+                                                <a class="link-more" href="/service/away">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                                 <p>NFC/QR코드를 이용하여 어디서든 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="service_1.html">자세히 보기</a>
+                                                <a class="link-more" href="/service/nfc">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                                                 <p>간편하게 모바일 결제 기능을 이용하여 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="service_2.html">자세히 보기</a>
+                                                <a class="link-more" href="/service/mobile">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -137,7 +137,7 @@
                                                 <p>SMS문자를 발송 URL을 통해 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="service_3.html">자세히 보기</a>
+                                                <a class="link-more" href="/service/kiosk">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -153,30 +153,31 @@
                                 <h2>최근 소식</h2>
                             </div>
                             <div class="text-right mb-2">
-                                <a href="about_2.html" style="color:black;">
+                                <a href="/notice/news" style="color:black;">
                                     <p>자세히 보러가기 +</p>
                                 </a>
                             </div>
                             
                             <div class="row gride"> 
+                                <?php foreach($recentlyNews as $val):?>
                                <div class="col-lg-6 col-xl-4 gallery-item">
                                     <div class="col-wrap">
                                         <div class="post-grid reverse-grid">
                                             <div class="img-block post-img">
-                                                <a href="http://www.it-b.co.kr/news/articleView.html?idxno=50743" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_7_02.png" alt="images">
+                                                <a href="<?php echo $val->RL_LINK?>" target="_blank">
+                                                    <img src="<?php echo $val->RL_IMAGE_URL?>" alt="images">
                                                 </a>
-                                                <time class="post-date" datetime="2021-07-02">07.02</time>
+                                                <time class="post-date" datetime="<?php echo $val->RL_DISPLAY_DATE?>"><?php echo date("m.d", strtotime($val->RL_DISPLAY_DATE))?></time>
                                             </div>
                                             <div class="post-text-block bg-gray-light">
                                                 <strong class="content-title mb-0">
-                                                    <a href="http://www.it-b.co.kr/news/articleView.html?idxno=50743" target="_blank">
-                                                       코스터 안심페이 키오스크, 제15회 국가지속가능경영 우수기업 기술혁신상 수상
+                                                    <a href="<?php echo $val->RL_LINK?>" target="_blank">
+                                                        <?php echo $val->RL_SUBJECT?>
                                                     </a>
                                                 </strong>
                                                 <div class="post-meta clearfix">
                                                     <div class="post-link-holder">
-                                                        <a href="http://www.it-b.co.kr/news/articleView.html?idxno=50743" target="_blank">
+                                                        <a href="<?php echo $val->RL_LINK?>" target="_blank">
                                                             기사 자세히 보기
                                                             <span class="fa fa-arrow-right">
                                                                 <span class="sr-only">&nbsp;</span>
@@ -194,186 +195,8 @@
                                         </div>
                                     </div>
                                 </div>
+                                <?php endforeach;?>
                                 
-                                <div class="col-lg-6 col-xl-4 gallery-item">
-                                    <div class="col-wrap">
-                                        <div class="post-grid reverse-grid">
-                                            <div class="img-block post-img">
-                                                <a href="https://www.edaily.co.kr/news/read?newsId=03227526629110256&mediaCodeNo=257&OutLnkChk=Y" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_7.png" alt="images">
-                                                </a>
-                                                <time class="post-date" datetime="2021-07-01">07.01</time>
-                                            </div>
-                                            <div class="post-text-block bg-gray-light">
-                                                <strong class="content-title mb-0">
-                                                    <a href="https://www.edaily.co.kr/news/read?newsId=03227526629110256&mediaCodeNo=257&OutLnkChk=Y" target="_blank">
-                                                       코스터 안심페이, 국가지속가능발전 기술혁신상 수상
-                                                    </a>
-                                                </strong>
-                                                <div class="post-meta clearfix">
-                                                    <div class="post-link-holder">
-                                                        <a href="https://www.edaily.co.kr/news/read?newsId=03227526629110256&mediaCodeNo=257&OutLnkChk=Y" target="_blank">
-                                                            기사 자세히 보기
-                                                            <span class="fa fa-arrow-right">
-                                                                <span class="sr-only">&nbsp;</span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-social text-right">
-                                                        <ul class="social-network social-small">
-                                                            <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                            <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-6 col-xl-4 gallery-item">
-                                    <div class="col-wrap">
-                                        <div class="post-grid reverse-grid">
-                                            <div class="img-block post-img">
-                                                <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=929940" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_6_22.png" alt="images">
-                                                </a>
-                                                <time class="post-date" datetime="2021-06-22">06.22</time>
-                                            </div>
-                                            <div class="post-text-block bg-gray-light">
-                                                <strong class="content-title mb-0">
-                                                    <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=929940" target="_blank">
-                                                        지오, “안심페이 골프장 무인결제시스템 유·무선 통합서비스 실현화”
-                                                    </a>
-                                                </strong>
-                                                <div class="post-meta clearfix">
-                                                    <div class="post-link-holder">
-                                                        <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=929940" target="_blank">
-                                                            기사 자세히 보기
-                                                            <span class="fa fa-arrow-right">
-                                                                <span class="sr-only">&nbsp;</span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-social text-right">
-                                                        <ul class="social-network social-small">
-                                                            <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                            <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-6 col-xl-4 gallery-item">
-                                    <div class="col-wrap">
-                                        <div class="post-grid reverse-grid">
-                                            <div class="img-block post-img">
-                                                <a href="http://www.e2news.com/news/articleView.html?idxno=233385" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_3.webp" alt="images">
-                                                </a>
-                                                <time class="post-date" datetime="2021-06-09">06.09</time>
-                                            </div>
-                                            <div class="post-text-block bg-gray-light">
-                                                <strong class="content-title mb-0">
-                                                    <a href="http://www.e2news.com/news/articleView.html?idxno=233385" target="_blank">
-                                                        코스터 안심페이 서비스 Medium플랫폼과 전략적 업무협약 체결
-                                                    </a>
-                                                </strong>
-                                                <div class="post-meta clearfix">
-                                                    <div class="post-link-holder">
-                                                        <a href="http://www.e2news.com/news/articleView.html?idxno=233385" target="_blank">
-                                                            기사 자세히 보기
-                                                            <span class="fa fa-arrow-right">
-                                                                <span class="sr-only">&nbsp;</span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-social text-right">
-                                                        <ul class="social-network social-small">
-                                                            <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                            <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-6 col-xl-4 gallery-item">
-                                    <div class="col-wrap">
-                                        <div class="post-grid reverse-grid">
-                                            <div class="img-block post-img">
-                                                <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=928761" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_6_4.png" alt="images">
-                                                </a>
-                                                <time class="post-date" datetime="2021-06-04">06.04</time>
-                                            </div>
-                                            <div class="post-text-block bg-gray-light">
-                                                <strong class="content-title mb-0">
-                                                    <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=928761" target="_blank">
-                                                        코스터 안심페이 골프장 전용 키오스크로 지오와 업무협약 체결
-                                                    </a>
-                                                </strong>
-                                                <div class="post-meta clearfix">
-                                                    <div class="post-link-holder">
-                                                        <a href="http://www.nbntv.co.kr/news/articleView.html?idxno=928761" target="_blank">
-                                                            기사 자세히 보기
-                                                            <span class="fa fa-arrow-right">
-                                                                <span class="sr-only">&nbsp;</span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-social text-right">
-                                                        <ul class="social-network social-small">
-                                                            <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                            <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="col-lg-6 col-xl-4 gallery-item">
-                                    <div class="col-wrap">
-                                        <div class="post-grid reverse-grid">
-                                            <div class="img-block post-img">
-                                                <a href="http://www.kdpress.co.kr/news/articleView.html?idxno=103317" target="_blank">
-                                                    <img src="/assets/img/main_news/main_news_2021_6_1.png" alt="images">
-                                                </a>
-                                                <time class="post-date" datetime="2021-06-01">06.01</time>
-                                            </div>
-                                            <div class="post-text-block bg-gray-light">
-                                                <strong class="content-title mb-0">
-                                                    <a href="http://www.kdpress.co.kr/news/articleView.html?idxno=103317" target="_blank">
-                                                        지오골프, 코스터 안심페이 골프장 전용 키오스크 MOU
-                                                    </a>
-                                                </strong>
-                                                <div class="post-meta clearfix">
-                                                    <div class="post-link-holder">
-                                                        <a href="http://www.kdpress.co.kr/news/articleView.html?idxno=103317" target="_blank">
-                                                            기사 자세히 보기
-                                                            <span class="fa fa-arrow-right">
-                                                                <span class="sr-only">&nbsp;</span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="post-social text-right">
-                                                        <ul class="social-network social-small">
-                                                            <li><a href="#"><span class="icon-facebook"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                            <li><a href="#"><span class="icon-twitter"><span class="sr-only">&nbsp;</span></span></a></li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>                        
@@ -384,7 +207,7 @@
                                 <h2>파트너</h2>
                             </div>
                             <div class="text-right mb-2">
-                                <a href="about.html" style="color:black;">
+                                <a href="/notice/ansimpay" style="color:black;">
                                     <p>자세히 보러가기 +</p>
                                 </a>
                             </div>
@@ -413,11 +236,6 @@
                 <!--/main content wrapper -->
             </main>
         </div>
-        
-    <?php
-        include_once dirname(__DIR__)."/views/include/corporation.php";
-    ?>
-
     </div>
     <!-- open/close -->
     <a href="#" class="section-scroll" id="scroll-to-top">

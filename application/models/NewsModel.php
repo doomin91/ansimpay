@@ -71,9 +71,14 @@ class NewsModel extends CI_Model{
     }
 
 
-   /**
+/**
  * 최근 소식 관련 Model
  */
+    public function getRecentlyNewsForFront(){
+        $this->db->where("RL_DISPLAY_YN", "Y");
+        $this->db->where("RL_DEL_YN", "N");
+        return $this->db->get("tbl_board_recently_list")->result();
+    }
 
     public function getRecentlyNewsList($wheresql, $getCount=false){
         if ((isset($wheresql["regDateStart"])) && ($wheresql["regDateStart"] != "")){

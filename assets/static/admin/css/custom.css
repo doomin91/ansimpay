@@ -191,3 +191,5 @@ html .ui-button.ui-state-disabled:active {
 .navbar-nav.side-nav > li.navigation .menu > li.dropdown.active > ul.dropdown-menu > li:not(.dropdown).active a, .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown.dropdown.active > ul.dropdown-menu > li:not(.dropdown).active a { background: transparent; color: #418bca; }
 
 .navbar-nav.side-nav > li.navigation .menu > li.dropdown.active > ul.dropdown-menu > li.dropdown a, .navbar-nav.side-nav > li.navigation .menu > li > .dropdown-menu .dropdown.dropdown.active > ul.dropdown-menu > li.dropdown a { line-height: 30px; padding-left: 30px; font-size: 12px; color: rgba(255, 255, 255, 0.9); font-weight: 500; }
+
+

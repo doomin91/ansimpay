@@ -100,4 +100,77 @@ class Customclass{
             header("location: /admin");
         }
     }
+    /**
+     * files        @Object     file Object
+     * filePath     @String     저장할 폴더
+     * fileType     @Array      허용된 File 형식
+     * fileMaxSize  @Integer    File 사이즈
+     */
+
+    public function fileUpload($files, $filePath, $fileType, $fileMaxSize){
+        // fileMaxSize
+        // 1024             = 1kb
+        // 1024*1024        = 1mb
+        // 1024*1024*1024   = 1gb
+
+        if($files["file"]["error"]){
+            $result = array(
+                "uploaded" => "failed",
+                "reason" => $files["file"]["error"]
+            );
+            return $result;
+        }
+
+        $types = [];
+        foreach($fileType as $val) {
+            $type = explode("/", $val);    
+            array_push($types, $type[1]);
+        }
+        $types = implode(", ", $types);
+
+		if(!in_array($files["file"]["type"], $fileType)){
+            $result = array(
+                "uploaded" => "failed",
+                "reason" => "허용된 파일 형식이 아닙니다. $types 형식만 업로드 가능합니다."
+            );
+            return $result;
+		} 
+
+        if($files["file"]["size"] > $fileMaxSize * 1024 * 1024){
+            $result = array(
+                "uploaded" => "failed",
+                "reason" => $fileMaxSize . "mb보다 큰 파일은 올릴 수 없습니다."
+            );
+            return $result;
+        }
+        
+        $dir = "upload/" . $filePath . "/" . date("Ymd");
+        if (!is_dir($dir)){
+			mkdir($dir, 0777, true);
+        }
+
+        $filename = explode(".", $files["file"]["name"]);
+        $filename = time() . "." .$filename[1];
+        $filepath = $dir . "/" . $filename;
+        $fileUpload = move_uploaded_file($_FILES["file"]["tmp_name"], $filepath);
+        if(!$fileUpload){
+            $result = array(
+                "uploaded" => "failed",
+                "reason" => $fileUpload
+            );
+            return $result;
+        }
+
+        $result = array(
+            "uploaded" => "success",
+            "result" => array(
+                "originalName" => $files["file"]["name"],
+                "uploadedName" => $filename,
+                "uploadedPath" => "/" . $filepath
+            )
+        );
+
+        return $result;
+	}   
+
 }
