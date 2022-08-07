@@ -85,17 +85,17 @@
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 파트너사 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
-			<ul class="dropdown-menu">
-				<li>
+			<ul class="dropdown-menu" id="partnersBody">
+				<!-- <li>
 					<a href="/admin/partnerCategoryList">
 						<i class="fa fa-caret-right"></i> 카테고리 추가/변경
 					</a>
-				</li>
-				<li>
+				</li> -->
+				<!-- <li>
 					<a href="/admin/partnerList">
 						<i class="fa fa-caret-right"></i> 파트너사 추가/변경
 					</a>
-				</li>
+				</li> -->
 			</ul>
 		</li>
 
@@ -105,12 +105,7 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 소개글 변경
-					</a>
-				</li>
-				<li>
-					<a href="/admin/user">
+					<a href="/admin/kiosk">
 						<i class="fa fa-caret-right"></i> 키오스크 추가/변경
 					</a>
 				</li>
@@ -211,3 +206,41 @@
 </div>
 
 <script src="https://code.jquery.com/jquery.js"></script>
+
+<script>
+loadMenu();
+function loadMenu(){
+    console.log("setting ansimpay category menu...");
+	$.ajax({
+		url: "/adm/PartnersCategory/getPartnerCate",
+		type: "get",
+		dataType: "json",
+		success: function(data){
+			let str = `
+						<li>
+							<a href="/admin/partnerCategoryList">
+								<i class="fa fa-caret-right"></i> 카테고리 추가/변경
+							</a>
+						</li>
+						<br>
+						`
+
+			console.log(data);
+			data.forEach(function(element){
+				str += 	`
+						<li>
+							<a href="/admin/partnerList/${element.PC_SEQ}">
+								<i class="fa fa-caret-right"></i> ${element.PC_CATEGORY_NAME}
+							</a>
+						</li>
+						`
+			})
+			$("#partnersBody").html(str);
+		},
+		error: function(e){
+			alert("메뉴 구조를 불러오는데 실패했습니다.");
+			console.log(e.responseText);
+		}
+	})
+}
+</script>

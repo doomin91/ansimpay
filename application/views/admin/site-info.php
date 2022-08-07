@@ -154,7 +154,7 @@
 								</tr>
 								<tr>
 									<th>이메일</th>
-									<td><input type="text" name="comp_tel" value="<?php echo $info->COMP_EMAIL; ?>" size="50"></td>
+									<td><input type="text" name="comp_email" value="<?php echo $info->COMP_EMAIL; ?>" size="50"></td>
 									<th></th>
 									<td></td>
 								</tr>

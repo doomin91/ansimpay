@@ -45,4 +45,7 @@
     <!-- Revolution Slider Script -->
     <script src="/assets/js/revolution.js"></script>
 
+    <!-- 왼쪽 메뉴 카테고리 값을 가져오기 위한 함수 -->
+    <script src="/assets/js/load_menu.js"></script>
+
 </html>

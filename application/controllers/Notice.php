@@ -6,6 +6,7 @@ class notice extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("NewsModel");
+		$this->load->model("PartnerModel");
 		$this->load->model("SiteModel");
 		$this->load->library('CustomClass');
 	}
@@ -27,7 +28,23 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - 안심페이란
 	 */	
 	public function ansimpay(){
-		$this->load->view('about');
+		$category = $this->PartnerModel->getPartnerCatrgory();
+
+		$resultArray = [];
+		foreach ($category as $cate){
+			$partner = $this->PartnerModel->getPartnersByCateSeq($cate->PC_SEQ);
+			if(count($partner) > 0){
+				$cateData = array(
+					"CATEGORY_NAME" => $cate->PC_CATEGORY_NAME,
+					"LIST" => $partner
+				);
+				array_push($resultArray, $cateData);
+			}
+		}
+
+		$data["lists"] = $resultArray;
+
+		$this->load->view('about', $data);
 		$this->viewCorporation();
 	}
 	/**

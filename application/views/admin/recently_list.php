@@ -298,7 +298,7 @@
 
 			const formData = new FormData($("#recentlyForm")[0]);
 			$.ajax({
-				url		: "/admin/inputRecentlyNews",
+				url		: "/adm/recentlyNews/inputRecentlyNews",
 				type	: "post",
 				data	: formData,
 				dataType: "json",
@@ -323,7 +323,7 @@
 		function deleteRecentlyNews(rlSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/admin/delRecentlyNews?rlSeq=" + rlSeq,
+					url		: "/adm/recentlyNews/delRecentlyNews?rlSeq=" + rlSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){

@@ -149,6 +149,8 @@
 								`
 					})
 					$("#boardItems").html(str);
+					// load가 완료되면 보여지는 메뉴 순서도 변경한다.
+					loadMenu();
 				},
 				error: function(e){
 					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
@@ -257,7 +259,6 @@
 				})
 			}
 		}
-
 	</script>
 
 

@@ -7,7 +7,7 @@ class partnersCategory extends CI_Controller {
 		parent::__construct();
 		$this->load->library("session");
 		$this->load->library('CustomClass');
-		$this->load->model("PartnersModel");
+		$this->load->model("PartnerModel");
 
 		if($_SERVER['REQUEST_URI'] != "/admin"){
 			$this->customclass->adminSessionCheck();
@@ -16,7 +16,7 @@ class partnersCategory extends CI_Controller {
 	
 
 	public function getPartnerCate(){
-		$result = $this->PartnersModel->getPartnerCatrgory();
+		$result = $this->PartnerModel->getPartnerCatrgory();
 		echo json_encode($result);
 	}
 
@@ -26,14 +26,14 @@ class partnersCategory extends CI_Controller {
 		$mode = $this->input->post("mode");
 
 		if($mode == "createMode"){
-			$check = $this->PartnersModel->getPartnerCateName($cateName);
+			$check = $this->PartnerModel->getPartnerCateName($cateName);
 			if(!$check){
-				$count = $this->PartnersModel->getPartnerCatrgoryCount();
+				$count = $this->PartnerModel->getPartnerCatrgoryCount();
 				$data = array(
 					"PC_ORDER_NUMBER" => $count + 1,
 					"PC_CATEGORY_NAME" => $cateName
 				);
-				$this->PartnersModel->insPartnerCate($data);
+				$this->PartnerModel->insPartnerCate($data);
 
 				$result = array(
 					"code" => 200,
@@ -49,13 +49,13 @@ class partnersCategory extends CI_Controller {
 		}
 
 		if($mode == "modifyMode"){
-			$check = $this->PartnersModel->getPartnerCateName($cateName);
+			$check = $this->PartnerModel->getPartnerCateName($cateName);
 			if(!$check){
-				$count = $this->PartnersModel->getPartnerCatrgoryCount();
+				$count = $this->PartnerModel->getPartnerCatrgoryCount();
 				$data = array(
 					"PC_CATEGORY_NAME" => $cateName
 				);
-				$this->PartnersModel->uptPartnerCate($cateSeq, $data);
+				$this->PartnerModel->uptPartnerCate($cateSeq, $data);
 
 				$result = array(
 					"code" => 200,
@@ -72,22 +72,18 @@ class partnersCategory extends CI_Controller {
 
 	}
 
-	public function uptPartnerCate(){
-
-	}
-
 	public function delPartnerCate(){
 		$pcSeq = $this->input->post("pcSeq");
-		$orderNumber = $this->PartnersModel->getPartnerCateBySeq($pcSeq)->PC_ORDER_NUMBER;
-		$upCateList = $this->PartnersModel->getUpPartners($orderNumber);
-		$result = $this->PartnersModel->delPartnerCate($pcSeq);
+		$orderNumber = $this->PartnerModel->getPartnerCateBySeq($pcSeq)->PC_ORDER_NUMBER;
+		$upCateList = $this->PartnerModel->getUpPartners($orderNumber);
+		$result = $this->PartnerModel->delPartnerCate($pcSeq);
 		if($result){
 			foreach($upCateList as $lt){
 				$data = array(
 					"PC_ORDER_NUMBER" => $lt->PC_ORDER_NUMBER - 1,
 				);
 	
-				$this->PartnersModel->uptPartnerCate($lt->PC_SEQ, $data);
+				$this->PartnerModel->uptPartnerCate($lt->PC_SEQ, $data);
 			}
 			$returnMsg = array(
 				"code" => 200,
@@ -104,18 +100,18 @@ class partnersCategory extends CI_Controller {
 
 	public function moveUp(){
 		$orderNumber = $this->input->get("orderNumber");
-		$pcSeq = $this->PartnersModel->getPartnersCateOrder($orderNumber)->PC_SEQ;
-		$prevSeq = $this->PartnersModel->getPartnersCateOrder($orderNumber-1)->PC_SEQ;
+		$pcSeq = $this->PartnerModel->getPartnersCateOrder($orderNumber)->PC_SEQ;
+		$prevSeq = $this->PartnerModel->getPartnersCateOrder($orderNumber-1)->PC_SEQ;
 
 		$data = array(
 			"PC_ORDER_NUMBER" => ($orderNumber - 1),
 		);
-		$result = $this->PartnersModel->uptPartnerCate($pcSeq, $data);
+		$result = $this->PartnerModel->uptPartnerCate($pcSeq, $data);
 		
 		$data = array(
 			"PC_ORDER_NUMBER" => $orderNumber,
 		);
-		$result = $this->PartnersModel->uptPartnerCate($prevSeq, $data);
+		$result = $this->PartnerModel->uptPartnerCate($prevSeq, $data);
 
 
 
@@ -124,18 +120,18 @@ class partnersCategory extends CI_Controller {
 
 	public function moveDown(){
 		$orderNumber = $this->input->get("orderNumber");
-		$pcSeq = $this->PartnersModel->getPartnersCateOrder($orderNumber)->PC_SEQ;
-		$prevSeq = $this->PartnersModel->getPartnersCateOrder($orderNumber + 1)->PC_SEQ;
+		$pcSeq = $this->PartnerModel->getPartnersCateOrder($orderNumber)->PC_SEQ;
+		$prevSeq = $this->PartnerModel->getPartnersCateOrder($orderNumber + 1)->PC_SEQ;
 
 		$data = array(
 			"PC_ORDER_NUMBER" => ($orderNumber + 1),
 		);
-		$result = $this->PartnersModel->uptPartnerCate($pcSeq, $data);
+		$result = $this->PartnerModel->uptPartnerCate($pcSeq, $data);
 		
 		$data = array(
 			"PC_ORDER_NUMBER" => $orderNumber,
 		);
-		$result = $this->PartnersModel->uptPartnerCate($prevSeq, $data);
+		$result = $this->PartnerModel->uptPartnerCate($prevSeq, $data);
 
 
 

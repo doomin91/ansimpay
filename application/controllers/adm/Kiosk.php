@@ -1,26 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class partners extends CI_Controller {
+class kiosk extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->library("session");
 		$this->load->library('CustomClass');
-		$this->load->model("PartnerModel");
+		$this->load->model("KioskModel");
 
 		if($_SERVER['REQUEST_URI'] != "/admin"){
 			$this->customclass->adminSessionCheck();
 		}
 	}
-	
-	public function inputPartner(){
+
+	public function inputKiosk(){
 		try {
 			$mode			= $this->input->post("mode");
-			$cateSeq		= $this->input->post("cateSeq");
-			$plSeq			= $this->input->post("plSeq");
+			$klSeq			= $this->input->post("klSeq");
 			$subject 		= $this->input->post("subject");
-			$link 			= $this->input->post("link");
 			$display		= $this->input->post("display");
 
 			if(!empty($_FILES["file"]["name"])){
@@ -28,7 +26,7 @@ class partners extends CI_Controller {
 					"image/png", "image/jpg", "image/jpeg", "image/webp"
 				);
 
-				$fileUpload = $this->customclass->fileUpload($_FILES, "Partners", $filePermitType, 5);
+				$fileUpload = $this->customclass->fileUpload($_FILES, "Kiosk", $filePermitType, 5);
 				if($fileUpload["uploaded"] == "failed") {
 					$returnMsg = array(
 						"code" => 203,
@@ -50,14 +48,12 @@ class partners extends CI_Controller {
 	
 			if($mode == "createMode"){
 				$data = array(
-					"PL_SUBJECT" 		=> $subject,
-					"PL_CATEGORY_SEQ"	=> $cateSeq,
-					"PL_LINK" 			=> $link,
-					"PL_DISPLAY_YN" 	=> $display,
-					"PL_IMAGE_URL" 		=> $fileUpload["result"]["uploadedPath"],
-					"PL_REG_USER"		=> $this->session->userdata("ADMIN_SEQ")
+					"KL_SUBJECT" 		=> $subject,
+					"KL_DISPLAY_YN" 	=> $display,
+					"KL_IMAGE_URL" 		=> $fileUpload["result"]["uploadedPath"],
+					"KL_REG_USER"		=> $this->session->userdata("ADMIN_SEQ")
 				);
-				$result 	= $this->PartnerModel->insPartner($data);
+				$result 	= $this->KioskModel->insertKiosk($data);
 				if($result){
 					$returnMsg = array(
 						"code" => 200,
@@ -73,13 +69,12 @@ class partners extends CI_Controller {
 
 			if($mode == "modifyMode") {
 				$data = array(
-					"PL_SUBJECT" 	=> $subject,
-					"PL_LINK" 		=> $link,
-					"PL_DISPLAY_YN" => $display,
+					"KL_SUBJECT" 	=> $subject,
+					"KL_DISPLAY_YN" => $display,
 				);
 				// 수정 시 업로드 파일이 존재하는 경우
-				if(!empty($_FILES["file"]["name"])) $data["PL_IMAGE_URL"] = $fileUpload["result"]["uploadedPath"];
-				$result 	= $this->PartnerModel->uptPartner($plSeq, $data);
+				if(!empty($_FILES["file"]["name"])) $data["KL_IMAGE_URL"] = $fileUpload["result"]["uploadedPath"];
+				$result 	= $this->KioskModel->updateKiosk($klSeq, $data);
 				if($result){
 					$returnMsg = array(
 						"code" => 200,
@@ -99,10 +94,10 @@ class partners extends CI_Controller {
 		}
 	}
 	
-	public function delParter(){
+	public function delKiosk(){
 		try {
-			$plSeq	 	= $this->input->get("plSeq");
-			$result 		= $this->PartnerModel->delPartner($plSeq);
+			$klSeq	 	= $this->input->get("klSeq");
+			$result 		= $this->KioskModel->deleteKiosk($klSeq);
 			if($result){
 				$returnMsg = array(
 					"code" => 200,
@@ -119,5 +114,4 @@ class partners extends CI_Controller {
 			echo json_encode($e);
 		}
 	}
-
 }

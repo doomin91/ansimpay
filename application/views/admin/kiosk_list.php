@@ -20,11 +20,11 @@
 
 		<!-- page header -->
 			<div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b><?php echo $category->PC_CATEGORY_NAME?></b> <span></span></h2>
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>키오스크 추가/변경</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>파트너사 관리</li>
-					<li class="active"><?php echo $category->PC_CATEGORY_NAME?></li>
+					<li>키오스크 관리</li>
+					<li class="active">키오스크 추가/변경</li>
 				</ol>
 			</div>
 
@@ -99,8 +99,8 @@
 						<!-- tile body -->
 						<div class="tile-body">
 							<div style="float:right">
-								<button type="button" class="btn btn-success btn-sm" onclick="showCreateModal()">파트너사 등록</button>
-								<!-- <a href="#inputModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a> -->
+								<button type="button" class="btn btn-success btn-sm" onclick="showCreateModal()">게시글 등록</button>
+								<!-- <a href="#kioskModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a> -->
 							</div>
 							<div class="table-responsive">
 								<table class="table table-datatable table-custom01 userTable">
@@ -109,7 +109,6 @@
 											<th class="sort-numeric">#</th>
 											<th class="sort">이미지 미리보기</th>
 											<th class="sort">제목</th>
-											<th class="sort">URL</th>
 											<th class="sort">등록일</th>
 											<th class="sort">작성자</th>
 											<th class="sort">공개여부</th>
@@ -122,15 +121,14 @@
 										foreach($lists as $lt):?>
 										<tr>
 											<td><?php echo $pagenum?></td>
-											<td><img src="<?php echo $lt->PL_IMAGE_URL?>" style="width:150px; height:140px"></td>
-											<td><?php echo $lt->PL_SUBJECT?></td>
-											<td><?php echo $lt->PL_LINK?></td>
-											<td><?php echo $lt->PL_REG_DATE?></td>
+											<td><img src="<?php echo $lt->KL_IMAGE_URL?>" style="width:350px; height:230px"></td>
+											<td><?php echo $lt->KL_SUBJECT?></td>
+											<td><?php echo $lt->KL_REG_DATE?></td>
 											<td><?php echo $lt->ADMIN_NAME?></td>
-											<td><?php echo $lt->PL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
+											<td><?php echo $lt->KL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
-											<button type="button" class="btn btn-xs btn-danger" onclick="deletePartner(<?php echo $lt->PL_SEQ?>)">삭제</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteKiosk(<?php echo $lt->KL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -180,25 +178,22 @@
 	<!-- Wrap all page content end -->
 
 	<!-- Modal Area -->
-	<div class="modal fade" id="inputModal" tabindex="-1" role="dialog" aria-labelledby="inputLabel" aria-hidden="true">
-		<form id="recentlyForm">
+	<div class="modal fade" id="kioskModal" tabindex="-1" role="dialog" aria-labelledby="kioskLabel" aria-hidden="true">
+		<form id="kioskForm">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 class="modal-title" id="inputLabel"></h3>
+					<h3 class="modal-title" id="kioskLabel"></h3>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="cateForm">
 						<div class="form-group">
-							<input type="hidden" name="cateSeq" value="<?php echo $category->PC_SEQ?>">
-							<input type="hidden" name="plSeq">
+							<input type="hidden" name="klSeq">
 							<input type="hidden" name="mode">
-							<label for="file">이미지</label>
+							<label for="subject">이미지</label>
 							<input type="file" class="form-control" name="file">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">
-							<label for="link">URL</label>
-							<input type="text" class="form-control" id="link" name="link">
 							<label for="display">공개여부</label>
 							<select class="form-control" id="disaply" name="display">
 								<option value="Y" checked>공개</option>
@@ -209,7 +204,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button type="button" onclick="inputPartner()" class="btn btn-success">저장</button>
+					<button type="button" onclick="inputKiosk()" class="btn btn-success">저장하기</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -239,12 +234,12 @@
 		$(".datepicker").datepicker();
 	
 		function formReset(){
-			location.href="/admin/partnerList"
+			location.href="/admin/recentlyList"
 		}
 
 		function showCreateModal(){
 			// 폼을 먼저 리셋 한다.
-			$("#recentlyForm")[0].reset();
+			$("#kioskForm")[0].reset();
 			// 수정 시에도 동일한 Modal을 사용하므로 플래그 값을 준다.
 			$("input[name=mode]").val("createMode");
 
@@ -252,45 +247,38 @@
 			$("#displayDate").datepicker("setDate", new Date());
 			
 			// LABEL 게시글 등록으로 변경
-			$("#inputLabel").html("파트너 등록")
-			// inputModal 표시
-			$("#inputModal").modal("show");
+			$("#kioskLabel").html("게시글 등록")
+			// kioskModal 표시
+			$("#kioskModal").modal("show");
 		}
 
 		function showModifyModal(item){
 			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
 			let data = JSON.parse(item);
 			// 받아온 값을 Input에 담아준다.
-			$("input[name=plSeq]").val(data.PL_SEQ);
-			$("input[name=subject]").val(data.PL_SUBJECT);
-			$("input[name=link]").val(data.PL_LINK);
-			$("input[name=disaply]").val(data.PL_DISPLAY_YN);
+			$("input[name=klSeq]").val(data.RL_SEQ);
+			$("input[name=subject]").val(data.RL_SUBJECT);
+			$("input[name=disaply]").val(data.RL_DISPLAY_YN);
 			// DatePicker 기본 값 설정
-			$("#displayDate").datepicker("setDate", data.PL_DISPLAY_DATE);
+			$("#displayDate").datepicker("setDate", data.RL_DISPLAY_DATE);
 
 			$("input[name=mode]").val("modifyMode");
 			// LABEL 게시글 수정으로 변경
-			$("#inputLabel").html("파트너 수정");
-			// inputModal 표시
-			$("#inputModal").modal("show");
+			$("#kioskLabel").html("게시글 수정");
+			// kioskModal 표시
+			$("#kioskModal").modal("show");
 		}
 
-		function inputPartner(){
+		function inputKiosk(){
 			if($("input[name=subject]").val() == "") {
 				alert("제목을 입력해주세요."); 
 				$("input[name=subject]").focus();
 				return false;
 			}
 
-			if($("input[name=link]").val() == "") {
-				alert("URL을 입력해주세요."); 
-				$("input[name=link]").focus();
-				return false;
-			}
-
-			const formData = new FormData($("#recentlyForm")[0]);
+			const formData = new FormData($("#kioskForm")[0]);
 			$.ajax({
-				url		: "/adm/Partners/inputPartner",
+				url		: "/adm/Kiosk/inputKiosk",
 				type	: "post",
 				data	: formData,
 				dataType: "json",
@@ -307,15 +295,15 @@
 					}
 				},
 				error 	: function (e){
-					console.log(e);
+					alert(e.responseText);
 				}
 			})
 		}
 
-		function deletePartner(plSeq){
+		function deleteKiosk(klSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/adm/Partners/delParter?plSeq=" + plSeq,
+					url		: "/adm/Kiosk/delKiosk?klSeq=" + klSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){

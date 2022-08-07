@@ -9,7 +9,8 @@ class admin extends CI_Controller {
 		$this->load->model("NewsModel");
 		$this->load->model("SiteModel");
 		$this->load->model("ManagerModel");
-		$this->load->model("PartnersModel");
+		$this->load->model("PartnerModel");
+		$this->load->model("KioskModel");
 
 		$this->load->library("session");
 		$this->load->library('CustomClass');
@@ -224,7 +225,64 @@ class admin extends CI_Controller {
 	/**
 	 * 파트너스 관리
 	 */
-	public function partnerList(){
+	public function partnerList($cateSeq){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$category = $this->PartnerModel->getPartnerCateBySeq($cateSeq);
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"cateSeq" => $cateSeq,
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->PartnerModel->getPartnersList($wheresql);
+		$listCount = $this->PartnerModel->getPartnersList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/partnerList/".$cateSeq.$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"category" => $category,
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/partners_list', $data);
+	}
+
+	/**
+	 * 키오스크 관리
+	 */
+	public function kiosk(){
 		$regDateStart = $this->input->get("regDateStart");
 		$regDateEnd = $this->input->get("regDateEnd");
 		$searchField = $this->input->get("searchField");
@@ -248,8 +306,8 @@ class admin extends CI_Controller {
 			"limit" => $limit
 			);
 
-		$lists = $this->NewsModel->getRecentlyNewsList($wheresql);
-		$listCount = $this->NewsModel->getRecentlyNewsList($wheresql, true);
+		$lists = $this->KioskModel->getKioskList($wheresql);
+		$listCount = $this->KioskModel->getKioskList($wheresql, true);
 
         if ($nowpage != ""){
             $pagenum = $listCount-(($nowpage-1)*$limit);
@@ -257,7 +315,7 @@ class admin extends CI_Controller {
             $pagenum = $listCount;
         }
 		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
-		$pagination = $this->customclass->pagenavi("/admin/newsList".$queryString, $listCount, 10, 3, $nowpage);
+		$pagination = $this->customclass->pagenavi("/admin/kiosk".$queryString, $listCount, 10, 3, $nowpage);
 
 		$data = array(
 			"regDateStart" => $regDateStart,
@@ -271,7 +329,7 @@ class admin extends CI_Controller {
 			"start" => $start,
 			"limit" => $limit
 			);
-		$this->load->view('admin/partners_list', $data);
+		$this->load->view('admin/kiosk_list', $data);
 	}
 
 }
