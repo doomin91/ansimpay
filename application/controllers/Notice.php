@@ -7,6 +7,8 @@ class notice extends CI_Controller {
 		parent::__construct();
 		$this->load->model("NewsModel");
 		$this->load->model("PartnerModel");
+		$this->load->model("KioskModel");
+		$this->load->model("AwardModel");
 		$this->load->model("SiteModel");
 		$this->load->library('CustomClass');
 	}
@@ -52,7 +54,9 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - 키오스크
 	 */
 	public function kiosk(){
-		$this->load->view('about_1');
+		$data['lists'] = $this->KioskModel->getKioskForFront();
+		
+		$this->load->view('about_1', $data);
 		$this->viewCorporation();
 	}
 	/**
@@ -78,7 +82,9 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - 상장
 	 */
 	public function awards(){
-		$this->load->view('about_3');
+		$data['lists'] = $this->AwardModel->getAwardForFront();
+
+		$this->load->view('about_3', $data);
 		$this->viewCorporation();
 	}
 }

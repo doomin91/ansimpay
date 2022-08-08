@@ -118,7 +118,7 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="/admin/user">
+					<a href="/admin/award">
 						<i class="fa fa-caret-right"></i> 상장 추가/변경
 					</a>
 				</li>

@@ -8,6 +8,7 @@ class admin extends CI_Controller {
 		$this->load->model("AdminModel");
 		$this->load->model("NewsModel");
 		$this->load->model("SiteModel");
+		$this->load->model("AwardModel");
 		$this->load->model("ManagerModel");
 		$this->load->model("PartnerModel");
 		$this->load->model("KioskModel");
@@ -330,6 +331,60 @@ class admin extends CI_Controller {
 			"limit" => $limit
 			);
 		$this->load->view('admin/kiosk_list', $data);
+	}
+
+
+	/**
+	 * 키오스크 관리
+	 */
+	public function award(){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->AwardModel->getAwardList($wheresql);
+		$listCount = $this->AwardModel->getAwardList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/award".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/award_list', $data);
 	}
 
 }

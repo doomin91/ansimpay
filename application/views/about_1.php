@@ -47,128 +47,18 @@
                             <div class="demo-wrapper">
                                             <h3 class="text-center element-heading" style="font-weight:600;">키오스크</h3>
                                             <div class="row">
-                                              <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_sy200.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / SY-200</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
+                                                <?php foreach($lists as $lt):?>
                                                 <div class="col-md-4">
                                                     <figure class="team-box caption-fade-up">
                                                         <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_ss200.webp" alt="images description">
+                                                            <img src="<?php echo $lt->KL_IMAGE_URL?>" alt="images description">
                                                         </div>
                                                         <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / SS-200</span>
+                                                            <span class="sub"><?php echo $lt->KL_SUBJECT ?></span>
                                                         </figcaption>
                                                     </figure>
                                                 </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_si200.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / SI-200</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                              
-                                               <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_sb200.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / SB-200</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_ps300.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / PS-300</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2021_ps200.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / PS-200</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_1_c_ks1100.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-K1100(듀얼 회전형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_2_cs1100.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-S1100(스탠드형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_3_cs4000.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-S4000(슬림형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_4_css4700.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-SS4700(슬림 스탠드형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_5_cl4000.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-L4000(매립형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="col-md-4">
-                                                    <figure class="team-box caption-fade-up">
-                                                        <div class="img-block">
-                                                            <img src="/assets/img/kiosk/kiosk_6_chs5500.webp" alt="images description">
-                                                        </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub">Kiosk / C-HS5500(가로 스탠드형)</span>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
+                                                <?php endforeach; ?>
                                             </div>
                                         </div>
                         </div>

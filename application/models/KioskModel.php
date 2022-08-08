@@ -11,7 +11,7 @@ class KioskModel extends CI_Model{
  * 최근 소식 관련 Model
  */
     public function getKioskForFront(){
-        $this->db->where("RL_DISPLAY_YN", "Y");
+        $this->db->where("KL_DISPLAY_YN", "Y");
         $this->db->where("KL_DEL_YN", "N");
         $this->db->order_by("KL_REG_DATE", "DESC");
         return $this->db->get("tbl_kiosk_list")->result();
@@ -56,12 +56,12 @@ class KioskModel extends CI_Model{
     }
 
     public function updateKiosk($rlSeq, $data){
-        $this->db->where("RL_SEQ", $rlSeq);
+        $this->db->where("KL_SEQ", $rlSeq);
         return $this->db->update("tbl_kiosk_list", $data);
     }
 
     public function deleteKiosk($rlSeq){
-        $this->db->where("RL_SEQ", $rlSeq);
+        $this->db->where("KL_SEQ", $rlSeq);
         return $this->db->update("tbl_kiosk_list", array("KL_DEL_YN" => "Y"));
     }
     

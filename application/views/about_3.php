@@ -47,166 +47,18 @@
                             <div class="demo-wrapper">
                                 <h3 class="text-center element-heading" style="font-weight:600;">상장</h3>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_1.webp" alt="행정안전부 장관상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">행정안전부 장관상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_2.webp" alt="중소벤처기업부 장관상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">중소벤처기업부 장관상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_3.webp" alt="과학기술정보통신부 장관상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">과학기술정보통신부 장관상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/certificate_4.webp" alt="연구소 인정서">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">기업부설연구소 인정서</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/patent_1.webp" alt="특허 제 10-1675549호">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">특허 제 10-1675549호</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/patent_2.webp" alt="특허 제 10-1272211호">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">특허 제 10-1272211호</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/patent_2.webp" alt="images description">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">Kiosk / C-HS5500(가로 스탠드형)</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/patent_3.webp" alt="특허 제 10-1549512호">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">특허 제 10-1549512호</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/patent_4.webp" alt="특허 제 10-1549514호">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">특허 제 10-1549514호</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_5.webp" alt="제10회 국가지속가능발전 기술혁신상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">제10회 국가지속가능발전 기술혁신상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_6.webp" alt="제12회 국가지속가능발전 기술혁신상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">제12회 국가지속가능발전 기술혁신상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_7.webp" alt="제13회 국가지속가능발전 기술혁신상">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">제13회 국가지속가능발전 기술혁신상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_8.webp" alt="images description">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">제14회 국가지속가능발전 기술혁신상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_11.png" alt="images description">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">제15회 국가지속가능발전 기술혁신상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_9.webp" alt="images description">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">대한민국 기업 경영 대상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <figure class="team-box caption-fade-up">
-                                            <div class="img-block">
-                                                <img src="/assets/img/award/award_10.webp" alt="images description">
-                                            </div>
-                                            <figcaption class="team-des-v2">
-                                                <span class="sub">2016 대한민국 CEO상</span>
-                                            </figcaption>
-                                        </figure>
-                                    </div>
+                                    <?php foreach($lists as $lt):?>
+                                                <div class="col-md-4">
+                                                    <figure class="team-box caption-fade-up">
+                                                        <div class="img-block">
+                                                            <img src="<?php echo $lt->AL_IMAGE_URL?>" alt="images description">
+                                                        </div>
+                                                        <figcaption class="team-des-v2">
+                                                            <span class="sub"><?php echo $lt->AL_SUBJECT ?></span>
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                    <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
