@@ -118,22 +118,7 @@
                                     </li>
                                     <li id="service"  class="dropdown has-submenu" data-animation="fadeIn">
                                         <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="/service/away" data-title="Home"> 서비스 </a>
-                                        <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="/service/away">원거리 결제</a>
-                                            </li>
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="/service/nfc">NFC, QR코드 결제</a>
-                                            </li>
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="/service/mobile">모바일 결제</a>
-                                            </li>
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="/service/kiosk">키오스크 결제</a>
-                                            </li>
-                                            <li class="dropdown dropdown-right dropdown-parent">
-                                                <a class="" href="/service/parking">주차관리 결제 시스템</a>
-                                            </li>
+                                        <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav" id="paymentBody">
                                         </ul>
                                     </li>
                                     <li id="franchisee" class="dropdown has-submenu" data-animation="fadeIn">
@@ -195,3 +180,25 @@
                 </div>    
             </header>
             <!--/header of the page -->
+
+<script src="/assets/vendors/jquery/jquery-2.1.4.min.js"></script>
+<script>
+    loadServiceCategory()
+    function loadServiceCategory(){
+        $.ajax({
+            url     : '/Service/getServiceCategory',
+            type    : 'get',
+            dataType: 'json',
+            success : function (data) {
+                let str = ""
+                data.forEach(function(val){
+                    str += `<li><a href='/service/payment/${val['SC_ORDER_NUMBER']}'>${val['SC_CATEGORY_NAME']}</a></li>`
+                })
+                $("#paymentBody").html(str)
+            },
+            error   : function (e) {
+                console.log(e.responseText)
+            }
+        })
+    }
+</script>

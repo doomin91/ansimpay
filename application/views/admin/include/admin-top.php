@@ -106,7 +106,7 @@
 			<ul class="dropdown-menu">
 				<li>
 					<a href="/admin/kiosk">
-						<i class="fa fa-caret-right"></i> 키오스크 추가/변경
+						<i class="fa fa-caret-right"></i> 키오스크
 					</a>
 				</li>
 			</ul>
@@ -114,12 +114,12 @@
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> 상장 관리 <b class="fa fa-plus dropdown-plus"></b>
+				<i class="fa fa-circle-o" aria-hidden="true"></i> 특허 및 수상내역 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
 					<a href="/admin/award">
-						<i class="fa fa-caret-right"></i> 상장 추가/변경
+						<i class="fa fa-caret-right"></i> 특허 및 수상내역
 					</a>
 				</li>
 			</ul>
@@ -129,25 +129,7 @@
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				<i class="fa fa-circle-o" aria-hidden="true"></i> 서비스 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 서비스 추가/변경
-					</a>
-				</li>
-			</ul>
-		</li>
-
-		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> 사용 업종 관리 <b class="fa fa-plus dropdown-plus"></b>
-			</a>
-			<ul class="dropdown-menu">
-				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 서비스 추가/변경
-					</a>
-				</li>
+			<ul class="dropdown-menu" id="serviceBody">
 			</ul>
 		</li>
 
@@ -157,8 +139,13 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 서비스 추가/변경
+					<a href="/admin/sector">
+						<i class="fa fa-caret-right"></i> 업종
+					</a>
+				</li>
+				<li>
+					<a href="/admin/franchisee">
+						<i class="fa fa-caret-right"></i> 가맹점
 					</a>
 				</li>
 			</ul>
@@ -166,12 +153,17 @@
 
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-circle-o" aria-hidden="true"></i> 제휴문의 관리 <b class="fa fa-plus dropdown-plus"></b>
+				<i class="fa fa-circle-o" aria-hidden="true"></i> 고객 서비스 관리 <b class="fa fa-plus dropdown-plus"></b>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
-					<a href="/admin/user">
-						<i class="fa fa-caret-right"></i> 서비스 추가/변경
+					<a href="/admin/question">
+						<i class="fa fa-caret-right"></i> 제휴문의
+					</a>
+				</li>
+				<li>
+					<a href="/admin/faq">
+						<i class="fa fa-caret-right"></i> FAQ
 					</a>
 				</li>
 			</ul>
@@ -209,6 +201,7 @@
 
 <script>
 loadMenu();
+loadService();
 function loadMenu(){
     console.log("setting ansimpay category menu...");
 	$.ajax({
@@ -243,4 +236,39 @@ function loadMenu(){
 		}
 	})
 }
+
+function loadService(){
+	$.ajax({
+		url: "/adm/ServiceCategory/getServiceCate",
+		type: "get",
+		dataType: "json",
+		success: function(data){
+			let str = `
+						<li>
+							<a href="/admin/serviceCategoryList">
+								<i class="fa fa-caret-right"></i> 서비스 추가/변경
+							</a>
+						</li>
+						<br>
+						`
+
+			console.log(data);
+			data.forEach(function(element){
+				str += 	`
+						<li>
+							<a href="/admin/serviceList/${element.SC_SEQ}">
+								<i class="fa fa-caret-right"></i> ${element.SC_CATEGORY_NAME}
+							</a>
+						</li>
+						`
+			})
+			$("#serviceBody").html(str);
+		},
+		error: function(e){
+			alert("메뉴 구조를 불러오는데 실패했습니다.");
+			console.log(e.responseText);
+		}
+	})
+}
+
 </script>

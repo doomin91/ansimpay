@@ -47,29 +47,31 @@
                                 <div class="col-lg-12 col-md-12 text-center">
                                     <div class="col-wrap">
                                         <div class="block-heading">
-                                            <h3 class="block-top-heading">안심페이를 사용 하고 있는</h3>
-                                            <h2 class="block-main-heading">가맹점</h2>
-                                            <span class="block-sub-heading">안심페이를 사용하고 있는 대표 가맹점입니다.</span>
+                                            <h3 class="block-top-heading">안심페이를 사용 할 수 있는</h3>
+                                            <h2 class="block-main-heading">다양한 업종</h2>
+                                            <span class="block-sub-heading">안심페이를 사용 할 수 있는 다양한 업종을 확인해보세요.</span>
                                         </div>
                                     </div>
                                 </div>
-                                <?php foreach($LIST as $lt):?>
-                                <div class="col-lg-3 col-md-6 ">
+
+                                <?php foreach($LIST as $lt): ?>
+                                <div class="col-lg-4 col-md-6 ">
                                     <div class="col-wrap">
-                                        <div class="ico-box bg-gray-light has-radius-medium box_height">
-                                            <h4 class="content-title">
-                                                <a href="#">
-                                                    <img src="<?php echo $lt->FL_IMAGE_URL?>">
-                                                </a>
-                                            </h4>
+                                        <div class="ico-box bg-gray-light has-radius-medium box_height1">
+                                            <div class="icon">
+                                                <span class="custom-icon-pen-tool">
+                                                    <i class="fa <?php echo $lt->SECTOR_FA_ICON ?>" aria-hidden="true"></i>
+                                                </span>
+                                            </div>
+                                            <h4 class="content-title"><a href="#"><?php echo $lt->SECTOR_SUBJECT?></a></h4>
                                             <div class="des">
-                                                <p style="font-size:16px;"><?php echo $lt->FL_SUBJECT?></p>
+                                                <?php echo $lt->SECTOR_DESC ?>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <?php endforeach; ?>
-                            </div>            
+                            </div>
                         </div>
                     </section>
                     

@@ -6,6 +6,8 @@ class reference extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("SiteModel");
+		$this->load->model("SectorModel");
+		$this->load->model("FranchiseeModel");
 		// $this->load->model("MainModel");
 	}
 	
@@ -20,7 +22,8 @@ class reference extends CI_Controller {
 	 * @Description : 사용 업종
 	 */
 	public function sector(){
-		$this->load->view('franchisee');
+		$data['LIST'] = $this->SectorModel->getSectorForFront();
+		$this->load->view('sector', $data);
 		$this->viewCorporation();
 	}
 	/**
@@ -28,7 +31,8 @@ class reference extends CI_Controller {
 	 * @Description : 사용 가맹점
 	 */
 	public function franchisee(){
-		$this->load->view('franchisee_1');
+		$data['LIST'] = $this->FranchiseeModel->getFranchiseeForFront();
+		$this->load->view('franchisee', $data);
 		$this->viewCorporation();
 	}
 }

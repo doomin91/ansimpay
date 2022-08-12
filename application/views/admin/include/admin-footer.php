@@ -28,5 +28,5 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
     <script src="/assets/static/admin/js/minimal.js"></script>
-    <script src="/assets/ckeditor/ckeditor.js"></script>
+    <script src="/assets/editor/editor.js"></script>
     <!-- 왼쪽 메뉴 카테고리 값을 가져오기 위한 함수 -->

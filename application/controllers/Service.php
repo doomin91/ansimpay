@@ -5,6 +5,7 @@ class service extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("SiteModel");
+		$this->load->model("ServiceModel");
 		// $this->load->model("MainModel");
 	}
 	
@@ -13,6 +14,17 @@ class service extends CI_Controller {
 		$data["FAMILY"] = $this->SiteModel->getFamilyList();
 		$this->load->view('include/corporation', $data);
     }
+
+	public function payment($orderNumber){
+		$data["LIST"] = $this->ServiceModel->getServiceByNumber($orderNumber);
+		$this->load->view('service', $data);
+		$this->viewCorporation();
+	}
+
+	public function getServiceCategory(){
+		$result = $this->ServiceModel->getServiceCategory();
+		echo json_encode($result);
+	}
 	/**
 	 * @Function Name : awayService
 	 * @Description : 원거리 결제
@@ -53,4 +65,5 @@ class service extends CI_Controller {
 		$this->load->view('service_4');
 		$this->viewCorporation();
 	}
+
 }

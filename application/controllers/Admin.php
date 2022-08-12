@@ -10,8 +10,11 @@ class admin extends CI_Controller {
 		$this->load->model("SiteModel");
 		$this->load->model("AwardModel");
 		$this->load->model("ManagerModel");
+		$this->load->model("ServiceModel");
 		$this->load->model("PartnerModel");
 		$this->load->model("KioskModel");
+		$this->load->model("FranchiseeModel");
+		$this->load->model("SectorModel");
 
 		$this->load->library("session");
 		$this->load->library('CustomClass');
@@ -335,7 +338,7 @@ class admin extends CI_Controller {
 
 
 	/**
-	 * 키오스크 관리
+	 * 상장 관리
 	 */
 	public function award(){
 		$regDateStart = $this->input->get("regDateStart");
@@ -385,6 +388,192 @@ class admin extends CI_Controller {
 			"limit" => $limit
 			);
 		$this->load->view('admin/award_list', $data);
+	}
+
+
+	/**
+	 *  서비스 카테고리 관리 
+	 */
+
+	public function serviceCategoryList(){
+		$this->load->view('admin/service_category_list');
+	}
+
+
+	/**
+	 * 서비스 관리
+	 */
+	public function serviceList($cateSeq){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$category = $this->ServiceModel->getServiceCateBySeq($cateSeq);
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"cateSeq" => $cateSeq,
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->ServiceModel->getServiceList($wheresql);
+		$listCount = $this->ServiceModel->getServiceList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/ServiceList/".$cateSeq.$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"category" => $category,
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/service_list', $data);
+	}
+	
+
+	/**
+	 * 가맹점 관리
+	 */
+	public function franchisee(){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->FranchiseeModel->getFranchiseeList($wheresql);
+		$listCount = $this->FranchiseeModel->getFranchiseeList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/franchisee".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/franchisee_list', $data);
+	}
+
+	/**
+	 * 업종 관리
+	 */
+	public function sector(){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->SectorModel->getSectorList($wheresql);
+		$listCount = $this->SectorModel->getSectorList($wheresql, true);
+
+		if ($nowpage != ""){
+			$pagenum = $listCount-(($nowpage-1)*$limit);
+		}else{
+			$pagenum = $listCount;
+		}
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/sector".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/sector_list', $data);
+	}
+
+	public function question(){
+		$this->load->view('admin/question');
+	}
+
+	public function library(){
+		$this->load->view('admin/library');
+	}
+
+	public function faq(){
+		$this->load->view('admin/faq');
 	}
 
 }
