@@ -62,6 +62,13 @@ class PartnerModel extends CI_Model{
      * Partner
      */
 
+    public function getPatnerForFront(){
+        $this->db->where("PL_DISPLAY_YN", "Y");
+        $this->db->where("PL_DEL_YN", "N");
+        $this->db->order_by("PL_REG_DATE", "DESC");
+        return $this->db->get("tbl_partner_list")->result();
+    }
+
     public function getPartnersByCateSeq($cateSeq){
         $this->db->where("PC_SEQ", $cateSeq);
         $this->db->where("PL_DISPLAY_YN", "Y");

@@ -1,23 +1,23 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class award extends CI_Controller {
+class patent extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
 		$this->load->library("session");
 		$this->load->library('CustomClass');
-		$this->load->model("AwardModel");
+		$this->load->model("PatentModel");
 
 		if($_SERVER['REQUEST_URI'] != "/admin"){
 			$this->customclass->adminSessionCheck();
 		}
 	}
 
-	public function inputAward(){
+	public function inputPatent(){
 		try {
 			$mode			= $this->input->post("mode");
-			$alSeq			= $this->input->post("alSeq");
+			$plSeq			= $this->input->post("plSeq");
 			$subject 		= $this->input->post("subject");
 			$desc 			= $this->input->post("desc");
 			$display		= $this->input->post("display");
@@ -27,7 +27,7 @@ class award extends CI_Controller {
 					"image/png", "image/jpg", "image/jpeg", "image/webp"
 				);
 
-				$fileUpload = $this->customclass->fileUpload($_FILES, "Award", $filePermitType, 5);
+				$fileUpload = $this->customclass->fileUpload($_FILES, "Patent", $filePermitType, 5);
 				if($fileUpload["uploaded"] == "failed") {
 					$returnMsg = array(
 						"code" => 203,
@@ -49,13 +49,13 @@ class award extends CI_Controller {
 	
 			if($mode == "createMode"){
 				$data = array(
-					"AL_SUBJECT" 		=> $subject,
-					"AL_DESC" 			=> $desc,
-					"AL_DISPLAY_YN" 	=> $display,
-					"AL_IMAGE_URL" 		=> $fileUpload["result"]["uploadedPath"],
-					"AL_REG_USER"		=> $this->session->userdata("ADMIN_SEQ")
+					"PL_SUBJECT" 		=> $subject,
+					"PL_DESC" 			=> $desc,
+					"PL_DISPLAY_YN" 	=> $display,
+					"PL_IMAGE_URL" 		=> $fileUpload["result"]["uploadedPath"],
+					"PL_REG_USER"		=> $this->session->userdata("ADMIN_SEQ")
 				);
-				$result 	= $this->AwardModel->insertAward($data);
+				$result 	= $this->PatentModel->insertPatent($data);
 				if($result){
 					$returnMsg = array(
 						"code" => 200,
@@ -71,13 +71,13 @@ class award extends CI_Controller {
 
 			if($mode == "modifyMode") {
 				$data = array(
-					"AL_SUBJECT" 	=> $subject,
-					"AL_DESC" 			=> $desc,
-					"AL_DISPLAY_YN" => $display,
+					"PL_SUBJECT" 	=> $subject,
+					"PL_DESC" 			=> $desc,
+					"PL_DISPLAY_YN" => $display,
 				);
 				// 수정 시 업로드 파일이 존재하는 경우
-				if(!empty($_FILES["file"]["name"])) $data["AL_IMAGE_URL"] = $fileUpload["result"]["uploadedPath"];
-				$result 	= $this->AwardModel->updateAward($alSeq, $data);
+				if(!empty($_FILES["file"]["name"])) $data["PL_IMAGE_URL"] = $fileUpload["result"]["uploadedPath"];
+				$result 	= $this->PatentModel->updatePatent($plSeq, $data);
 				if($result){
 					$returnMsg = array(
 						"code" => 200,
@@ -97,10 +97,10 @@ class award extends CI_Controller {
 		}
 	}
 	
-	public function delAward(){
+	public function delPatent(){
 		try {
-			$klSeq	 	= $this->input->get("klSeq");
-			$result 		= $this->AwardModel->deleteAward($klSeq);
+			$plSeq	 	= $this->input->get("plSeq");
+			$result 	= $this->PatentModel->deletePatent($plSeq);
 			if($result){
 				$returnMsg = array(
 					"code" => 200,

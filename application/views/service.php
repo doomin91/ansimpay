@@ -24,7 +24,7 @@
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title">서비스</h1>
+                                    <h1 class="visual-title visual-sub-title"><?php echo $CATEGORY->SC_CATEGORY_NAME?></h1>
 <!--
                                     <div class="breadcrumb-block">
                                         <ol class="breadcrumb">

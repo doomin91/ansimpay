@@ -24,7 +24,7 @@
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title">소개</h1>
+                                    <h1 class="visual-title visual-sub-title">특허 및 수상내역</h1>
 <!--
                                     <div class="breadcrumb-block">
                                         <ol class="breadcrumb">
@@ -45,7 +45,11 @@
                     <section class="content-block">
                         <div class="container text-center">
                             <div class="demo-wrapper">
-                                <h3 class="text-center element-heading" style="font-weight:600;">상장</h3>
+                                <div class="row" style="padding:20px; margin-bottom:40px;">
+                                
+                                    <div style="float:left; font-size:24px; padding:10px; border-bottom:5px solid #308DBE; font-weight:700;">특허내역</div>
+                                    <div style="float:left; font-size:24px; padding:10px;">수상내역</div>
+                                </div>
                                 <div class="row">
                                     <?php foreach($lists as $lt):?>
                                                 <div class="col-md-4">
@@ -53,9 +57,12 @@
                                                         <div class="img-block">
                                                             <img src="<?php echo $lt->AL_IMAGE_URL?>" alt="images description">
                                                         </div>
-                                                        <figcaption class="team-des-v2">
-                                                            <span class="sub"><?php echo $lt->AL_SUBJECT ?></span>
-                                                        </figcaption>
+                                                        <div style="padding-top:10px;text-align:left;font-weight:600;">
+                                                            <span class="sub" style="color:#000;text-algin:left"><?php echo $lt->AL_SUBJECT ?></span>
+                                                        </div>
+                                                        <div style="padding:0px;text-align:left;">
+                                                            <span class="sub" style="color:#ccc"><?php echo $lt->AL_DESC ?></span>
+                                                        </div>
                                                     </figure>
                                                 </div>
                                     <?php endforeach; ?>
@@ -69,7 +76,7 @@
             </main>
         </div>
         <!-- footer of the pagse -->
-        <footer class="footer footer-v1"  include-html="include/footer_control.html">
+        <!-- <footer class="footer footer-v1"  include-html="include/footer_control.html"> -->
             
         </footer>
         <!--/footer of the page -->

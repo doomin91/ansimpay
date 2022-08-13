@@ -6,6 +6,8 @@ class customer extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model("SiteModel");
+		$this->load->model("QuestionModel");
+		$this->load->model("FaqModel");
 		// $this->load->model("MainModel");
 	}
 
@@ -19,7 +21,8 @@ class customer extends CI_Controller {
 	 * @Description : 제휴 문의
 	 */
 	public function question(){
-		$this->load->view('customer_service');
+		$data = $this->QuestionModel->getQuestionInfo();
+		$this->load->view('customer_service', $data);
 		$this->viewCorporation();
 	}
 	/**
@@ -35,9 +38,11 @@ class customer extends CI_Controller {
 	 * @Description : FAQ
 	 */
 	public function faq(){
-		$this->load->view('customer_service_2');
+		$data['LIST'] = $this->FaqModel->getFaqForFront();
+		$this->load->view('customer_service_2', $data);
 		$this->viewCorporation();
 
 	}
 
 }
+

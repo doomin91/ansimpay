@@ -20,11 +20,11 @@
 
 		<!-- page header -->
 			<div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>FAQ</b> <span></span></h2>
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>특허</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>고객 서비스 관리</li>
-					<li class="active">FAQ</li>
+					<li>특허 및 수상내역 관리</li>
+					<li class="active">특허</li>
 				</ol>
 			</div>
 
@@ -67,8 +67,7 @@
 													<select name="searchField" class="wid100p">
 														<option value="all">전체</option>
 														<option value="ADMIN_NAME" <?php echo $searchField == "ADMIN_NAME" ? 'selected': ""?>>작성자</option>
-														<option value="QUESTION" <?php echo $searchField == "QUESTION" ? 'selected': ""?>>질문</option>
-														<option value="ANSWER" <?php echo $searchField == "ANSWER" ? 'selected': ""?>>답변</option>
+														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
 													</select>
 												</div>
 												<div class="col-md-8">
@@ -101,15 +100,16 @@
 						<div class="tile-body">
 							<div style="float:right">
 								<button type="button" class="btn btn-success btn-sm" onclick="showCreateModal()">게시글 등록</button>
-								<!-- <a href="#faqModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a> -->
+								<!-- <a href="#patentModal" role="button" class="btn btn-success btn-sm" data-toggle="modal">뉴스 추가</a> -->
 							</div>
 							<div class="table-responsive">
 								<table class="table table-datatable table-custom01 userTable">
 									<thead>
 										<tr>
 											<th class="sort-numeric">#</th>
-											<th class="sort">질문</th>
-											<th class="sort">답변</th>
+											<th class="sort">이미지 미리보기</th>
+											<th class="sort">제목</th>
+											<th class="sort">설명</th>
 											<th class="sort">등록일</th>
 											<th class="sort">작성자</th>
 											<th class="sort">공개여부</th>
@@ -122,14 +122,15 @@
 										foreach($lists as $lt):?>
 										<tr>
 											<td><?php echo $pagenum?></td>
-											<td><?php echo $lt->FAQ_QUESTION?></td>
-											<td><?php echo $lt->FAQ_ANSWER?></td>
-											<td><?php echo $lt->FAQ_REG_DATE?></td>
+											<td><img src="<?php echo $lt->PL_IMAGE_URL?>" style="width:175px; height:262px"></td>
+											<td><?php echo $lt->PL_SUBJECT?></td>
+											<td><?php echo $lt->PL_DESC?></td>
+											<td><?php echo $lt->PL_REG_DATE?></td>
 											<td><?php echo $lt->ADMIN_NAME?></td>
-											<td><?php echo $lt->FAQ_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
+											<td><?php echo $lt->PL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
-											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo $lt->FAQ_SEQ?>')">수정</button>
-											<button type="button" class="btn btn-xs btn-danger" onclick="deleteFaq(<?php echo $lt->FAQ_SEQ?>)">삭제</button>
+											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteKiosk(<?php echo $lt->PL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -179,22 +180,24 @@
 	<!-- Wrap all page content end -->
 
 	<!-- Modal Area -->
-	<div class="modal fade" id="faqModal" tabindex="-1" role="dialog" aria-labelledby="faqLabel" aria-hidden="true">
-		<form id="faqForm">
+	<div class="modal fade" id="patentModal" tabindex="-1" role="dialog" aria-labelledby="patentLabel" aria-hidden="true">
+		<form id="patentForm">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 class="modal-title" id="faqLabel"></h3>
+					<h3 class="modal-title" id="patentLabel"></h3>
 				</div>
 				<div class="modal-body">
 					<form role="form" id="cateForm">
 						<div class="form-group">
-							<input type="hidden" name="faqSeq">
+							<input type="hidden" name="plSeq">
 							<input type="hidden" name="mode">
-							<label for="question">질문</label>
-							<textarea class="form-control" id="question" name="question" rows="5"></textarea>
-							<label for="answer">답변</label>
-							<textarea class="form-control" id="answer" name="answer" rows="5"></textarea>
+							<label for="subject">이미지</label>
+							<input type="file" class="form-control" name="file">
+							<label for="subject">제목</label>
+							<input type="text" class="form-control" id="subject" name="subject">
+							<label for="desc">설명</label>
+							<input type="text" class="form-control" id="desc" name="desc">
 							<label for="display">공개여부</label>
 							<select class="form-control" id="display" name="display">
 								<option value="Y" checked>공개</option>
@@ -205,7 +208,7 @@
 				</div>
 				<div class="modal-footer">
 					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button type="button" onclick="inputFaq()" class="btn btn-success">저장하기</button>
+					<button type="button" onclick="inputPatent()" class="btn btn-success">저장하기</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
@@ -235,44 +238,49 @@
 		$(".datepicker").datepicker();
 	
 		function formReset(){
-			location.href="/admin/faq"
+			location.href="/admin/patent"
 		}
 
 		function showCreateModal(){
 			// 폼을 먼저 리셋 한다.
-			$("#faqForm")[0].reset();
+			$("#patentForm")[0].reset();
 			// 수정 시에도 동일한 Modal을 사용하므로 플래그 값을 준다.
 			$("input[name=mode]").val("createMode");
 
-			// DatePicker 기본 값 설정
-			$("#displayDate").datepicker("setDate", new Date());
-			
 			// LABEL 게시글 등록으로 변경
-			$("#faqLabel").html("게시글 등록")
-			// faqModal 표시
-			$("#faqModal").modal("show");
+			$("#patentLabel").html("게시글 등록")
+			// patentModal 표시
+			$("#patentModal").modal("show");
 		}
 
-		function showModifyModal(faqSeq){
-			getFaq(faqSeq)
+		function showModifyModal(item){
+			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
+			let data = JSON.parse(item);
+			// 받아온 값을 Input에 담아준다.
+			$("input[name=plSeq]").val(data.PL_SEQ);
+			$("input[name=subject]").val(data.PL_SUBJECT);
+			$("input[name=desc]").val(data.PL_DESC);
+			// $("select[name=display]").val(data.KL_DISPLAY_YN);
+			$(`#display > option[value=${data.PL_DISPLAY_YN}]`).attr("selected", true);
+			// DatePicker 기본 값 설정
+
+			$("input[name=mode]").val("modifyMode");
+			// LABEL 게시글 수정으로 변경
+			$("#patentLabel").html("게시글 수정");
+			// patentModal 표시
+			$("#patentModal").modal("show");
 		}
 
-		function inputFaq(){
-			if($("input[name=question]").val() == "") {
-				alert("질문을 입력해주세요."); 
-				$("input[name=question]").focus();
+		function inputPatent(){
+			if($("input[name=subject]").val() == "") {
+				alert("제목을 입력해주세요."); 
+				$("input[name=subject]").focus();
 				return false;
 			}
 
-			if($("input[name=answer]").val() == "") {
-				alert("답변을 입력해주세요."); 
-				$("input[name=answer]").focus();
-				return false;
-			}
-
-			const formData = new FormData($("#faqForm")[0]);
+			const formData = new FormData($("#patentForm")[0]);
 			$.ajax({
-				url		: "/adm/Faq/inputFaq",
+				url		: "/adm/patent/inputPatent",
 				type	: "post",
 				data	: formData,
 				dataType: "json",
@@ -293,44 +301,16 @@
 			})
 		}
 
-		function getFaq(FaqSeq){
-				$.ajax({
-					url		: "/adm/faq/getFaq?faqSeq=" + FaqSeq,
-					type	: "get",
-					dataType: "json",
-					success : function (data){
-						if(data['code'] == 200){
-							$("input[name=faqSeq]").val(data['objects'][0].FAQ_SEQ);
-							$("textarea[name=question]").val(data['objects'][0].FAQ_QUESTION);
-							$("textarea[name=answer]").val(data['objects'][0].FAQ_ANSWER);
-							$("input[name=disaply]").val(data['objects'][0].FAQ_DISPLAY_YN);
-							
-							$("input[name=mode]").val("modifyMode");
-							// LABEL 게시글 수정으로 변경
-							$("#faqLabel").html("게시글 수정");
-							// faqModal 표시
-							$("#faqModal").modal("show");
-						} else {
-							alert(data['msg']);
-						}
-					},
-					error 	: function (e){
-						console.log(e.responseText);
-					}
-				})
-		}
-
-		function deleteFaq(faqSeq){
+		function deletepatent(plSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/adm/faq/delFaq?faqSeq=" + faqSeq,
+					url		: "/adm/patent/delpatent?plSeq=" + plSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){
 						const code = data["code"];
 						const msg = data["msg"];
 						if(code == 200){
-							alert(msg);
 							location.reload();
 						} else {
 							alert(msg);

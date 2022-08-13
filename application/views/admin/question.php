@@ -76,7 +76,7 @@
 						
 						<div class="row form-footer">
                             <div class="col-sm-offset-2 col-sm-10 text-right">
-                                <button type="button" class="btn btn-primary btn-sm" id="saveInfo">저장</button>
+                                <button type="button" class="btn btn-primary btn-sm" onclick="saveQuestion()">저장</button>
                             </div>
                         </div>
 					</div>
@@ -102,37 +102,6 @@
 	  <!-- Make page fluid-->
 
 	</div>
-	<!-- Wrap all page content end -->
-	<!-- 모달 팝업 -->
-	<div class="modal fade" id="modalFamilySite" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<h3 class="modal-title" id="modalConfirmLabel">패밀리사이트 정보</h3>
-				</div>
-				<div class="modal-body">
-					<form role="form">
-					<input type="hidden" name="mode">
-					<input type="hidden" name="domain_seq">
-						<div class="form-group">
-							<label for="domain">표기명칭</label>
-							<input type="text" class="form-control" id="domain" name="family_site_name">
-						</div>
-
-						<div class="form-group">
-							<label for="buy_site">연동 URL</label>
-							<input type="text" class="form-control" id="buy_site" name="family_site_url">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button class="btn btn-red" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button id="saveDomain" class="btn btn-green">저장하기</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
 
 	<?php
 		include_once dirname(__DIR__)."/admin/include/admin-footer.php";
@@ -140,7 +109,6 @@
 
 </body>
 </html>
-
 <script>
 
 let desc1 = $("#desc1").Editor();
@@ -149,20 +117,40 @@ let desc3 = $("#desc3").Editor();
 
 getQuestion();
 
+function saveQuestion(){
+	$.ajax({
+		url		: '/adm/question/saveQuestion',
+		type	: 'post',
+		data	: {
+			'desc1': $("#desc1").Editor("getText"),
+			'desc2': $("#desc2").Editor("getText"),
+			'desc3': $("#desc3").Editor("getText")
+		},	
+		dataType: 'json',
+		success : function(data){
+			let code = data['code'];
+			let msg = data['msg'];
+			alert(msg);
+		},
+		error 	: function(e){
+			console.log(e.responseText);
+		}
+	})
+}
+
 function getQuestion(){
 	$.ajax({
 		url		: '/adm/question/getQuestion',
 		type	: 'get',
 		dataType: 'json',
 		success : function(data){
-			$("#desc1").Editor("setText", "123");
-			$("#desc2").Editor("setText", "123");
-			$("#desc3").Editor("setText", "123");
+			$("#desc1").Editor("setText", data.QUESTION_DESC1);
+			$("#desc2").Editor("setText", data.QUESTION_DESC2);
+			$("#desc3").Editor("setText", data.QUESTION_DESC3);
 		},
 		error 	: function(e){
 			console.log(e.responseText);
 		}
-		
 	})
 }
 

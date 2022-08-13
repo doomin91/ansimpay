@@ -7,5 +7,11 @@ class QuestionModel extends CI_Model{
         $this->load->database();
     }
 
+    public function getQuestionInfo(){
+        return $this->db->get('tbl_question_info')->row();
+    }
     
+    public function saveQuestionInfo($data){
+        return $this->db->update('tbl_question_info', $data);
+    }
 }

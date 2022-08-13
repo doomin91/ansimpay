@@ -24,7 +24,7 @@
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">
-                                    <h1 class="visual-title visual-sub-title">소개</h1>
+                                    <h1 class="visual-title visual-sub-title">News</h1>
 <!--
                                     <div class="breadcrumb-block">
                                         <ol class="breadcrumb">

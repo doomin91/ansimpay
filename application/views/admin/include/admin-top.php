@@ -118,8 +118,13 @@
 			</a>
 			<ul class="dropdown-menu">
 				<li>
+					<a href="/admin/patent">
+						<i class="fa fa-caret-right"></i> 특허
+					</a>
+				</li>
+				<li>
 					<a href="/admin/award">
-						<i class="fa fa-caret-right"></i> 특허 및 수상내역
+						<i class="fa fa-caret-right"></i> 수상내역
 					</a>
 				</li>
 			</ul>

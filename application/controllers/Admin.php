@@ -15,6 +15,9 @@ class admin extends CI_Controller {
 		$this->load->model("KioskModel");
 		$this->load->model("FranchiseeModel");
 		$this->load->model("SectorModel");
+		$this->load->model("FaqModel");
+		$this->load->model("PatentModel");
+
 
 		$this->load->library("session");
 		$this->load->library('CustomClass');
@@ -390,6 +393,58 @@ class admin extends CI_Controller {
 		$this->load->view('admin/award_list', $data);
 	}
 
+	/**
+	 * 특허 관리
+	 */
+	public function patent(){
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->PatentModel->getPatentList($wheresql);
+		$listCount = $this->PatentModel->getPatentList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/patent".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/patent_list', $data);
+	}
 
 	/**
 	 *  서비스 카테고리 관리 
@@ -573,7 +628,53 @@ class admin extends CI_Controller {
 	}
 
 	public function faq(){
-		$this->load->view('admin/faq');
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+
+		$lists = $this->FaqModel->getFaqList($wheresql);
+		$listCount = $this->FaqModel->getFaqList($wheresql, true);
+
+        if ($nowpage != ""){
+            $pagenum = $listCount-(($nowpage-1)*$limit);
+        }else{
+            $pagenum = $listCount;
+        }
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/faq".$queryString, $listCount, 10, 3, $nowpage);
+
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/faq', $data);
 	}
 
 }

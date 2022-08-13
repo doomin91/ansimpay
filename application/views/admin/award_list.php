@@ -20,11 +20,11 @@
 
 		<!-- page header -->
 			<div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>상장 추가/변경</b> <span></span></h2>
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>수상내역</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>상장 관리</li>
-					<li class="active">상장 추가/변경</li>
+					<li>특허 및 수상내역 관리</li>
+					<li class="active">수상내역</li>
 				</ol>
 			</div>
 
@@ -109,6 +109,7 @@
 											<th class="sort-numeric">#</th>
 											<th class="sort">이미지 미리보기</th>
 											<th class="sort">제목</th>
+											<th class="sort">설명</th>
 											<th class="sort">등록일</th>
 											<th class="sort">작성자</th>
 											<th class="sort">공개여부</th>
@@ -123,6 +124,7 @@
 											<td><?php echo $pagenum?></td>
 											<td><img src="<?php echo $lt->AL_IMAGE_URL?>" style="width:175px; height:262px"></td>
 											<td><?php echo $lt->AL_SUBJECT?></td>
+											<td><?php echo $lt->AL_DESC?></td>
 											<td><?php echo $lt->AL_REG_DATE?></td>
 											<td><?php echo $lt->ADMIN_NAME?></td>
 											<td><?php echo $lt->AL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
@@ -194,6 +196,8 @@
 							<input type="file" class="form-control" name="file">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">
+							<label for="desc">설명</label>
+							<input type="text" class="form-control" id="desc" name="desc">
 							<label for="display">공개여부</label>
 							<select class="form-control" id="display" name="display">
 								<option value="Y" checked>공개</option>
@@ -255,6 +259,7 @@
 			// 받아온 값을 Input에 담아준다.
 			$("input[name=alSeq]").val(data.AL_SEQ);
 			$("input[name=subject]").val(data.AL_SUBJECT);
+			$("input[name=desc]").val(data.AL_DESC);
 			// $("select[name=display]").val(data.KL_DISPLAY_YN);
 			$(`#display > option[value=${data.AL_DISPLAY_YN}]`).attr("selected", true);
 			// DatePicker 기본 값 설정

@@ -14,7 +14,6 @@
             <img src="/assets/img/logo/safe_pay_font_ver.webp" alt="safepay" style="width:30%;">
             <h1>ANSIMPAY ADMIN</h1>
             <h5>안심페이 어드민 웹페이지</h5>                                
-            <?php print_r($this->session->userdata()) ?>
             <form id="loginForm"> 
               <section>
                 <div class="input-group">

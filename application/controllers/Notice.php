@@ -49,6 +49,12 @@ class notice extends CI_Controller {
 		$this->load->view('about', $data);
 		$this->viewCorporation();
 	}
+
+	public function getPartners(){
+		$result = $this->PartnerModel->getPatnerForFront();
+		echo json_encode($result);
+	}
+
 	/**
 	 * @Function Name : kiosk
 	 * @Description : 소개 - 키오스크

@@ -16,6 +16,7 @@ class service extends CI_Controller {
     }
 
 	public function payment($orderNumber){
+		$data["CATEGORY"] = $this->ServiceModel->getServiceCateOrder($orderNumber);
 		$data["LIST"] = $this->ServiceModel->getServiceByNumber($orderNumber);
 		$this->load->view('service', $data);
 		$this->viewCorporation();

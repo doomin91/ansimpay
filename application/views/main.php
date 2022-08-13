@@ -212,7 +212,7 @@
                                 </a>
                             </div>
                             <div class="logo-container">
-                                <div class="owl-carousel logo-slide" id="waituk-owl-slide-4">
+                                <div class="owl-carousel logo-slide" id="waituk-owl-slide-4" id="slideBody">
                                     <div class="slide-item">
                                         <img src="/assets/img/partnter/partner_1.webp" alt="images description">
                                     </div>
@@ -247,3 +247,24 @@
 <?php
         include_once dirname(__DIR__)."/views/include/footer.php";
 ?>
+
+<script>
+    $.ajax({
+        url     : "/Notice/getPartners",
+        dataType: "json",
+        success : function (data){
+            let str = ""
+            data.forEach(function (val){
+                str += `
+                            <div class="slide-item">
+                                <img src="${val['PL_IMAGE_URL']}" alt="images description">
+                            </div>
+                        `
+            })
+            $("#slideBody").html(str)
+        },
+        error   : function (e){
+            console.log(e.responseText);
+        }
+    })
+</script>

@@ -20,28 +20,13 @@
                                         <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                     </li>
                                     <li data-num="2">
-                                        <a class="nav-link" href="/notice/award">상장</a>  
+                                        <a class="nav-link" href="/notice/award">특허 및 수상내역</a>  
                                     </li>
                                 </ul>                           
                             </li>
                             <li class="dropdown has-submenu" data-animation="fadeIn">
                                 <a class="dropdown-toggle font_style" data-toggle="dropdown" href="/service/away" data-title="Home"> 서비스 </a>
-                                <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav">
-                                    <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="/service/away">원거리 결제</a>
-                                    </li>
-                                    <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="/service/nfc">NFC, QR코드 결제</a>
-                                    </li>
-                                    <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="/service/mobile">모바일 결제</a>
-                                    </li>
-                                    <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="/service/kiosk">키오스크 결제</a>
-                                    </li>
-                                    <li class="dropdown dropdown-right dropdown-parent">
-                                        <a class="" href="/service/parking">주차관리 결제 시스템</a>
-                                    </li>
+                                <ul class="dropdown-menu  no-border-radius sub_menu submenu-nav" id="paymentBodyMobile">
                                 </ul>
                             </li>
                             <li  class="dropdown has-submenu" data-animation="fadeIn">
@@ -112,7 +97,7 @@
                                                 <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                             </li>
                                             <li data-num="2">
-                                                <a class="nav-link" href="/notice/awards">상장</a>  
+                                                <a class="nav-link" href="/notice/awards">특허 및 수상내역</a>  
                                             </li>
                                         </ul>
                                     </li>
@@ -195,6 +180,7 @@
                     str += `<li><a href='/service/payment/${val['SC_ORDER_NUMBER']}'>${val['SC_CATEGORY_NAME']}</a></li>`
                 })
                 $("#paymentBody").html(str)
+                $("#paymentBodyMobile").html(str)
             },
             error   : function (e) {
                 console.log(e.responseText)
