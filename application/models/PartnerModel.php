@@ -72,6 +72,7 @@ class PartnerModel extends CI_Model{
     public function getPartnersByCateSeq($cateSeq){
         $this->db->where("PC_SEQ", $cateSeq);
         $this->db->where("PL_DISPLAY_YN", "Y");
+        $this->db->where("PL_DEL_YN", "N");
         $this->db->join("tbl_partner_category", "tbl_partner_category.PC_SEQ = PL_CATEGORY_SEQ", "LEFT");
         return $this->db->get("tbl_partner_list")->result();
     }

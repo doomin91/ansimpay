@@ -83,7 +83,9 @@
 										<td><?php echo $lt->ADMIN_REG_DATE; ?></td>
 										<td>
 											<button type="button" class="btn btn-default btn-xs managerModify" data-key="<?php echo $lt->ADMIN_SEQ; ?>">수정</button>
-											<button type="button" class="btn btn-danger btn-xs managerDelete" data-key="<?php echo $lt->ADMIN_SEQ; ?>">삭제</button>
+											<?php if($lt->ADMIN_SEQ != 1){?>
+												<button type="button" class="btn btn-danger btn-xs managerDelete" data-key="<?php echo $lt->ADMIN_SEQ; ?>">삭제</button>
+											<?php } ?>
 										</td>
 									</tr>
 								<?php

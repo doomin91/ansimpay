@@ -91,6 +91,13 @@
          
     <script>
 	    loadData();
+
+
+        function formatDate(date){
+            const result = new Date(new Date(date) + 3240 * 10000).toISOString().split("T")[0]
+            return result;
+        }
+
         function loadData(){
 			$.ajax({
 				url: 		 "/notice/getNewsList",
@@ -102,7 +109,7 @@
                         str += `<tr>
                                     <td>${pagenum}</td>
                                     <td><a href="${element.NL_LINK}" target="_blank" style="font-size:16px; color:black;">${element.NL_SUBJECT}</a></td>
-                                    <td>${element.NL_REG_DATE}</td>
+                                    <td>${element.NL_DISPLAY_DATE ? element.NL_DISPLAY_DATE : formatDate(element.NL_REG_DATE)}</td>
                                 </tr>`;
                         pagenum -= 1;
                     })

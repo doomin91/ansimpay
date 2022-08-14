@@ -99,8 +99,8 @@ class award extends CI_Controller {
 	
 	public function delAward(){
 		try {
-			$klSeq	 	= $this->input->get("klSeq");
-			$result 		= $this->AwardModel->deleteAward($klSeq);
+			$alSeq	 	= $this->input->get("alSeq");
+			$result 		= $this->AwardModel->deleteAward($alSeq);
 			if($result){
 				$returnMsg = array(
 					"code" => 200,

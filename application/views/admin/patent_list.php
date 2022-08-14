@@ -130,7 +130,7 @@
 											<td><?php echo $lt->PL_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
-											<button type="button" class="btn btn-xs btn-danger" onclick="deleteKiosk(<?php echo $lt->PL_SEQ?>)">삭제</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deletePatent(<?php echo $lt->PL_SEQ?>)">삭제</button>
 											</td>
 										</tr>
 										<?php 
@@ -301,10 +301,10 @@
 			})
 		}
 
-		function deletepatent(plSeq){
+		function deletePatent(plSeq){
 			if(confirm("해당 게시글을 삭제하시겠습니까?")){
 				$.ajax({
-					url		: "/adm/patent/delpatent?plSeq=" + plSeq,
+					url		: "/adm/patent/delPatent?plSeq=" + plSeq,
 					type	: "get",
 					dataType: "json",
 					success : function (data){

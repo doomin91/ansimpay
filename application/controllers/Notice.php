@@ -9,6 +9,7 @@ class notice extends CI_Controller {
 		$this->load->model("PartnerModel");
 		$this->load->model("KioskModel");
 		$this->load->model("AwardModel");
+		$this->load->model("PatentModel");
 		$this->load->model("SiteModel");
 		$this->load->library('CustomClass');
 	}
@@ -30,23 +31,7 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - 안심페이란
 	 */	
 	public function ansimpay(){
-		$category = $this->PartnerModel->getPartnerCatrgory();
-
-		$resultArray = [];
-		foreach ($category as $cate){
-			$partner = $this->PartnerModel->getPartnersByCateSeq($cate->PC_SEQ);
-			if(count($partner) > 0){
-				$cateData = array(
-					"CATEGORY_NAME" => $cate->PC_CATEGORY_NAME,
-					"LIST" => $partner
-				);
-				array_push($resultArray, $cateData);
-			}
-		}
-
-		$data["lists"] = $resultArray;
-
-		$this->load->view('about', $data);
+		$this->load->view('about');
 		$this->viewCorporation();
 	}
 
@@ -88,9 +73,35 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - 상장
 	 */
 	public function awards(){
-		$data['lists'] = $this->AwardModel->getAwardForFront();
+		$data['award'] = $this->AwardModel->getAwardForFront();
+		$data['patent'] = $this->PatentModel->getPatentForFront();
 
 		$this->load->view('about_3', $data);
+		$this->viewCorporation();
+	}
+
+	/**
+	 * @Function Name : notice
+	 * @Description : 소개 - 파트너스
+	 */	
+	public function partners(){
+		$category = $this->PartnerModel->getPartnerCatrgory();
+
+		$resultArray = [];
+		foreach ($category as $cate){
+			$partner = $this->PartnerModel->getPartnersByCateSeq($cate->PC_SEQ);
+			if(count($partner) > 0){
+				$cateData = array(
+					"CATEGORY_NAME" => $cate->PC_CATEGORY_NAME,
+					"LIST" => $partner
+				);
+				array_push($resultArray, $cateData);
+			}
+		}
+
+		$data["lists"] = $resultArray;
+
+		$this->load->view('about_4', $data);
 		$this->viewCorporation();
 	}
 }

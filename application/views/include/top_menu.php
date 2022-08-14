@@ -14,12 +14,15 @@
                                         <a class="nav-link" href="/notice/ansimpay">안심페이란</a>
                                     </li>
                                     <li data-num="1">
+                                        <a class="nav-link" href="/notice/partners">파트너사</a>  
+                                    </li>
+                                    <li data-num="2">
                                         <a class="nav-link" href="/notice/kiosk">키오스크</a>  
                                     </li>
-                                    <li data-num="2">
+                                    <li data-num="3">
                                         <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                     </li>
-                                    <li data-num="2">
+                                    <li data-num="4">
                                         <a class="nav-link" href="/notice/award">특허 및 수상내역</a>  
                                     </li>
                                 </ul>                           
@@ -91,12 +94,15 @@
                                                 <a class="nav-link" href="/notice/ansimpay">안심페이란</a>
                                             </li>
                                             <li data-num="1">
+                                                <a class="nav-link" href="/notice/partners">파트너사</a>  
+                                            </li>
+                                            <li data-num="2">
                                                 <a class="nav-link" href="/notice/kiosk">키오스크</a>  
                                             </li>
-                                            <li data-num="2">
+                                            <li data-num="3">
                                                 <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                             </li>
-                                            <li data-num="2">
+                                            <li data-num="4">
                                                 <a class="nav-link" href="/notice/awards">특허 및 수상내역</a>  
                                             </li>
                                         </ul>

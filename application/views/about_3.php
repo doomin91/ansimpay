@@ -2,6 +2,10 @@
     include_once dirname(__DIR__)."/views/include/header.php";
 ?>
 
+<style>
+
+
+</style>
 <body>
     <div class="preloader" id="pageLoad">
         <div class="holder">
@@ -25,14 +29,6 @@
                             <div class="container">
                                 <div class="visual-text visual-center">
                                     <h1 class="visual-title visual-sub-title">특허 및 수상내역</h1>
-<!--
-                                    <div class="breadcrumb-block">
-                                        <ol class="breadcrumb">
-                                            <li class="breadcrumb-item"><a href="index.html"> Home </a></li>
-                                            <li class="breadcrumb-item active"> About Company </li>
-                                        </ol>
-                                    </div>
--->
                                 </div>
                             </div>
                         </div>
@@ -45,13 +41,39 @@
                     <section class="content-block">
                         <div class="container text-center">
                             <div class="demo-wrapper">
-                                <div class="row" style="padding:20px; margin-bottom:40px;">
-                                
-                                    <div style="float:left; font-size:24px; padding:10px; border-bottom:5px solid #308DBE; font-weight:700;">특허내역</div>
-                                    <div style="float:left; font-size:24px; padding:10px;">수상내역</div>
+                                <div class="row col-md-12" >
+
+                                    <div class="sub_contents">
+                                        <div class="sub_category01">
+                                            <ul>
+                                                <li id="patentLi" onclick="showPatent()" class="on"><a>특허내역</a></li>
+                                                <li id="awardLi" onclick="showAward()"><a>수상내역</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
                                 </div>
-                                <div class="row">
-                                    <?php foreach($lists as $lt):?>
+
+                                <div class="row" id="patentBody">
+                                    <?php foreach($patent as $lt):?>
+                                                <div class="col-md-4">
+                                                    <figure class="team-box caption-fade-up">
+                                                        <div class="img-block">
+                                                            <img src="<?php echo $lt->PL_IMAGE_URL?>" alt="images description">
+                                                        </div>
+                                                        <div style="padding-top:10px;text-align:left;font-weight:600;">
+                                                            <span class="sub" style="color:#000;text-algin:left"><?php echo $lt->PL_SUBJECT ?></span>
+                                                        </div>
+                                                        <div style="padding:0px;text-align:left;">
+                                                            <span class="sub" style="color:#ccc"><?php echo $lt->PL_DESC ?></span>
+                                                        </div>
+                                                    </figure>
+                                                </div>
+                                    <?php endforeach; ?>
+                                </div>
+
+                                <div class="row" id="awardBody" style="display:none;">
+                                    <?php foreach($award as $lt):?>
                                                 <div class="col-md-4">
                                                     <figure class="team-box caption-fade-up">
                                                         <div class="img-block">
@@ -67,6 +89,7 @@
                                                 </div>
                                     <?php endforeach; ?>
                                 </div>
+
                             </div>
                         </div>
                     </section>
@@ -96,3 +119,23 @@
 <?php
     include_once dirname(__DIR__)."/views/include/footer.php";
 ?>
+
+<script>
+
+function showPatent() {
+    $("#patentLi").addClass('on')
+    $("#awardLi").removeClass('on')
+    $("#awardBody").hide()
+    $("#patentBody").show()
+}
+
+function showAward() {
+    $("#awardLi").addClass('on')
+    $("#patentLi").removeClass('on')
+    $("#awardBody").show()
+    $("#patentBody").hide()
+}
+
+
+
+</script>

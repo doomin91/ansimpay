@@ -63,37 +63,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <?php foreach($lists as $key => $lt):?>
-                            <div class="container mt-5 m_w_container">
-                                <div class="row multiple-row v-align-row">
-                                    <div class="col-lg-12 col-md-12 text-center">
-                                        <div class="col-wrap">
-                                            <div class="block-heading">
-                                                <h2 class="block-main-heading"><?php echo $key == 0 ? "파트너사":"" ?></h2>
-                                                <span class="block-sub-heading"><?php echo $lt["CATEGORY_NAME"] ?></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php foreach($lt["LIST"] as $partner): ?>
-                                    <div class="col-lg-3 col-md-6 ">
-                                        <div class="col-wrap">
-                                            <div class="ico-box bg-gray-light has-radius-medium box_height">
-                                                <h4 class="content-title">
-                                                    <a href="#">
-                                                        <img src="<?php echo $partner->PL_IMAGE_URL?>">
-                                                    </a>
-                                                </h4>
-                                                <div class="des">
-                                                    <p style="font-size:16px;"><?php echo $partner->PL_SUBJECT?></p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <?php endforeach;?>                                    
-                                </div>
-                            </div>
-                            <?php endforeach;?>
                         </div>
                     </section>
                     
