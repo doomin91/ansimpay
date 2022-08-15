@@ -20,7 +20,7 @@
             <main>
                 <!-- visual/banner of the page -->
                 <section class="visual">
-                    <div class="visual-inner about-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+                    <div class="visual-inner news-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">
@@ -47,23 +47,31 @@
                             <div class="demo-wrapper">
                                 <h3 class="text-center element-heading">News</h3>
                                 <div class="data-table" style="border:0;">
-                                    <table id="myTable" class="display" style="width:100%;">
-                                        <thead style="display:none;">
+                                    <table id="myTable" class="table table-striped display" style="width:100%;">
+                                        <!-- <thead style="display:none;">
                                             <tr>
                                                 <th>num</th>
                                                 <th>news_title</th>
                                                 <th>date</th>
                                             </tr>
-                                        </thead>
-                                        <tbody id="newsBody">
+                                        </thead> -->
+                                        <tbody>
+                                            <?php foreach($lists as $lt):?>
                                             <tr>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td><?php echo $pagenum ?></td>
+                                                <td><a href="<?php echo $lt->NL_LINK?>" target="_blank" style="font-size:16px; color:black;"><?php echo $lt->NL_SUBJECT?></a></td>
+                                                <td><?php echo $lt->NL_DISPLAY_DATE ? $lt->NL_DISPLAY_DATE : date('Y-m-d', strtotime($lt->NL_REG_DATE))?></td>
                                             </tr>
+                                            <?php 
+                                            $pagenum--;
+                                            endforeach;?>
                                         </tbody>
                                     </table>
                                 </div>
+
+                                <div class="row news-pagination">
+									<?php echo $pagination; ?>
+								</div>
                             </div>
                         </div>
                     </section>
@@ -88,63 +96,3 @@
     <?php
         include_once dirname(__DIR__)."/views/include/footer.php";
     ?>
-         
-    <script>
-	    loadData();
-
-
-        function formatDate(date){
-            const result = new Date(new Date(date) + 3240 * 10000).toISOString().split("T")[0]
-            return result;
-        }
-
-        function loadData(){
-			$.ajax({
-				url: 		 "/notice/getNewsList",
-				dataType:	 "json",
-				success: function(data){
-                    let str = "";
-                    let pagenum = data.length;
-                    data.forEach(function(element){
-                        str += `<tr>
-                                    <td>${pagenum}</td>
-                                    <td><a href="${element.NL_LINK}" target="_blank" style="font-size:16px; color:black;">${element.NL_SUBJECT}</a></td>
-                                    <td>${element.NL_DISPLAY_DATE ? element.NL_DISPLAY_DATE : formatDate(element.NL_REG_DATE)}</td>
-                                </tr>`;
-                        pagenum -= 1;
-                    })
-                    $("#newsBody").html(str);
-                    loadDataTable();
-				},
-				error: function(e){
-					alert("오류가 발생했습니다. 관리자에게 문의바랍니다.")
-				}
-			})
-		}
-
-        function loadDataTable(){
-            $("#myTable").dataTable({
-                        lengthChange: false,
-                        searching: false,
-                        info: false,
-                        responsive: true,
-                        orderMulti: true,
-                        order : [[0, 'desc']],
-                        language: {
-                                "emptyTable": "데이터가 없어요.",
-                                "lengthMenu": "페이지당 _MENU_ 개씩 보기",
-                                "info": "현재 _START_ - _END_ / _TOTAL_건",
-                                "infoEmpty": "데이터 없음",
-                                "infoFiltered": "( _MAX_건의 데이터에서 필터링됨 )",
-                                "search": "에서 검색: ",
-                                "zeroRecords": "일치하는 데이터가 없어요.",
-                                "loadingRecords": "로딩중...",
-                                "processing":     "잠시만 기다려 주세요...",
-                                "paginate": {
-                                    "next": ">>",
-                                    "previous": "<<"
-                                }
-                        }
-                    })
-            }
-    </script>

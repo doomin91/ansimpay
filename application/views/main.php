@@ -116,7 +116,8 @@
                                             </div>
                                             <h4 class="content-title"><a href="#">모바일 결제</a></h4>
                                             <div class="des">
-                                                <p>간편하게 모바일 결제 기능을 이용하여 결제하는 방법</p>
+                                                <p>간편하게 모바일 결제</p>
+                                                <p>기능으로 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
                                                 <a class="link-more" href="/service/mobile">자세히 보기</a>
@@ -207,7 +208,7 @@
                                 <h2>파트너</h2>
                             </div>
                             <div class="text-right mb-2">
-                                <a href="/notice/ansimpay" style="color:black;">
+                                <a href="/notice/partners" style="color:black;">
                                     <p>자세히 보러가기 +</p>
                                 </a>
                             </div>

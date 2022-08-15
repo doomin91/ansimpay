@@ -27,7 +27,7 @@ class patent extends CI_Controller {
 					"image/png", "image/jpg", "image/jpeg", "image/webp"
 				);
 
-				$fileUpload = $this->customclass->fileUpload($_FILES, "Patent", $filePermitType, 5);
+				$fileUpload = $this->customclass->fileUpload($_FILES, "Patent", $filePermitType, 3);
 				if($fileUpload["uploaded"] == "failed") {
 					$returnMsg = array(
 						"code" => 203,

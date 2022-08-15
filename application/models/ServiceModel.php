@@ -72,6 +72,7 @@ class ServiceModel extends CI_Model{
     public function getServiceByNumber($orderNumber){
         $this->db->where("SC_ORDER_NUMBER", $orderNumber);
         $this->db->where("SL_DISPLAY_YN", "Y");
+        $this->db->where("SL_DEL_YN", "N");
         $this->db->join("tbl_service_category", "tbl_service_category.SC_SEQ = SL_CATEGORY_SEQ", "LEFT");
         return $this->db->get("tbl_service_list")->result();
     }

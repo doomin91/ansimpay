@@ -25,10 +25,26 @@
     font-size:16px;
 }
 
-
-.about-banner {
-    background-image: url(../img/bg/service_main_banner.webp);
+.ansimpay-banner {
+    background-image: url(../img/bg/ansimpay_banner.jpg);
 }
+
+.news-banner {
+    background-image: url(../img/bg/news_banner.jpg);
+}
+
+.kiosk-banner {
+    background-image: url(../img/bg/kiosk_banner.jpg);
+}
+
+.award-banner {
+    background-image: url(../img/bg/award_banner.jpg);
+}
+
+.partner-banner {
+    background-image: url(../img/bg/partner_banner.jpg);
+}
+
 .franchisee_banner{
     background-image: url(../img/bg/franchisee_banner.webp);
 }
@@ -645,7 +661,7 @@
     float: left;
     line-height: 59px;
     text-align: center;
-    font-size: 24px;
+    font-size: 18px;
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 400;
     display: table-cell;
@@ -657,14 +673,14 @@
     -webkit-user-select: none;
 }
 .sub_contents .sub_category01 .on {
-    border-bottom: 2px solid #005baa;
+    border-bottom: 2px solid #888888;
 }
 .sub_contents .sub_category01 .on a {
-    color: #005baa;
+    color: #55565b;
     font-weight: 400;
 }
 .sub_contents .sub_category01 a {
-    color: #777;
+    color: #888888;
 }
 
 @media screen and (max-width:991px){
@@ -687,3 +703,29 @@
 }
 
 
+.news-pagination {
+    margin-top:60px;
+    display: inline-block;
+    text-align: center;
+}
+
+.news-pagination a, .news-pagination span {
+    border: 1px solid #41B1DF;
+    color: #333;
+    border-radius: 2px;
+    padding: 0.5em 1em;
+    margin: 1px;
+}
+
+.news-pagination span {
+    font-weight: 600;
+}
+
+.news-pagination li {
+    padding: 5px;
+    font-size: 15px;
+}
+
+.news-pagination li.active a{
+    color:#000
+}

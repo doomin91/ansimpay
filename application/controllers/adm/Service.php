@@ -28,7 +28,7 @@ class service extends CI_Controller {
 					"image/png", "image/jpg", "image/jpeg", "image/webp", "image/gif"
 				);
 
-				$fileUpload = $this->customclass->fileUpload($_FILES, "service", $filePermitType, 5);
+				$fileUpload = $this->customclass->fileUpload($_FILES, "service", $filePermitType, 3);
 				if($fileUpload["uploaded"] == "failed") {
 					$returnMsg = array(
 						"code" => 203,

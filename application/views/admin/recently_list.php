@@ -195,7 +195,7 @@
 						<div class="form-group">
 							<input type="hidden" name="rlSeq">
 							<input type="hidden" name="mode">
-							<label for="subject">이미지</label>
+							<label for="subject">이미지</label> <span>*이미지 사이즈 800 × 533 / 파일양식: JPG 혹은 PNG이미지 (용량 3MB미만)</span>
 							<input type="file" class="form-control" name="file">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">

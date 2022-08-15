@@ -1149,11 +1149,11 @@ const windowIsDefined = (typeof window === "object");
 				var positionPercentages = !tempState ? getPositionPercentages(this._state, this.options.reversed) : getPositionPercentages(tempState, this.options.reversed);
 				this._setText(this.tooltipInner, formattedTooltipVal);
 
-				this.tooltip.style[this.stylePos] = `${positionPercentages[0]}%`;
+				this.tooltip.style[this.stylePos] = positionPercentages[0]+ '%';
 				if (this.options.orientation === 'vertical') {
-					this._css(this.tooltip, `margin-${this.stylePos}`, `${-this.tooltip.offsetHeight / 2}px`);
+					this._css(this.tooltip, 'margin-' + this.stylePos, -this.tooltip.offsetHeight / 2 + 'px');
 				} else {
-					this._css(this.tooltip, `margin-${this.stylePos}`, `${-this.tooltip.offsetWidth / 2}px`);
+					this._css(this.tooltip, 'margin-' + this.stylePos, -this.tooltip.offsetWidth / 2 + 'px');
 				}
 
 				function getPositionPercentages(state, reversed){

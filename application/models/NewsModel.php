@@ -63,11 +63,23 @@ class NewsModel extends CI_Model{
      * Frontend 
      */
 
-    public function getNewsListFront(){
-        $this->db->where("NL_DEL_YN", "N");
+    // public function getNewsListFront(){
+    //     $this->db->where("NL_DEL_YN", "N");
+    //     $this->db->where("NL_DISPLAY_YN", "Y");
+    //     $this->db->order_by("NL_REG_DATE", "DESC");
+    //     return $this->db->get("tbl_board_news_list")->result();
+    // }
+
+    public function getNewsListFront($wheresql, $getCount=false){
         $this->db->where("NL_DISPLAY_YN", "Y");
+        $this->db->where("NL_DEL_YN", "N");
         $this->db->order_by("NL_REG_DATE", "DESC");
-        return $this->db->get("tbl_board_news_list")->result();
+        if($getCount){
+            return $this->db->get("tbl_board_news_list")->num_rows();
+        } else {
+            $this->db->limit($wheresql["limit"], $wheresql["start"]);
+            return $this->db->get("tbl_board_news_list")->result();
+        }
     }
 
 

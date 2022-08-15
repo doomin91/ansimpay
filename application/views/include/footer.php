@@ -5,6 +5,7 @@
     <!-- jQuery Library -->
     <script src="/assets/vendors/tether/dist/js/tether.min.js"></script>
     <script src="/assets/vendors/jquery/jquery-2.1.4.min.js"></script>
+    
     <!-- Vendor Scripts -->
     <script src="/assets/vendors/tether/dist/js/tether.min.js"></script>
     <script src="/assets/vendors/bootstrap/js/bootstrap.min.js"></script>
@@ -20,10 +21,10 @@
     <script src="/assets/vendors/wow/wow.min.js"></script>
     <script src="/assets/vendors/rateyo/jquery.rateyo.min.js"></script>
     <script src="/assets/datatable/datatables.js"></script>
-    <script src="/assets/vendors/bootstrap-slider-master/src/js/bootstrap-slider.js"></script>
+    <!-- <script src="/assets/vendors/bootstrap-slider-master/src/js/bootstrap-slider.js"></script> -->
     <script src="/assets/vendors/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
     <script src="/assets/js/mega-menu.js"></script>
-    <script src="/assets/vendors/retina/retina.min.js"></script>
+    <!-- <script src="/assets/vendors/retina/retina.min.js"></script> -->
     <!-- Custom Script -->
     <script src="/assets/js/custom.js"></script>
     <script src="/assets/js/jquery.main.js"></script>
@@ -45,4 +46,11 @@
     <!-- Revolution Slider Script -->
     <script src="/assets/js/revolution.js"></script>
 
+    <!-- IE 에서 Webp 파일 형식을 지원하기 위한 스크립트 삭제 시 이미지 출력 안됨 --> 
+    <script src="https://unpkg.com/webp-hero@0.0.0-dev.21/dist-cjs/polyfills.js"></script>
+    <script src="https://unpkg.com/webp-hero@0.0.0-dev.21/dist-cjs/webp-hero.bundle.js"></script>
+    <script>
+    var webpMachine = new webpHero.WebpMachine();
+    webpMachine.polyfillDocument();
+    </script>
 </html>

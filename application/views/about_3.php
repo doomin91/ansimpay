@@ -24,7 +24,7 @@
             <main>
                 <!-- visual/banner of the page -->
                 <section class="visual">
-                    <div class="visual-inner about-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
+                    <div class="visual-inner award-banner dark-overlay parallax" data-stellar-background-ratio="0.55">
                         <div class="centered">
                             <div class="container">
                                 <div class="visual-text visual-center">

@@ -55,7 +55,41 @@ class notice extends CI_Controller {
 	 * @Description : 소개 - News
 	 */
 	public function news(){
-		$this->load->view('about_2');
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*10;
+			$nowpage = $_GET["per_page"];
+		}
+
+		$wheresql = array(
+						"start" => $start,
+						"limit" => $limit
+						);
+						
+		$lists = $this->NewsModel->getNewsListFront($wheresql);
+		//echo $this->db->last_query();
+		$listCount = $this->NewsModel->getNewsListFront($wheresql, true);
+		if ($nowpage != ""){
+			$pagenum = $listCount-(($nowpage-1)*10);
+		}else{
+			$pagenum = $listCount;
+		}
+
+		$pagination = $this->customclass->front_pagenavi("/notice/news", $listCount, 10, 2, $nowpage);
+		//print_r($lists);
+		$data = array(
+					"lists" => $lists,
+					"listCount" => $listCount,
+					"pagination" => $pagination,
+					"pagenum" => $pagenum,
+					"start" => $start,
+					"limit" => $limit
+					);
+
+		$this->load->view('about_2', $data);
 		$this->viewCorporation();
 	}
 

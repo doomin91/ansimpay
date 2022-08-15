@@ -23,7 +23,7 @@
                                         <a class="nav-link" href="/notice/news" role="tab">NEWS</a>  
                                     </li>
                                     <li data-num="4">
-                                        <a class="nav-link" href="/notice/award">특허 및 수상내역</a>  
+                                        <a class="nav-link" href="/notice/awards">특허 및 수상내역</a>  
                                     </li>
                                 </ul>                           
                             </li>
@@ -183,7 +183,7 @@
             success : function (data) {
                 let str = ""
                 data.forEach(function(val){
-                    str += `<li><a href='/service/payment/${val['SC_ORDER_NUMBER']}'>${val['SC_CATEGORY_NAME']}</a></li>`
+                    str += "<li><a href='/service/payment/" + val['SC_ORDER_NUMBER'] + "'>" + val['SC_CATEGORY_NAME'] + "</a></li>"
                 })
                 $("#paymentBody").html(str)
                 $("#paymentBodyMobile").html(str)

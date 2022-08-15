@@ -80,10 +80,10 @@ class Customclass{
         // $config['last_tag_open'] = "<span>맨마지막";
         // $config['last_tag_close'] = "</span>";
         //$config['next_link'] = "<img class=\"btn_img\" src=\"/static/front/html/static/img/btn_next.png\">";
-        $config['next_link'] = "<img class=\"btn_img\" src=\"/static/front/html/static/img/btn_next.png\">";
+        $config['next_link'] = ">>";
         // $config['next_tag_open'] = "<div class=\"btn_next\">";
         // $config['next_tag_close'] = "</div>";
-        $config['prev_link'] = "<img class=\"btn_img\" src=\"/static/front/html/static/img/btn_prev.png\">";
+        $config['prev_link'] = "<<";
         // $config['prev_tag_open'] = "<div>";
         // $config['prev_tag_close'] = "</div>";
         $config['cur_tag_open'] = "<span>";

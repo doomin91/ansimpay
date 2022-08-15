@@ -282,11 +282,11 @@ $(document).ready(function() {
 
     // date time picker plugin setup  
     $(function() {
-        $('.datepicker-text-input').datepicker();
-        $('.input-daterange').datepicker();
-        $('.embeded div').datepicker({
-            todayHighlight: true
-        });
+        // $('.datepicker-text-input').datepicker();
+        // $('.input-daterange').datepicker();
+        // $('.embeded div').datepicker({
+            // todayHighlight: true
+        // });
 
     });
 
@@ -299,51 +299,51 @@ $(document).ready(function() {
         )
     });
     // Progressbar animation  
-    $(function() {
+    // $(function() {
         // With JQuery
-        $('#ex1, #ex2').slider({
-            formatter: function(value) {
-                return 'Current value: ' + value;
-            }
-        });
-        $("#ex3").slider({});
-        $("#ex4").slider({
-            ticks: [0, 100, 200, 300, 400],
-            ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
-            ticks_snap_bounds: 30
-        });
-        $("#ex5").slider({
-            min: 0,
-            max: 10,
-            value: 0,
-            orientation: 'vertical',
-            tooltip_position: 'left'
-        });
+    //     $('#ex1, #ex2').slider({
+    //         formatter: function(value) {
+    //             return 'Current value: ' + value;
+    //         }
+    //     });
+    //     $("#ex3").slider({});
+    //     $("#ex4").slider({
+    //         ticks: [0, 100, 200, 300, 400],
+    //         ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+    //         ticks_snap_bounds: 30
+    //     });
+    //     $("#ex5").slider({
+    //         min: 0,
+    //         max: 10,
+    //         value: 0,
+    //         orientation: 'vertical',
+    //         tooltip_position: 'left'
+    //     });
 
-    });
+    // });
 
-    // Range Slider  
-    $(function() {
-        $('#ex1, #ex2').slider({
-            formatter: function(value) {
-                return 'Current value: ' + value;
-            }
-        });
-        $("#ex3").slider({});
-        $("#ex4").slider({
-            ticks: [0, 100, 200, 300, 400],
-            ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
-            ticks_snap_bounds: 30
-        });
-        $("#ex5").slider({
-            min: 0,
-            max: 10,
-            value: 0,
-            orientation: 'vertical',
-            tooltip_position: 'left'
-        });
+    // // Range Slider  
+    // $(function() {
+    //     $('#ex1, #ex2').slider({
+    //         formatter: function(value) {
+    //             return 'Current value: ' + value;
+    //         }
+    //     });
+    //     $("#ex3").slider({});
+    //     $("#ex4").slider({
+    //         ticks: [0, 100, 200, 300, 400],
+    //         ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+    //         ticks_snap_bounds: 30
+    //     });
+    //     $("#ex5").slider({
+    //         min: 0,
+    //         max: 10,
+    //         value: 0,
+    //         orientation: 'vertical',
+    //         tooltip_position: 'left'
+    //     });
 
-    });
+    // });
 
     // select picker  
     $(function() {
