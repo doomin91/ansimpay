@@ -10,10 +10,44 @@ class LibraryModel extends CI_Model{
 /**
  * 최근 소식 관련 Model
  */
-    public function getLibraryForFront(){
+
+    # 개인 사업자용 서류 다운로드
+    public function getLibraryFiles1(){
         $this->db->where("LIB_DISPLAY_YN", "Y");
         $this->db->where("LIB_DEL_YN", "N");
-        $this->db->order_by("LIB_REG_DATE", "DESC");
+        $this->db->where("LIB_CATEGORY", 1);
+        return $this->db->get("tbl_library_list")->result();
+    }
+
+    # 법인 사업자용 서류 다운로드
+    public function getLibraryFiles2(){
+        $this->db->where("LIB_DISPLAY_YN", "Y");
+        $this->db->where("LIB_DEL_YN", "N");
+        $this->db->where("LIB_CATEGORY", 2);
+        return $this->db->get("tbl_library_list")->result();
+    }
+
+    # 양수양도계약
+    public function getLibraryFiles3(){
+        $this->db->where("LIB_DISPLAY_YN", "Y");
+        $this->db->where("LIB_DEL_YN", "N");
+        $this->db->where("LIB_CATEGORY", 3);
+        return $this->db->get("tbl_library_list")->result();
+    }
+
+    # 고객용 메뉴얼
+    public function getLibraryFiles4(){
+        $this->db->where("LIB_DISPLAY_YN", "Y");
+        $this->db->where("LIB_DEL_YN", "N");
+        $this->db->where("LIB_CATEGORY", 4);
+        return $this->db->get("tbl_library_list")->result();
+    }
+
+    # 가맹점용 메뉴얼
+    public function getLibraryFiles5(){
+        $this->db->where("LIB_DISPLAY_YN", "Y");
+        $this->db->where("LIB_DEL_YN", "N");
+        $this->db->where("LIB_CATEGORY", 5);
         return $this->db->get("tbl_library_list")->result();
     }
 

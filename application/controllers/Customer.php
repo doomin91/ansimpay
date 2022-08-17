@@ -8,6 +8,7 @@ class customer extends CI_Controller {
 		$this->load->model("SiteModel");
 		$this->load->model("QuestionModel");
 		$this->load->model("FaqModel");
+		$this->load->model("LibraryModel");
 		// $this->load->model("MainModel");
 	}
 
@@ -30,7 +31,14 @@ class customer extends CI_Controller {
 	 * @Description : 자료실
 	 */
 	public function library(){
-		$this->load->view('customer_service_1');
+		$data = array(
+			"files1" => $this->LibraryModel->getLibraryFiles1(),
+			"files2" => $this->LibraryModel->getLibraryFiles2(),
+			"files3" => $this->LibraryModel->getLibraryFiles3(),
+			"files4" => $this->LibraryModel->getLibraryFiles4(),
+			"files5" => $this->LibraryModel->getLibraryFiles5()
+		);
+		$this->load->view('customer_service_1', $data);
 		$this->viewCorporation();
 	}
 	/**

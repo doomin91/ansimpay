@@ -20,11 +20,11 @@
 
 		<!-- page header -->
 			<div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>키오스크 추가/변경</b> <span></span></h2>
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>자료실</b> <span></span></h2>
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-					<li>키오스크 관리</li>
-					<li class="active">키오스크 추가/변경</li>
+					<li>고객 서비스 관리</li>
+					<li class="active">자료실</li>
 				</ol>
 			</div>
 
@@ -123,12 +123,12 @@
 											<td><?php echo $pagenum?></td>
 											<!-- <td><img src="<?php echo $lt->LIB_FILE_PATH?>" style="width:175px; height:262px"></td> -->
 											<td><?php echo $lt->LC_CATEGORY_NAME?></td>
-											<td><?php echo $lt->LIB_SUBJECT?></td>
+											<td><a href="<?php echo $lt->LIB_FILE_PATH?>" download="<?php echo $lt->LIB_FILE_NAME?>"> <i class="fa fa-file-word-o"></i> <?php echo $lt->LIB_SUBJECT?></a></td>
 											<td><?php echo $lt->LIB_REG_DATE?></td>
 											<td><?php echo $lt->ADMIN_NAME?></td>
 											<td><?php echo $lt->LIB_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
 											<td>
-											<button type="button" class="btn btn-xs btn-default" onclick="fileDownload('<?php echo $lt->LIB_SEQ?>')">다운로드</button>
+											<a type="button" class="btn btn-xs btn-default" href="<?php echo $lt->LIB_FILE_PATH?>" download="<?php echo $lt->LIB_FILE_NAME?>">파일받기</a>
 											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
 											<button type="button" class="btn btn-xs btn-danger" onclick="deleteLibrary(<?php echo $lt->LIB_SEQ?>)">삭제</button>
 											</td>
@@ -267,7 +267,7 @@
 			// 받아온 값을 Input에 담아준다.
 			$("input[name=libSeq]").val(data.LIB_SEQ);
 			$("input[name=subject]").val(data.LIB_SUBJECT);
-			$("#uploadFileName").html("<span><i>파일명 : </i></span>" + data.LIB_FILE_NAME);
+			$("#uploadFileName").html("<span><i>현재 등록된 파일명 : </i></span>" + data.LIB_FILE_NAME);
 			$(`#category > option[value=${data.LIB_CATEGORY}]`).attr("selected", true);
 			// $("select[name=display]").val(data.LIB_DISPLAY_YN);
 			$(`#display > option[value=${data.LIB_DISPLAY_YN}]`).attr("selected", true);

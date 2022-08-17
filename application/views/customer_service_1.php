@@ -62,92 +62,26 @@
                                         <tbody>
                                             <tr>
                                                 <td class="text-center" style="vertical-align:middle;">
+                                                    <?php foreach ($files1 as $file):?>
                                                     <p style="font-size:14px;">
-                                                        <a href="assets/down_load/private/%EA%B3%84%EC%95%BD%EC%84%9C.doc" style="color:black;">
+                                                        <a href="<?php echo $file->LIB_FILE_PATH?>" download="<?php echo $file->LIB_FILE_NAME?>" style="color:black;">
                                                             <i class="fa fa-file-word-o">
-                                                                계약서    
+                                                                <?php echo $file->LIB_SUBJECT?>
                                                             </i>
                                                         </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/private/%EC%9C%A0%EC%98%88%ED%8A%B9%EC%95%BD%EC%84%9C.doc" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                유예특약서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/private/%EC%86%8C%EC%9C%A0%EC%9E%90%ED%99%95%EC%9D%B8%EC%84%9C%EB%A5%98.doc" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                소유자 확인서류
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/private/%EA%B0%9C%EC%9D%B8(%EC%8B%A0%EC%9A%A9)%EC%A0%95%EB%B3%B4%EC%A1%B0%ED%9A%8C%EB%8F%99%EC%9D%98%EC%84%9C_(%EA%B0%9C%EC%9D%B8).doc" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                개인(신용)정보조회동의서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/2.%20%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EA%B3%84%EC%95%BD%EC%84%9C.hwp" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                안심페이 서비스 계약서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/3.%20%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%9D%B4%EC%9A%A9%20%EC%8B%A0%EC%B2%AD%EC%84%9C.hwp" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                안심페이 서비스 이용 신청서
-                                                            </i>
-                                                        </a>
-                                                    </p>
+                                                    </p> 
+                                                    <?php endforeach ?>
                                                 </td>
                                                 <td class="text-center" style="vertical-align:middle;">
+                                                    <?php foreach ($files2 as $file):?>
                                                     <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/%EA%B3%84%EC%95%BD%EC%84%9C(%EB%B2%95%EC%9D%B8).doc" style="color:black;">
+                                                        <a href="<?php echo $file->LIB_FILE_PATH?>" download="<?php echo $file->LIB_FILE_NAME?>" style="color:black;">
                                                             <i class="fa fa-file-word-o">
-                                                                계약서    
+                                                                <?php echo $file->LIB_SUBJECT?>
                                                             </i>
                                                         </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/%EC%9C%A0%EC%98%88%ED%8A%B9%EC%95%BD%EC%84%9C(%EB%B2%95%EC%9D%B8).doc"    style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                유예특약서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/%EC%86%8C%EC%9C%A0%EC%9E%90%ED%99%95%EC%9D%B8%EC%84%9C%EB%A5%98(%EB%B2%95%EC%9D%B8).doc"  style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                소유자 확인서류
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/%EA%B0%9C%EC%9D%B8(%EC%8B%A0%EC%9A%A9)%EC%A0%95%EB%B3%B4%EC%A1%B0%ED%9A%8C%EB%8F%99%EC%9D%98%EC%84%9C_(%EB%B2%95%EC%9D%B8).doc" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                개인(신용)정보조회동의서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/2.%20%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EA%B3%84%EC%95%BD%EC%84%9C.hwp" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                안심페이 서비스 계약서
-                                                            </i>
-                                                        </a>
-                                                    </p>
-                                                    <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/3.%20%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4%20%EC%84%9C%EB%B9%84%EC%8A%A4%20%EC%9D%B4%EC%9A%A9%20%EC%8B%A0%EC%B2%AD%EC%84%9C.hwp" style="color:black;">
-                                                            <i class="fa fa-file-word-o">
-                                                                안심페이 서비스 이용 신청서
-                                                            </i>
-                                                        </a>
-                                                    </p>
+                                                    </p> 
+                                                    <?php endforeach ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -163,13 +97,15 @@
                                         <tbody>
                                             <tr>
                                                 <td class="text-center" style="vertical-align:middle">
+                                                    <?php foreach ($files3 as $file):?>
                                                     <p style="font-size:14px;">
-                                                        <a href="assets/down_load/corporation/%EA%B0%9C%EC%9D%B8(%EC%8B%A0%EC%9A%A9)%EC%A0%95%EB%B3%B4%EC%A1%B0%ED%9A%8C%EB%8F%99%EC%9D%98%EC%84%9C_(%EB%B2%95%EC%9D%B8).doc" style="color:black;">
+                                                        <a href="<?php echo $file->LIB_FILE_PATH?>" download="<?php echo $file->LIB_FILE_NAME?>" style="color:black;">
                                                             <i class="fa fa-file-word-o">
-                                                                양수양도약정서                                                    
+                                                                <?php echo $file->LIB_SUBJECT?>
                                                             </i>
                                                         </a>
-                                                    </p>
+                                                    </p> 
+                                                    <?php endforeach ?>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -186,22 +122,26 @@
                                         <tbody>
                                             <tr>
                                                 <td class="text-center" style="vertical-align:middle;">
+                                                    <?php foreach ($files4 as $file):?>
                                                     <p style="font-size:14px;">
-                                                        <a href="assets/down_load/%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4_%EB%A9%94%EB%89%B4%EC%96%BC_%EB%AA%A8%EB%B0%94%EC%9D%BC%EC%95%B1(%EA%B3%A0%EA%B0%9D).pdf" style="color:black;">
+                                                        <a href="<?php echo $file->LIB_FILE_PATH?>" download="<?php echo $file->LIB_FILE_NAME?>" style="color:black;">
                                                             <i class="fa fa-file-word-o">
-                                                                고객용 메뉴얼
+                                                                <?php echo $file->LIB_SUBJECT?>
                                                             </i>
                                                         </a>
-                                                    </p>
+                                                    </p> 
+                                                    <?php endforeach ?>
                                                 </td>
                                                 <td class="text-center" style="vertical-align:middle;">
+                                                    <?php foreach ($files5 as $file):?>
                                                     <p style="font-size:14px;">
-                                                        <a href="assets/down_load/%EC%95%88%EC%8B%AC%ED%8E%98%EC%9D%B4_%EB%A9%94%EB%89%B4%EC%96%BC_%ED%8C%8C%ED%8A%B8%EB%84%88%EC%84%BC%ED%84%B0(%EA%B0%80%EB%A7%B9%EC%A0%90).pdf" style="color:black;">
+                                                        <a href="<?php echo $file->LIB_FILE_PATH?>" download="<?php echo $file->LIB_FILE_NAME?>" style="color:black;">
                                                             <i class="fa fa-file-word-o">
-                                                                가맹점용 메뉴얼
+                                                                <?php echo $file->LIB_SUBJECT?>
                                                             </i>
                                                         </a>
-                                                    </p>
+                                                    </p> 
+                                                    <?php endforeach ?>
                                                 </td>
                                             </tr>
                                         </tbody>
