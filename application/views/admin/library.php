@@ -1,263 +1,232 @@
 <?php
-  include_once dirname(__DIR__)."/admin/include/admin-header.php";
+	include_once dirname(__DIR__)."/admin/include/admin-header.php";
 ?>
 <body class="bg-1">
-
-	<!-- Preloader -->
-	<!-- <div class="mask"><div id="loader"></div></div> -->
-	<!--/Preloader -->
 
 	<!-- Wrap all page content here -->
 	<div id="wrap">
 
-	  <!-- Make page fluid -->
-	  <div class="row">
+	<!-- Make page fluid -->
+		<div class="row">
 
 		<!-- Fixed navbar -->
-
 		<?php
 			include_once dirname(__DIR__)."/admin/include/admin-top.php";
 		?>
 		<!-- Fixed navbar end -->
 
 		<!-- Page content -->
-		<div id="content" class="col-md-12" style="overflow:auto;">
+		<div id="content" class="col-md-12">
 
-		  <!-- page header -->
-		  <div class="pageheader">
-			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>사이트 정보</b></h2>
+		<!-- page header -->
+			<div class="pageheader">
+			<h2><i class="fa fa-puzzle-piece" style="line-height: 48px;padding-left: 5px;"></i> <b>키오스크 추가/변경</b> <span></span></h2>
 			<div class="breadcrumbs">
-			  <ol class="breadcrumb">
-				<li>관리자 페이지</li>
-				<li><a href="index.html">기본설정</a></li>
-				<li class="active">사이트 정보</li>
-			  </ol>
+				<ol class="breadcrumb">
+					<li>키오스크 관리</li>
+					<li class="active">키오스크 추가/변경</li>
+				</ol>
 			</div>
 
-		  </div>
-		  <!-- /page header -->
+		</div>
+		<!-- /page header -->
 
-		  <!-- content main container -->
-		  <div class="main">
+		<!-- content main container -->
+		<div class="main">
 
-			<!-- row -->
 			<div class="row">
-
-			  <!-- col 6 -->
-			  <div class="col-md-12">
-				<!-- tile -->
-				<section class="tile color transparent-black">
-
-					<!-- tile body -->
-					<form name="contentsForm" id="contentsForm">
-					<div class="tile-body">
-						<table class="table table-custom dataTable userTable">
-							<colgroup>
-								<col width="15%"/>
-								<col width="35%"/>
-								<col width="15%"/>
-								<col width="35%"/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>사이트명</th>
-									<td><input type="text" name="site_name" value="<?php echo $info->SITE_NAME; ?>" size="50"></td>
-									<th>사이트 URL</th>
-									<td><input type="text" name="site_url" value="<?php echo $info->SITE_URL; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>관리자 이메일</th>
-									<td><input type="text" name="site_admin_email" value="<?php echo $info->SITE_ADMIN_EMAIL; ?>" size="50"></td>
-									<th>관리자 연락처</th>
-									<td><input type="text" name="site_admin_tel" value="<?php echo $info->SITE_ADMIN_TEL; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>관리자 휴대폰</th>
-									<td><input type="text" name="site_admin_hp" value="<?php echo $info->SITE_ADMIN_HP; ?>" size="50"></td>
-									<th>&nbsp;</th>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tile-body">
-						<table class="table table-custom dataTable userTable">
-							<colgroup>
-								<col width="15%"/>
-								<col width="35%"/>
-								<col width="15%"/>
-								<col width="35%"/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>FTP 접속 주소(ip, 도메인)</th>
-									<td><input type="text" name="ftp_ip" value="<?php echo $info->FTP_IP; ?>" size="50"></td>
-									<th>&nbsp;</th>
-									<td>&nbsp;</td>
-								</tr>
-								<tr>
-									<th>아이디</th>
-									<td><input type="text" name="ftp_id" value="<?php echo $info->FTP_ID; ?>" size="50"></td>
-									<th>비밀번호</th>
-									<td><input type="text" name="ftp_pw" value="<?php echo $info->FTP_PW; ?>" size="50"></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-					<div class="tile-body">
-						<table class="table table-custom dataTable userTable">
-							<colgroup>
-								<col width="15%"/>
-								<col width="35%"/>
-								<col width="15%"/>
-								<col width="35%"/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>사업자 등록번호</th>
-									<td><input type="text" name="comp_num" value="<?php echo $info->COMP_NUM; ?>" size="50"></td>
-									<th>영업시간</th>
-									<td><input type="text" name="comp_working_time" value="<?php echo $info->COMP_WORKING_TIME; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>업체명</th>
-									<td><input type="text" name="comp_name" value="<?php echo $info->COMP_NAME; ?>" size="50"></td>
-									<th>대표자명</th>
-									<td><input type="text" name="comp_ceo_name" value="<?php echo $info->COMP_CEO_NAME; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>우편번호</th>
-									<td>
-										<input type="text" name="comp_zip" id="comp_zip" value="<?php echo $info->COMP_ZIP_CODE; ?>" size="50">
-										<button type="button" class="btn btn-default btn-sm" id="searchZip">우편번호 검색</button>
-									</td>
-									<th>개인정보 보호책임자명</th>
-									<td><input type="text" name="comp_cto_name" value="<?php echo $info->COMP_CTO_NAME; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>주소</th>
-									<td><input type="text" name="comp_addr" id="comp_addr" value="<?php echo $info->COMP_ADDR; ?>" size="50"></td>
-									<th>통신판매업신고번호</th>
-									<td><input type="text" name="comp_sales_code" value="<?php echo $info->COMP_SALES_CODE; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>업태</th>
-									<td><input type="text" name="comp_cate1" value="<?php echo $info->COMP_CATE1; ?>" size="50"></td>
-									<th>종목</th>
-									<td><input type="text" name="comp_cate2" value="<?php echo $info->COMP_CATE2; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>전화번호</th>
-									<td><input type="text" name="comp_tel" value="<?php echo $info->COMP_TEL; ?>" size="50"></td>
-									<th>팩스번호</th>
-									<td><input type="text" name="comp_fax" value="<?php echo $info->COMP_FAX; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>이메일</th>
-									<td><input type="text" name="comp_email" value="<?php echo $info->COMP_EMAIL; ?>" size="50"></td>
-									<th></th>
-									<td></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-
-					<div class="tile-body">
-						<table class="table table-custom dataTable userTable">
-							<colgroup>
-								<col width="15%"/>
-								<col width="35%"/>
-								<col width="15%"/>
-								<col width="35%"/>
-							</colgroup>
-							<tbody>
-								<tr>
-									<th>인스타그램 URL</th>
-									<td><input type="text" name="url_instagram" value="<?php echo $info->URL_INSTAGRAM; ?>" size="50"></td>
-									<th>블로그 URL</th>
-									<td><input type="text" name="url_blog" value="<?php echo $info->URL_NAVERBLOG; ?>" size="50"></td>
-								</tr>
-								<tr>
-									<th>유튜브 URL</th>
-									<td><input type="text" name="url_youtube" value="<?php echo $info->URL_YOUTUBE; ?>" size="50"></td>
-									<th></th>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-						 <div class="row form-footer">
-                            <div class="col-sm-offset-2 col-sm-10 text-right">
-                                <button type="button" class="btn btn-primary btn-sm" id="saveInfo">저장</button>
-                            </div>
-                        </div>
-					</div>
-					</form>
-				  <!-- /tile body -->
-
-				</section>
-				<!-- /tile -->
-
-			  </div>
-			  <!-- /col 12 -->
-
+				<div class="col-md-12">
+                <!-- tile -->
+                <section class="tile color transparent-black">
+                	<!-- tile body -->
+                	<div class="tile-body">
+                		<table class="table table-custom datatable userTable">
+							<form method="get" role="form" id="searchForm"> 
+									<colgroup>
+										<col width="15%"/>
+										<col width="35%"/>
+										<col width="15%"/>
+										<col width="35%"/>
+									</colgroup>
+									<tbody>
+										<tr>
+											<th>등록일자</th>
+											<td colspan="3">
+												<div class="col-md-5">
+													<input name="regDateStart" type="text" class="wid100p datepicker" value="<?php echo $regDateStart?>">
+												</div>
+												<div class="col-md-5">
+													<input name="regDateEnd" type="text" class="wid100p datepicker" value="<?php echo $regDateEnd?>">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>단어검색</th>
+											<td colspan="3">
+												<div class="col-md-2">
+													<select name="searchField" class="wid100p">
+														<option value="all">전체</option>
+														<option value="ADMIN_NAME" <?php echo $searchField == "ADMIN_NAME" ? 'selected': ""?>>작성자</option>
+														<option value="CATEGORY" <?php echo $searchField == "CATEGORY" ? 'selected': ""?>>카테고리</option>
+														<option value="SUBJECT" <?php echo $searchField == "SUBJECT" ? 'selected': ""?>>제목</option>
+													</select>
+												</div>
+												<div class="col-md-8">
+													<input type="text" name="searchString" class="wid100p" placeholder="검색어를 입력해주세요" value="<?php echo $searchString?>">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="4" class="text-right">
+												<div class="col-md-12">
+													<button type="button" onclick="formReset()" class="btn btn-default">초기화</button>
+													<button class="btn btn-blue">검색</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+					</section>
+				</div>
 			</div>
-			<!-- /row -->
 
-		  </div>
-		  <!-- /content container -->
+			<div class="row">
+				<!-- col 12 -->
+				<div class="col-md-12">
+                <!-- tile -->
+					<section class="tile color transparent-black">
+						<!-- tile body -->
+						<div class="tile-body">
+							<div style="float:right">
+								<button type="button" class="btn btn-success btn-sm" onclick="showCreateModal()">파일 등록</button>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-datatable table-custom01 userTable">
+									<thead>
+										<tr>
+											<th class="sort-numeric">#</th>
+											<th class="sort">등록위치</th>
+											<th class="sort">제목</th>
+											<th class="sort">등록일</th>
+											<th class="sort">작성자</th>
+											<th class="sort">공개여부</th>
+											<th class="sort">기능</th>
+										</tr>
+									</thead>
+									<tbody>
+										<?php 
+										if($listCount > 0):
+										foreach($lists as $lt):?>
+										<tr>
+											<td><?php echo $pagenum?></td>
+											<!-- <td><img src="<?php echo $lt->LIB_FILE_PATH?>" style="width:175px; height:262px"></td> -->
+											<td><?php echo $lt->LC_CATEGORY_NAME?></td>
+											<td><?php echo $lt->LIB_SUBJECT?></td>
+											<td><?php echo $lt->LIB_REG_DATE?></td>
+											<td><?php echo $lt->ADMIN_NAME?></td>
+											<td><?php echo $lt->LIB_DISPLAY_YN == "Y" ? "<span class=\"label label-success\">공개</span>" : "<span class=\"label label-slategray\">비공개</span>"?></td>
+											<td>
+											<button type="button" class="btn btn-xs btn-default" onclick="fileDownload('<?php echo $lt->LIB_SEQ?>')">다운로드</button>
+											<button type="button" class="btn btn-xs btn-default" onclick="showModifyModal('<?php echo htmlspecialchars(json_encode($lt))?>')">수정</button>
+											<button type="button" class="btn btn-xs btn-danger" onclick="deleteLibrary(<?php echo $lt->LIB_SEQ?>)">삭제</button>
+											</td>
+										</tr>
+										<?php 
+										$pagenum -= 1;	
+										endforeach;
+										else:
+											echo "<tr><td colspan=8 style=\"text-align:center;padding:50px;\">파일이 없습니다.</td></tr>";
+										endif;
+										?>
+									</tbody>
+								</table>
+
+								<div class="row">
+									<div class="col-md-4 sm-center">
+												<div class="dataTables_info">
+												<?php if ($listCount > 0) :
+													$end = ($start+$limit)-1;
+													if ($end > $listCount) $end = $listCount;
+													if ($start == 0) $start = 1;
+												?>
+													전체 <?php echo $listCount; ?>개 중 <?php echo $listCount-$start; ?> - <?php echo $listCount-$end == 0 ? "1" : $listCount-$end ?>
+												<?php endif; ?>
+												</div>
+											</div>
+											<div class="col-md-4 text-center sm-center">
+												<div class="dataTables_paginate paging_bootstrap paging_custombootstrap">
+													<?php echo $pagination; ?>
+												</div>
+									</div>
+								</div>
+							</div>
+                		</div>
+                <!-- /tile body -->
+                	</section>
+                <!-- /tile -->
+				</div>
+			</div>
+			<!-- /content container -->
 
 		</div>
 		<!-- Page content end -->
 
-	  </div>
-	  <!-- Make page fluid-->
+	</div>
+	<!-- Make page fluid-->
 
 	</div>
 	<!-- Wrap all page content end -->
-	<!-- 모달 팝업 -->
-	<div class="modal fade" id="modalFamilySite" tabindex="-1" role="dialog" aria-labelledby="modalConfirmLabel" aria-hidden="true">
+
+	<!-- Modal Area -->
+	<div class="modal fade" id="LibraryModal" tabindex="-1" role="dialog" aria-labelledby="LibraryLabel" aria-hidden="true">
+		<form id="LibraryForm">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Close</button>
-					<h3 class="modal-title" id="modalConfirmLabel">패밀리사이트 정보</h3>
+					<h3 class="modal-title" id="LibraryLabel"></h3>
 				</div>
 				<div class="modal-body">
-					<form role="form">
-					<input type="hidden" name="mode">
-					<input type="hidden" name="domain_seq">
+					<form role="form" id="cateForm">
 						<div class="form-group">
-							<label for="domain">표기명칭</label>
-							<input type="text" class="form-control" id="domain" name="family_site_name">
-						</div>
-
-						<div class="form-group">
-							<label for="buy_site">연동 URL</label>
-							<input type="text" class="form-control" id="buy_site" name="family_site_url">
+							<input type="hidden" name="libSeq">
+							<input type="hidden" name="mode">
+							<label for="subject">파일</label> <span>파일양식: doc, docx 혹은 xlsx, xls 파일 (용량 3MB미만)</span>
+							<input type="file" class="form-control" id="uploadFile" name="file">
+							<label for="uploadFile" id="uploadFileName"></label><br>
+							<label for="category">등록위치</label>
+							<select class="form-control" id="category" name="category">
+								<?php foreach($category as $val): ?>
+									<option value=<?php echo $val->LC_SEQ?>><?php echo $val->LC_CATEGORY_NAME?></option>
+								<?php endforeach;?>
+							</select>
+							<label for="subject">제목(노출시킬 파일명)</label>
+							<input type="text" class="form-control" id="subject" name="subject">
+							<label for="display">공개여부</label>
+							<select class="form-control" id="display" name="display">
+								<option value="Y" checked>공개</option>
+								<option value="N">비공개</option>
+							</select>
 						</div>
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button class="btn btn-red" data-dismiss="modal" aria-hidden="true">취소</button>
-					<button id="saveDomain" class="btn btn-green">저장하기</button>
+					<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">취소</button>
+					<button type="button" onclick="inputLibrary()" class="btn btn-success">저장하기</button>
 				</div>
 			</div><!-- /.modal-content -->
 		</div><!-- /.modal-dialog -->
+		</form>
 	</div><!-- /.modal -->
+
+	<!-- Modal Area End -->
 
 	<?php
 		include_once dirname(__DIR__)."/admin/include/admin-footer.php";
 	?>
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
-	<img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" alt="닫기 버튼">
-</div>
-
-</body>
-</html>
-<script type="text/javascript">
-	$(function(){
+	<script>
 		$.datepicker.setDefaults({
 	        dateFormat: 'yy-mm-dd',
 	        prevText: '이전 달',
@@ -272,123 +241,99 @@
 	        color: "black"
 	    });
 		$(".datepicker").datepicker();
+	
+		function formReset(){
+			location.href="/admin/recentlyList"
+		}
 
-		$(document).on("click", "#saveInfo", function(){
-			var formData = $("#contentsForm").serialize();
-			alert
+		function showCreateModal(){
+			// 폼을 먼저 리셋 한다.
+			$("#LibraryForm")[0].reset();
+			// 수정 시에도 동일한 Modal을 사용하므로 플래그 값을 준다.
+			$("input[name=mode]").val("createMode");
+			$("#uploadFileName").html("");
+			// DatePicker 기본 값 설정
+			$("#displayDate").datepicker("setDate", new Date());
+			
+			// LABEL 파일 등록으로 변경
+			$("#LibraryLabel").html("파일 등록")
+			// LibraryModal 표시
+			$("#LibraryModal").modal("show");
+		}
+
+		function showModifyModal(item){
+			// PHP Object -> JSON String 값으로 변환하여 전달받은 값을 다시 JS Object로 변환
+			let data = JSON.parse(item);
+			// 받아온 값을 Input에 담아준다.
+			$("input[name=libSeq]").val(data.LIB_SEQ);
+			$("input[name=subject]").val(data.LIB_SUBJECT);
+			$("#uploadFileName").html("<span><i>파일명 : </i></span>" + data.LIB_FILE_NAME);
+			$(`#category > option[value=${data.LIB_CATEGORY}]`).attr("selected", true);
+			// $("select[name=display]").val(data.LIB_DISPLAY_YN);
+			$(`#display > option[value=${data.LIB_DISPLAY_YN}]`).attr("selected", true);
+			// DatePicker 기본 값 설정
+
+			$("input[name=mode]").val("modifyMode");
+			// LABEL 파일 수정으로 변경
+			$("#LibraryLabel").html("파일 수정");
+			// LibraryModal 표시
+			$("#LibraryModal").modal("show");
+		}
+
+		function inputLibrary(){
+			if($("input[name=subject]").val() == "") {
+				alert("제목을 입력해주세요."); 
+				$("input[name=subject]").focus();
+				return false;
+			}
+
+			const formData = new FormData($("#LibraryForm")[0]);
 			$.ajax({
-				url:"/adm/site/setInfo",
-				type:"post",
-				dataType:"json",
-				data : formData,
-				success:function(data){
-					console.log(data);
-					if (data.code == "200"){
-						alert(data.msg);
-						// $("#modalFamilySite").modal("hide");
-						document.location.reload();
+				url		: "/adm/Library/inputLibrary",
+				type	: "post",
+				data	: formData,
+				dataType: "json",
+				contentType: false,
+				processData: false,
+				success : function (data){
+					const code = data["code"];
+					const msg = data["msg"];
+					if(code == 200){
+						location.reload();
+					} else {
+						alert(msg);
 					}
-				}, error:function(e){
-					console.log(e);
+				},
+				error 	: function (e){
+					alert(e.responseText);
 				}
 			})
-		});
-
-		$(document).on("click", "#searchZip", function(){
-			sample2_execDaumPostcode();
-		});
-
-		$(document).on("click", "#btnCloseLayer", function(){
-			console.log("asdfasdfsadf");
-			closeDaumPostcode();
-		});
-
-		// 우편번호 찾기 화면을 넣을 element
-		var element_layer = document.getElementById('layer');
-
-		function closeDaumPostcode() {
-			// iframe을 넣은 element를 안보이게 한다.
-			element_layer.style.display = 'none';
 		}
 
-		function sample2_execDaumPostcode() {
-			var addr = ''; // 주소 변수
-			var extraAddr = ''; // 참고항목 변수
-
-			new daum.Postcode({
-				oncomplete: function(data) {
-					// 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
-
-					// 각 주소의 노출 규칙에 따라 주소를 조합한다.
-					// 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-
-
-					//사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-					if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-						addr = data.roadAddress;
-					} else { // 사용자가 지번 주소를 선택했을 경우(J)
-						addr = data.jibunAddress;
+		function deleteLibrary(libSeq){
+			if(confirm("해당 파일을 삭제하시겠습니까?")){
+				$.ajax({
+					url		: "/adm/Library/delLibrary?libSeq=" + libSeq,
+					type	: "get",
+					dataType: "json",
+					success : function (data){
+						const code = data["code"];
+						const msg = data["msg"];
+						if(code == 200){
+							location.reload();
+						} else {
+							alert(msg);
+						}
+					},
+					error 	: function (e){
+						console.log(e.responseText);
 					}
-
-					// 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-					if(data.userSelectedType === 'R'){
-						// 법정동명이 있을 경우 추가한다. (법정리는 제외)
-						// 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-						if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-							extraAddr += data.bname;
-						}
-						// 건물명이 있고, 공동주택일 경우 추가한다.
-						if(data.buildingName !== '' && data.apartment === 'Y'){
-							extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-						}
-						// 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-						if(extraAddr !== ''){
-							extraAddr = ' (' + extraAddr + ')';
-						}
-						// 조합된 참고항목을 해당 필드에 넣는다.
-						//document.getElementById("sample2_extraAddress").value = extraAddr;
-
-					} else {
-						//document.getElementById("sample2_extraAddress").value = '';
-					}
-
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('comp_zip').value = data.zonecode;
-					document.getElementById("comp_addr").value = addr+extraAddr;
-					// 커서를 상세주소 필드로 이동한다.
-					document.getElementById("comp_addr").focus();
-
-					// iframe을 넣은 element를 안보이게 한다.
-					// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
-					element_layer.style.display = 'none';
-				},
-				width : '100%',
-				height : '100%',
-				maxSuggestItems : 5
-			}).embed(element_layer);
-
-			// iframe을 넣은 element를 보이게 한다.
-			element_layer.style.display = 'block';
-
-			// iframe을 넣은 element의 위치를 화면의 가운데로 이동시킨다.
-			initLayerPosition();
+				})
+			}
 		}
 
-		// 브라우저의 크기 변경에 따라 레이어를 가운데로 이동시키고자 하실때에는
-		// resize이벤트나, orientationchange이벤트를 이용하여 값이 변경될때마다 아래 함수를 실행 시켜 주시거나,
-		// 직접 element_layer의 top,left값을 수정해 주시면 됩니다.
-		function initLayerPosition(){
-			var width = 500; //우편번호서비스가 들어갈 element의 width
-			var height = 400; //우편번호서비스가 들어갈 element의 height
-			var borderWidth = 2; //샘플에서 사용하는 border의 두께
+	</script>
 
-			// 위에서 선언한 값들을 실제 element에 넣는다.
-			element_layer.style.width = width + 'px';
-			element_layer.style.height = height + 'px';
-			element_layer.style.border = borderWidth + 'px solid';
-			// 실행되는 순간의 화면 너비와 높이 값을 가져와서 중앙에 뜰 수 있도록 위치를 계산한다.
-			element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
-			element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
-		}
-	});
-</script>
+</body>
+</html>
+

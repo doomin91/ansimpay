@@ -17,6 +17,7 @@ class admin extends CI_Controller {
 		$this->load->model("SectorModel");
 		$this->load->model("FaqModel");
 		$this->load->model("PatentModel");
+		$this->load->model("LibraryModel");
 
 
 		$this->load->library("session");
@@ -624,7 +625,54 @@ class admin extends CI_Controller {
 	}
 
 	public function library(){
-		$this->load->view('admin/library');
+		$regDateStart = $this->input->get("regDateStart");
+		$regDateEnd = $this->input->get("regDateEnd");
+		$searchField = $this->input->get("searchField");
+		$searchString = $this->input->get("searchString");
+	
+		$limit = 10;
+		$nowpage = "";
+		if (!isset($_GET["per_page"])){
+			$start = 0;
+		}else{
+			$start = ($_GET["per_page"]-1)*$limit;
+			$nowpage = $_GET["per_page"];
+		}
+		
+		$wheresql = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$category = $this->LibraryModel->getLibraryCate();
+		$lists = $this->LibraryModel->getLibraryList($wheresql);
+		$listCount = $this->LibraryModel->getLibraryList($wheresql, true);
+	
+		if ($nowpage != ""){
+			$pagenum = $listCount-(($nowpage-1)*$limit);
+		}else{
+			$pagenum = $listCount;
+		}
+		$queryString = "?regDateStart=".$regDateStart."&regDateEnd=".$regDateEnd."&searchField=". $searchField. "&searchString=".$searchString;
+		$pagination = $this->customclass->pagenavi("/admin/library".$queryString, $listCount, 10, 3, $nowpage);
+	
+		$data = array(
+			"regDateStart" => $regDateStart,
+			"regDateEnd" => $regDateEnd,
+			"searchField" => $searchField,
+			"searchString" => $searchString,
+			"category" => $category,
+			"lists" => $lists,
+			"listCount" => $listCount,
+			"pagination" => $pagination,
+			"pagenum" => $pagenum,
+			"start" => $start,
+			"limit" => $limit
+			);
+		$this->load->view('admin/library', $data);
 	}
 
 	public function faq(){

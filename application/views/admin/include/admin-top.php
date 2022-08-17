@@ -171,10 +171,16 @@
 						<i class="fa fa-caret-right"></i> FAQ
 					</a>
 				</li>
+				<li>
+					<a href="/admin/library">
+						<i class="fa fa-caret-right"></i> 자료실
+					</a>
+				</li>
 			</ul>
 		</li>
 	  </ul>
 	</li>
+	
 	<li class="navigation">
 		<ul class="menu">
 			<li>

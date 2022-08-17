@@ -288,7 +288,6 @@
 					const code = data["code"];
 					const msg = data["msg"];
 					if(code == 200){
-						alert(msg);
 						location.reload();
 					} else {
 						alert(msg);
@@ -310,7 +309,6 @@
 						const code = data["code"];
 						const msg = data["msg"];
 						if(code == 200){
-							alert(msg);
 							location.reload();
 						} else {
 							alert(msg);
