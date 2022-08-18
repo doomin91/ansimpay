@@ -61,10 +61,10 @@
                                                         <div class="img-block">
                                                             <img src="<?php echo $lt->PL_IMAGE_URL?>" alt="images description">
                                                         </div>
-                                                        <div style="padding-top:10px;text-align:left;font-weight:600;">
-                                                            <span class="sub" style="color:#000;text-algin:left"><?php echo $lt->PL_SUBJECT ?></span>
+                                                        <div style="padding-top:10px;text-align:center;font-weight:600;">
+                                                            <span class="sub" style="color:#000;text-algin:center"><?php echo $lt->PL_SUBJECT ?></span>
                                                         </div>
-                                                        <div style="padding:0px;text-align:left;">
+                                                        <div style="padding:0px;text-align:center;">
                                                             <span class="sub" style="color:#ccc"><?php echo $lt->PL_DESC ?></span>
                                                         </div>
                                                     </figure>
@@ -79,10 +79,10 @@
                                                         <div class="img-block">
                                                             <img src="<?php echo $lt->AL_IMAGE_URL?>" alt="images description">
                                                         </div>
-                                                        <div style="padding-top:10px;text-align:left;font-weight:600;">
-                                                            <span class="sub" style="color:#000;text-algin:left"><?php echo $lt->AL_SUBJECT ?></span>
+                                                        <div style="padding-top:10px;text-align:center;font-weight:600;">
+                                                            <span class="sub" style="color:#000;text-algin:center"><?php echo $lt->AL_SUBJECT ?></span>
                                                         </div>
-                                                        <div style="padding:0px;text-align:left;">
+                                                        <div style="padding:0px;text-align:center;">
                                                             <span class="sub" style="color:#ccc"><?php echo $lt->AL_DESC ?></span>
                                                         </div>
                                                     </figure>

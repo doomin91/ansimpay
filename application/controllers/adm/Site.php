@@ -28,6 +28,8 @@ class site extends CI_Controller {
 		$comp_ceo_name = $this->input->post("comp_ceo_name");
 		$comp_zip = $this->input->post("comp_zip");
 		$comp_addr = $this->input->post("comp_addr");
+		$comp_zip_sub = $this->input->post("comp_zip_sub");
+		$comp_addr_sub = $this->input->post("comp_addr_sub");
 		$comp_email = $this->input->post("comp_email");
 		$comp_cate1 = $this->input->post("comp_cate1");
 		$comp_cate2 = $this->input->post("comp_cate2");
@@ -55,9 +57,11 @@ class site extends CI_Controller {
 						"COMP_CEO_NAME" => $comp_ceo_name,
 						"COMP_CTO_NAME" => $comp_cto_name,
 						"COMP_ADDR" => $comp_addr,
+						"COMP_ADDR_SUB" => $comp_addr_sub,
 						"COMP_EMAIL" => $comp_email,
 						"COMP_SALES_CODE" => $comp_sales_code,
 						"COMP_ZIP_CODE" => $comp_zip,
+						"COMP_ZIP_CODE_SUB" => $comp_zip_sub,
 						"COMP_CATE1" => $comp_cate1,
 						"COMP_CATE2" => $comp_cate2,
 						"COMP_TEL" => $comp_tel,

@@ -16,7 +16,7 @@
                         </ul>
                         <ul>
                             <li><a href="java::void(0)">(본사) <?php echo $SITE->COMP_ADDR?></a></li><p>
-                            <li><a href="java::void(0)">(지점) 경기 안양시 동안구 벌말로 66 하이필드지식산업센터 A동 1001호</a></li>
+                            <li><a href="java::void(0)">(지점) <?php echo $SITE->COMP_ADDR_SUB?></a></li>
                         </ul>
                     </div>
                 </div>

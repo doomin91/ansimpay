@@ -83,7 +83,7 @@
                                                 <p>SMS문자를 발송 URL을 통해 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="/service/away">자세히 보기</a>
+                                                <a class="link-more" href="/service/payment/1">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -101,7 +101,7 @@
                                                 <p>NFC/QR코드를 이용하여 어디서든 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="/service/nfc">자세히 보기</a>
+                                                <a class="link-more" href="/service/payment/2">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -120,7 +120,7 @@
                                                 <p>기능으로 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="/service/mobile">자세히 보기</a>
+                                                <a class="link-more" href="/service/payment/3">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>
@@ -138,7 +138,7 @@
                                                 <p>SMS문자를 발송 URL을 통해 결제하는 방법</p>
                                             </div>
                                             <div class="link-holder">
-                                                <a class="link-more" href="/service/kiosk">자세히 보기</a>
+                                                <a class="link-more" href="/service/payment/4">자세히 보기</a>
                                             </div>
                                         </div>
                                     </div>

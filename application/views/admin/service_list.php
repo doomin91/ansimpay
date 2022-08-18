@@ -136,7 +136,7 @@
 							<input type="hidden" name="cateSeq" value="<?php echo $category->SC_SEQ?>">
 							<input type="hidden" name="slSeq">
 							<input type="hidden" name="mode">
-							<label for="file">이미지</label>
+							<label for="file">이미지</label> <span>*이미지 사이즈 570 × 620 / 파일양식: GIF,JPG 혹은 PNG이미지 (용량 3MB미만)</span>
 							<input type="file" class="form-control" name="file">
 							<label for="subject">제목</label>
 							<input type="text" class="form-control" id="subject" name="subject">

@@ -126,19 +126,28 @@
 									<td><input type="text" name="comp_ceo_name" value="<?php echo $info->COMP_CEO_NAME; ?>" size="50"></td>
 								</tr>
 								<tr>
-									<th>우편번호</th>
-									<td>
-										<input type="text" name="comp_zip" id="comp_zip" value="<?php echo $info->COMP_ZIP_CODE; ?>" size="50">
-										<button type="button" class="btn btn-default btn-sm" id="searchZip">우편번호 검색</button>
-									</td>
+									<th>통신판매업신고번호</th>
+									<td><input type="text" name="comp_sales_code" value="<?php echo $info->COMP_SALES_CODE; ?>" size="50"></td>
 									<th>개인정보 보호책임자명</th>
 									<td><input type="text" name="comp_cto_name" value="<?php echo $info->COMP_CTO_NAME; ?>" size="50"></td>
 								</tr>
 								<tr>
-									<th>주소</th>
+									<th>우편번호 (본점)</th>
+									<td>
+										<input type="text" name="comp_zip" id="comp_zip" value="<?php echo $info->COMP_ZIP_CODE; ?>" size="50">
+										<button type="button" class="btn btn-default btn-sm" id="searchZip">우편번호 검색</button>
+									</td>
+									<th>주소 (본점)</th>
 									<td><input type="text" name="comp_addr" id="comp_addr" value="<?php echo $info->COMP_ADDR; ?>" size="50"></td>
-									<th>통신판매업신고번호</th>
-									<td><input type="text" name="comp_sales_code" value="<?php echo $info->COMP_SALES_CODE; ?>" size="50"></td>
+								</tr>
+								<tr>
+									<th>우편번호 (지점)</th>
+									<td>
+										<input type="text" name="comp_zip_sub" id="comp_zip_sub" value="<?php echo $info->COMP_ZIP_CODE_SUB; ?>" size="50">
+										<button type="button" class="btn btn-default btn-sm" id="searchZipSub">우편번호 검색</button>
+									</td>
+									<th>주소 (지점)</th>
+									<td><input type="text" name="comp_addr_sub" id="comp_addr_sub" value="<?php echo $info->COMP_ADDR_SUB; ?>" size="50"></td>
 								</tr>
 								<tr>
 									<th>업태</th>
@@ -295,11 +304,14 @@
 		});
 
 		$(document).on("click", "#searchZip", function(){
-			sample2_execDaumPostcode();
+			sample2_execDaumPostcode("main");
+		});
+
+		$(document).on("click", "#searchZipSub", function(){
+			sample2_execDaumPostcode("sub");
 		});
 
 		$(document).on("click", "#btnCloseLayer", function(){
-			console.log("asdfasdfsadf");
 			closeDaumPostcode();
 		});
 
@@ -311,7 +323,7 @@
 			element_layer.style.display = 'none';
 		}
 
-		function sample2_execDaumPostcode() {
+		function sample2_execDaumPostcode(type) {
 			var addr = ''; // 주소 변수
 			var extraAddr = ''; // 참고항목 변수
 
@@ -352,11 +364,22 @@
 						//document.getElementById("sample2_extraAddress").value = '';
 					}
 
-					// 우편번호와 주소 정보를 해당 필드에 넣는다.
-					document.getElementById('comp_zip').value = data.zonecode;
-					document.getElementById("comp_addr").value = addr+extraAddr;
-					// 커서를 상세주소 필드로 이동한다.
-					document.getElementById("comp_addr").focus();
+					switch(type){
+						case "main":
+							// 우편번호와 주소 정보를 해당 필드에 넣는다.
+							document.getElementById('comp_zip').value = data.zonecode;
+							document.getElementById("comp_addr").value = addr+extraAddr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("comp_addr").focus();
+							break;
+						case "sub":
+							document.getElementById('comp_zip_sub').value = data.zonecode;
+							document.getElementById("comp_addr_sub").value = addr+extraAddr;
+							// 커서를 상세주소 필드로 이동한다.
+							document.getElementById("comp_addr_sub").focus();
+							break;
+					}
+					
 
 					// iframe을 넣은 element를 안보이게 한다.
 					// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
