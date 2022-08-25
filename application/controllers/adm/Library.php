@@ -25,9 +25,12 @@ class library extends CI_Controller {
 				$filePermitType = array(
 					"application/pdf",
 					"application/msword",
-					"application/octet-stream"
+					"application/octet-stream",
+					"application/x-hwp", 
+					"application/haansofthwp", 
+					"application/vnd.hancom.hwp"
 				);
-
+				
 				$fileUpload = $this->customclass->fileUpload($_FILES, "Library", $filePermitType, 5);
 				if($fileUpload["uploaded"] == "failed") {
 					$returnMsg = array(
